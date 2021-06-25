@@ -11,10 +11,11 @@ Maybe during your testing the arm has blocked and you don't know how to make it 
 Reasons of blocking
 ===================
 
-There are 2 main reasons for the arm to be blocked. The first one is because the robot moved too fast, and the second one is because the robot is too close to a joint limit. Pushing the joints to their limits may put the arm into ``red`` state (Sorry, I did not succeed to go in the ``red`` state, so I put a beautiful image of a woodchuck instead).
+There are 2 main reasons for the arm to be blocked. The first one is because the robot moved too fast, and the second one is because the robot is too close to a joint limit. Pushing the joints to their limits may put the arm into ``red`` state.
 
-.. image:: images/fci-architecture.png
+.. image:: images/IMG_20210618_142707.jpg
     :align: center
+    :width: 47%
 
 .. _Solve:
 

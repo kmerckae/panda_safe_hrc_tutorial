@@ -18,6 +18,7 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    robot_arm_start/command_control
    robot_arm_start/arm_blocked
    robot_arm_start/create_controller
+   robot_arm_start/different_planners
    robot_arm_start/problems
 
 .. toctree::

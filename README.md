@@ -1,6 +1,6 @@
 # panda_constrained_control_tutorial
 
-## How to make html:
+## Getting started:
 
 * install sphinx and read the doc theme with python3:
   ``` bash
@@ -18,3 +18,6 @@
   sudo apt-get install build-essential
   make html
   ```
+* Open the tutorials:
+
+  Go to the build/html folder and open the index.html with your browser.
