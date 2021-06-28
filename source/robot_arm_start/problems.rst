@@ -38,4 +38,9 @@ In order to test some planners, we wanted to set the arm in a defined position. 
 
 Replace the ``'name_of_the_group_state'`` by a relevant name.
 
-Then open the ``panda_arm.xacro`` in the ``panda_moveit_config`` folder, and then define another move_group with the name you put in the move_to_start.py, and with the joint angular position you want. Then you have just to execute :ref:`move_to_start<Command_test>`.
+Then open the ``panda_arm.xacro`` in the ``panda_moveit_config`` folder, and then define another move_group with the name you put in the move_to_start.py (the ``'name_of_the_group_state'``), and with the joint angular position you want. Then you have just to execute :ref:`move_to_start<Command_test>`.
+
+.. figure:: images/change_position.png
+    :align: center
+
+    You can see that ``group`` is always equal to "panda_arm" and you can choose the name of the group_state
