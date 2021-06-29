@@ -38,6 +38,14 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    objects_detection/zed_ros_object_detection
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Jetson and ZED2 issues
+
+   zed_jetson_issues/jetson_boot
+
+
+
 Indices and tables
 ==================
 
