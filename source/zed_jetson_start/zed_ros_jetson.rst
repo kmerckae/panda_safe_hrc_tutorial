@@ -224,6 +224,10 @@ Once it's done:
     rosdep install --from-paths src --ignore-src -r -y
     catkin_make -DCMAKE_BUILD_TYPE=Release
 
+Synchronize the clock of the Jetson and your external computer
+**************************************************************
+
+You will need to synchronize the clock of the Jetson and your computer to visualize data on it. 
 
 Display rviz on your external computer
 **************************************
