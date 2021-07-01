@@ -16,5 +16,10 @@ The Jetson failed to boot and everything on the microSD Card has been erased. Th
 .. image:: images/flash_failed.jpg
     :width: 600
 
-If you are experimenting the same issue just use a new microSD Card. Here the `link to the thread <https://forums.developer.nvidia.com/t/nvidia-jetson-xavier-nx-boot-fail/182229?u=kouassi948>`_ we created on the NVIDIA forum.
+This problem occurred when the Jetson shutdown and restart by itself. Everything was erased from the SD card. We tried to x²flash the Jetson Xavier NX Developer Kit SD Card image but it failed.
+In our case it seems that the boot fail of the Jetson happened when the Flash of the Jetson Xavier NX Developer Kit SD card failed.
 
+To solve this problem it's better to use at least a UHS-1 microSD Card.
+Here a `link to the Thread <https://forums.developer.nvidia.com/t/nvidia-jetson-xavier-nx-boot-fail/182229?u=kouassi948>`_ we created on NVIDIA forum.
+
+Note: Use a high quality microSD Card (at least 16GB UHS-1) of you want to have better performance on your Jetson.
