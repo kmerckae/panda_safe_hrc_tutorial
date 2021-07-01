@@ -21,7 +21,7 @@ Installing requirements
 
         pip3 --version  # check if it is installed
         sudo apt-get install python3-pip  # install pip3 if it is not installed
-
+.. _ZED_SDK:
 * download ZED SDK
     * download `ZED SDK for Jetpack 4.5 <https://download.stereolabs.com/zedsdk/3.5/jp45/jetsons>`_. Here are `all the versions of ZED SDK <https://www.stereolabs.com/developers/release/>`_.
     * once the download is completed:

@@ -19,7 +19,6 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    robot_arm_start/command_control
    robot_arm_start/arm_blocked
    robot_arm_start/different_planners
-   robot_arm_start/problems
 
 .. toctree::
    :maxdepth: 1
@@ -40,10 +39,11 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
 
 .. toctree::
    :maxdepth: 1
-   :caption: Jetson and ZED2 issues
+   :caption: Jetson, ZED2 and PANDA ARM issues
 
-   zed_jetson_issues/jetson_boot
-
+   zed_jetson_panda_issues/jetson_issues
+   zed_jetson_panda_issues/jetson_zed_panda
+   zed_jetson_panda_issues/panda_arm_issues
 
 
 Indices and tables

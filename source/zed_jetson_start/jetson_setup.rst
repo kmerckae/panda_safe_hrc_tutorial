@@ -48,7 +48,7 @@ In order to reduce lags on the Jetson turn on the fan to 100%
     sudo apt-get update
     sudo apt-get install python3-pip  # install pip3
     cd jetson_stats
-    sudo -H pup3 install -U jetson-stats
+    sudo -H pip3 install -U jetson-stats
 
 * Restart your Jetson and run :
 

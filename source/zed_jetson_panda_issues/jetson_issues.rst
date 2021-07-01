@@ -1,5 +1,5 @@
-ZED and Jetson issues
-=====================
+Jetson issues
+=============
 
 This section will list all the problems we encountered while using the NVIDIA Jetson NX and the ZED2 camera.
 
@@ -24,8 +24,3 @@ Here a `link to the Thread <https://forums.developer.nvidia.com/t/nvidia-jetson-
 
 Note: Use a high quality microSD Card (at least 16GB UHS-1) of you want to have better performance on your Jetson.
 
-ZED2: Cuda error
-----------------
-
-.. image:: ./images/cuda_error.png
-    :width: 600
