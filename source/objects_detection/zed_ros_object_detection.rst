@@ -56,3 +56,69 @@ We avoided this problem by installing the AI model with the shell mode on Jetson
         sudo systemctl set-default graphical.target
 
 * Now you can launch rviz with object detection on graphical mode.
+
+Get the detected objects information
+------------------------------------
+
+Build Stereolabs libraries
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+| In order to get all the information from the detected objects in a c++ program, we need to build the object library.
+| This step is done when you build the `zed-ros-wrapper package <https://github.com/stereolabs/zed-ros-wrapper>`_ but on some computers this would not work since it uses CUDA and it can only be installed on a computer with nvidia.
+| However you can download the zed-ros-wrapper package, move the zed_interfaces directory to your catkin_ws/src directory so you can build the needed libraries with ``catkin_make``
+
+.. image:: ./images/zed_interfaces_dir.png
+    :width: 600
+
+| You have to add the following lines into your package.xml file for using the zed library in your package:
+
+.. code-block:: xml
+
+    <build_depend>zed_interfaces</build_depend>
+    <exec_depend>zed_interfaces</exec_depend>
+
+Subscribe to detected objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+| You can now subscribe to the detected object topic which is ``/zed2/zed_node/obj_det/objects``
+| The following code print the detected objects and some useful information:
+
+.. code-block:: c++
+
+    #include <ros/ros.h>
+    #include <zed_interfaces/object_stamped.h>
+    #include <zed_interfaces/objects.h>
+
+    /**
+     * Subscriber callback
+     */
+    void objectListCallback(const zed_interfaces::ObjectsStamped::ConstPtr& msg)
+    {
+      ROS_INFO("***** New object list *****");
+      for (int i = 0; i < msg->objects.size(); i++)
+      {
+        if (msg->objects[i].label_id == -1)
+          continue;
+
+        ROS_INFO_STREAM(msg->objects[i].label << " [" << msg->objects[i].label_id << "] - Pos. ["
+                                              << msg->objects[i].position[0] << "," << msg->objects[i].position[1] << ","
+                                              << msg->objects[i].position[2] << "] [m]"
+                                              << "- Conf. " << msg->objects[i].confidence
+                                              << " - Tracking state: " << static_cast<int>(msg->objects[i].tracking_state));
+      }
+    }
+
+    /**
+     * Node main function
+     */
+    int main(int argc, char** argv) {
+        ros::init(argc, argv, "zed_obj_det_sub_tutorial");
+
+        ros::NodeHandle n;
+
+        // Subscriber
+        ros::Subscriber subObjList= n.subscribe("/zed2/zed_node/obj_det/objects", 1, objectListCallback);
+
+        ros::spin();
+
+        return 0;
+    }
+
