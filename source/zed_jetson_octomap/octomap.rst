@@ -29,7 +29,7 @@ If everything goes well an octomap will be generated from the point cloud
 OCTOMAP LIBRARY
 ===============
 
-This chapter explains how to save an octomap and load it into RViz with the panda arm.
+This chapter explains how to save an octomap and load it into RViz with the panda arm. We will later use the camera to detect obstacles and 
 
 ROS Melodic OctoMap server
 **************************
@@ -108,7 +108,7 @@ Create your package
 
     roslaunch octo_save octomap_mapping.launch
 
-* Add a MarkerArray display and then modify the MarkerArray settings as following
+* Add a MarkerArray display and then modify the MarkerArray topic
 
 .. image:: ./images/settings_octo.png
     :width: 300
@@ -120,3 +120,14 @@ Here you are
 
 Save the octomap
 ----------------
+
+To save the octomap just use this command (RViz should be running at the same time)
+
+.. code::
+
+    rosrun octomap_server octomap_saver -f first_octomap.bt
+
+Now we are done. We will use this later to detect obstacles and visualize them in RViz with the robot arm.
+
+
+
