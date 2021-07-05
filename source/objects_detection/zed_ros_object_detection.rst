@@ -6,7 +6,7 @@ Download example code
 
 | NB: Do this in your catkin workspace
 | If you have not done it yet, the example code for the zed camera running with ROS can be cloned with:
-
+.. _ZED_ROS_WRAPPER:
 .. code-block:: bash
 
     git clone https://github.com/stereolabs/zed-ros-wrapper.git

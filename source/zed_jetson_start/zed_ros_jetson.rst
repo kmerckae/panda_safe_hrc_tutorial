@@ -227,7 +227,12 @@ Once it's done:
 Synchronize the clock of the Jetson and your external computer
 **************************************************************
 
-You will need to synchronize the clock of the Jetson and your computer to visualize data on it. 
+You will need to synchronize the clock of the Jetson and your computer.
+Do this command on both computers:
+
+.. code-block:: bash
+
+    sudo date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
 
 Display rviz on your external computer
 **************************************
