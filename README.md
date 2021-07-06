@@ -1,35 +1,44 @@
 # panda_constrained_control_tutorial
 
-## Getting started:
+## Prerequisites:
 
-* install python3:
+* Install python3:
   ``` bash
   sudo apt install python3-pip
   ```
 
-
-* install sphinx and read the doc theme with python3:
+* Install sphinx:
   ``` bash
   python3 -m pip install sphinx
+  ```
+
+* To use ReadTheDocs, install the following sphinx extension:
+  ``` bash
   python3 -m pip install sphinx_rtd_theme
   ```
 
-* install myst-parser:
-  <font color="#FF0000"> the following doesn't work for me </font>
-  ``` bash
-  pip install myst-parser
-  ```
-  <font color="#32CD32"> instead I had to do </font>
+* Install myst-parser:
   ``` bash
   python3 -mpip install myst-parser
   ```
 
-* build html:
+* Install build-essential:
   ``` bash
   sudo apt-get install build-essential
+  ```
+
+## Visualize the documentation:
+
+* Clone this repository in the folder of your choice:
+  ``` bash
+  git clone https://github.com/panda-brubotics/panda_constrained_control_tutorial.git
+  ```
+* Go to the panda_constrained_control_tutorial directory and build html: 
+  ``` bash
   make html
   ```
-* Open the tutorials:
+* View the index of the tutorial:
 
-  Go to the build/html folder and open the index.html with your browser.
-  <font color="#FF0000">This part I don't understand. Please add some extra lines of what to do. You mean that via the terminal I have to open the index.html with my browser? How to do this? </font>
+  Navigate to the /build/html directory (not via the terminal), right-click on index.html, and open the index.html with your browser.
+
+  You should now be able to see the tutorial in your web browser. 
