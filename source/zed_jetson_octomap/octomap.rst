@@ -64,7 +64,8 @@ Create your package
 
     cd ~/catkin_ws/src/octo_save/
     mkdir launch
-    touch octomap_mapping.launch
+    cd launch
+    gedit octomap_mapping.launch
 
 * Once you are done, copy this in the octomap_mapping.launch file
 
@@ -113,7 +114,7 @@ Create your package
 .. image:: ./images/settings_octo.png
     :width: 300
 
-Here you are 
+Once it is done , you should see this
 
 .. image:: ./images/octomap_.png
     :width: 300
