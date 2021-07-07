@@ -1,7 +1,7 @@
 Objects detection with ZED2 Camera
 ==================================
 
-Download example code
+Example code
 ---------------------
 
 If you have not done it yet, the example code for the zed camera can be cloned with:
