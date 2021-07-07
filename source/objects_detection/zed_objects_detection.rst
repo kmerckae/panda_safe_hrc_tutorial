@@ -3,6 +3,7 @@ Objects detection with ZED2 Camera
 
 Download example code
 ---------------------
+
 If you have not done it yet, the example code for the zed camera can be cloned with:
 
 .. code-block:: bash
@@ -11,10 +12,12 @@ If you have not done it yet, the example code for the zed camera can be cloned w
 
 Code explanation
 ----------------
+
 You can find `the tutorial for 3D objects detection on Stereolab website <https://www.stereolabs.com/docs/tutorials/3d-object-detection/>`_
 
 Run python code
 ---------------
+
 | The script is located in path-to-ros-example/object detection/image\ viewer/python
 | Run python script as it is explained in :ref:`this section <run_python_script>`.
 | The first time you run it it will download the AI model, this can take some time.
