@@ -5,7 +5,8 @@ Download example code
 ---------------------
 
 | NB: Do this in your catkin workspace
-| If you have not done it yet, the example code for the zed camera running with ROS can be cloned with:
+| If you have not done it yet, the example code for the zed camera running with ROS can be cloned with
+
 .. _ZED_ROS_WRAPPER:
 .. code-block:: bash
 
@@ -14,6 +15,7 @@ Download example code
 
 Add objects detection in rviz
 -----------------------------
+
 | You can find `how to add object detection in rviz in this tutorial <https://www.stereolabs.com/docs/ros/object-detection/>`_
 | NB : If you launch the zed2 camera with rviz  with a new model of the object detection, it will download the AI model.
 | In our case, the Jetson shutdown every time we try to download an AI model
@@ -62,6 +64,7 @@ Get the detected objects information
 
 Build Stereolabs libraries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 | In order to get all the information from the detected objects in a c++ program, we need to build the object library.
 | This step is done when you build the `zed-ros-wrapper package <https://github.com/stereolabs/zed-ros-wrapper>`_ but on some computers this would not work since it uses CUDA and it can only be installed on a computer with nvidia.
 | However you can download the zed-ros-wrapper package, move the zed_interfaces directory to your catkin_ws/src directory so you can build the needed libraries with ``catkin_make``
