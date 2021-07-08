@@ -1,7 +1,7 @@
+.. _Get_Started:
+
 Getting started with the NVIDIA Jetson Xavier NX
 ================================================
-
-.. _Get_Started:
 
 .. role:: raw-html(raw)
     :format: html
