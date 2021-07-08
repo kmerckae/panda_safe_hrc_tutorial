@@ -27,6 +27,11 @@
   sudo apt-get install build-essential
   ```
 
+* Install docutils
+  ```bash
+  python3 -m pip install docutils==0.16
+  ```
+
 ## Visualize the documentation:
 
 * Clone this repository in the folder of your choice:
