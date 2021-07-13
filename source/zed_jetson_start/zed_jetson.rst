@@ -4,11 +4,11 @@ Use the ZED SDK with the Jetson Xavier NX
 .. role:: raw-html(raw)
     :format: html
 
-.. _Try_the_zed:
+.. _What_do_you_need_ZED_Jetson:
 
 What do you need?
 -----------------
-On top of the things listed in :ref:`getting started with NVIDIA Jetson Xavier NX<Get_Started>`: 
+On top of the things listed in :ref:`getting started with NVIDIA Jetson Xavier NX<_setup_and_boot_JetsonXavierNX>`: 
 
 *  ZED 2 camera box 
 
@@ -85,12 +85,9 @@ Check if the ZED SDK is properly installed.
         :width: 600
         :alt: ZED_Explorer
 
-:raw-html:`<font color="Tomato"> I followed your steps and everything works fine, but I'm a bit confused. 
-When I go to </font>` |ZED_SDK_Jetson_Installation| 
-:raw-html:`<font color="Tomato"> it seems that I first have to install JetPack, but now I didn't do that, right? </font>`
-
-:raw-html:`<font color="Blue"> The JetPack is already installed when you flashed your SD card </font>`
-
+.. note:: 
+    |ZED_SDK_Jetson_Installation| writes that you first need to install JetPack. 
+    However, JetPack is already installed when you flashed the SD card as in :ref:`Set Up and Boot the Jetson Xavier NX<setup_and_boot_JetsonXavierNX>`. 
 
 .. |ZED_SDK_Jetson_Installation| raw:: html
 
@@ -164,39 +161,48 @@ Python sample code
         cd "path_to_zed-examples/zed-examples/camera control/python"
         python3 camera_control.py
 
-* if a module is missing try to install it with pip3
+* If a module is missing, you will receive a ModuleNotFoundError. 
+  Solve this by installing the module with pip3:
 
     .. code-block:: bash
 
         pip3 install "module name"  # replace "module name" with the modole you want to install
 
-:raw-html:`<font color="Tomato"> When I run the body tracking example in python, 
-I get the ModuleNotFoundError : No modle named 'OpenGL'.
-However, when I run pip3 install OpenGL, it says that it is successfully installed, 
-but when I run again the body tracking example, it says again that there is no module name OpenGL.  </font>` 
+  If you installed a module by mistake, then you can uninstall it with pip3:
 
-:raw-html:`<font color="Blue"> The command to run for OpenGL is </font>` ``pip3 install PyOpenGL``
-:raw-html:`<font color="Blue"> When you run </font>` ``pip3 install OpenGL``
-:raw-html:`<font color="Blue"> the module installed is </font>`
-`this one <https://pypi.org/project/opengl/>`_
-:raw-html:`<font color="Blue">I guess it does nothing regarding its description...? You can remove an installed module with this command: </font>`
-``pip3 uninstall "module name"``
+    .. code-block:: bash
 
-To avoid a core dumped error, we had to add "export OPENBLAS_CORETYPE=ARMV8" in the .bashrc file.
+        pip3 uninstall "module name"  # replace "module name" with the modole you want to uninstall
 
-.. code-block:: bash
+.. note:: 
+    For the following modules you will have to install the required module with another name than mentioned in the ModuleNotFoundError. 
+    At the left you see the name that is mentioned, at the right you see the name you have to use in the pip3 install. 
 
-    echo "export OPENBLAS_CORETYPE=ARMV8" >> ~/.bashrc
+    *  |OpenGL| :raw-html:`&rarr;` |PyOpenGL| 
 
-:raw-html:`<font color="Tomato"> Do you still have this problem with the new SD card? 
-Or was the origin of the problem something else? 
-I didn't get a core dumped error. </font>` 
+.. |OpenGL| raw:: html
 
-:raw-html:`<font color="Blue"> We do not have this problem with the new SD card, this problem only occured when we used the jetson for the first time when we followed Alessandro's tutorial.</font>`
+    <a href="https://pypi.org/project/opengl/" target="_blank">OpenGL</a>
+
+.. |PyOpenGL| raw:: html
+
+    <a href="https://pypi.org/project/PyOpenGL/" target="_blank">PyOpenGL</a>
+
+
+
+.. warning::
+    We had a core dumped error when using the old SD card. 
+    You can avoid a core dumped error by adding "export OPENBLAS_CORETYPE=ARMV8" in the .bashrc file.
+
+    .. code-block:: bash
+
+        echo "export OPENBLAS_CORETYPE=ARMV8" >> ~/.bashrc
 
 ZED Tutorials
 ^^^^^^^^^^^^^
 You can try some |ZED_Tutorials| to familiarise with the ZED SDK.
+The C++ and Python version can be launched in the same way as explained above. 
+In these tutorials information will be printed in the terminal. 
 
 
 .. |ZED_Tutorials| raw:: html
