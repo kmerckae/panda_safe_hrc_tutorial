@@ -89,6 +89,9 @@ Check if the ZED SDK is properly installed.
 When I go to </font>` |ZED_SDK_Jetson_Installation| 
 :raw-html:`<font color="Tomato"> it seems that I first have to install JetPack, but now I didn't do that, right? </font>`
 
+:raw-html:`<font color="Blue"> The JetPack is already installed when you flashed your SD card </font>`
+
+
 .. |ZED_SDK_Jetson_Installation| raw:: html
 
     <a href="https://www.stereolabs.com/docs/installation/jetson/" target="_blank">ZED SDK installation on Nvidia Jetson</a>
@@ -172,6 +175,13 @@ I get the ModuleNotFoundError : No modle named 'OpenGL'.
 However, when I run pip3 install OpenGL, it says that it is successfully installed, 
 but when I run again the body tracking example, it says again that there is no module name OpenGL.  </font>` 
 
+:raw-html:`<font color="Blue"> The command to run for OpenGL is </font>` ``pip3 install PyOpenGL``
+:raw-html:`<font color="Blue"> When you run </font>` ``pip3 install OpenGL``
+:raw-html:`<font color="Blue"> the module installed is </font>`
+`this one <https://pypi.org/project/opengl/>`_
+:raw-html:`<font color="Blue">I guess it does nothing regarding its description...? You can remove an installed module with this command: </font>`
+``pip3 uninstall "module name"``
+
 To avoid a core dumped error, we had to add "export OPENBLAS_CORETYPE=ARMV8" in the .bashrc file.
 
 .. code-block:: bash
@@ -182,8 +192,10 @@ To avoid a core dumped error, we had to add "export OPENBLAS_CORETYPE=ARMV8" in 
 Or was the origin of the problem something else? 
 I didn't get a core dumped error. </font>` 
 
-Tutorials
-^^^^^^^^^
+:raw-html:`<font color="Blue"> We do not have this problem with the new SD card, this problem only occured when we used the jetson for the first time when we followed Alessandro's tutorial.</font>`
+
+ZED Tutorials
+^^^^^^^^^^^^^
 You can try some |ZED_Tutorials| to familiarise with the ZED SDK.
 
 

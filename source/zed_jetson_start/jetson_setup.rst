@@ -108,7 +108,9 @@ In order to reduce lags on the Jetson turn on the fan to 100%, by doing the foll
     :width: 600
 
 * Navigate with the arrow keys to the tab CTRL, you can set the fan methode to manual and the fan speed to 100% 
-  :raw-html:`<font color="Tomato"> I can go to the tab CTRL, but how can I set the fan speed to manual and back to default?  </font>`
+   :raw-html:`<font color="Tomato"> I can go to the tab CTRL, but how can I set the fan speed to manual and back to default?  </font>`
+
+   :raw-html:`<font color="Blue"> You can set the speed to manual just by clicking on "manual" and also for the speed, you can click on p or m </font>`
 
 .. image:: ./images/jtop_fan.png
     :width: 600
