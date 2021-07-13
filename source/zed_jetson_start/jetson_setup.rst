@@ -56,12 +56,6 @@ Usually that means that the SD card is physically locked and that you have to |u
 
 Setup and First Boot
 ^^^^^^^^^^^^^^^^^^^^
-Normally, the Jetson Xavier will boot on Ubuntu. 
-
-*  :raw-html:`<font color="Tomato"> Why normally?  </font>`
-*  :raw-html:`<font color="Tomato"> Which version of Ubuntu?  </font>`
-*  :raw-html:`<font color="Tomato"> Can it boot something else?  </font>`
-*  :raw-html:`<font color="Tomato"> What to do if this doesn't boot on Ubuntu?  </font>`
 
 When you are asked to choose the **APP Partition Size**, it is recommended to choose the maximum accepted size. 
 
