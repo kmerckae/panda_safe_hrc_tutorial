@@ -131,6 +131,16 @@ Add bunding box in rviz
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 * Create a new directory in your catkin workspace name it zed-ros-example
-* Drag the ``zed_display_rviz`` and ``rvis-plugin-zed-od`` directories from 
+* Drag the ``zed_display_rviz`` and ``rvis-plugin-zed-od`` directories from `zed-ros-example package <https://github.com/stereolabs/zed-ros-example>`_
 * Rebuild your workspace with ``catkin_make``
-* :ref:`Enable object detection on the Jetson`
+* Enable object detection on the Jetson:
+    * Go to ~/catkin_ws/zed-ros-wrapper/zed_wrapper/params
+    * Open the zed2.yaml
+    * set the parameter ``od_enable`` to true
+
+Do these steps to only visualise objects detection:
+
+* On the computer: ``roscore``
+* Launch zed-wrapper on the Jetson: ``roslaunch zed_wrapper zed2.launch``
+* Launch rviz on the computer: ``rosrun rviz rviz``
+* Now you can add the ``ZedOdDisplay`` plugin and select the ``/zed2/zed_node/obj_det/objects`` topic

@@ -58,8 +58,7 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    :caption: Zed camera and Panda Arm programs
 
    zed_panda/zed_panda_setup
-
-
+   zed_panda/zed_panda_objects_detection
 
 
 Indices and tables

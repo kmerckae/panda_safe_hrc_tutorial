@@ -18,8 +18,4 @@ Clone the ROS package we made:
 
     git clone https://github.com/panda-brubotics/franka_constrained_control.git
 
-Do the steps in 
-
-Install ZED libraries and plugin
---------------------------------
-
+Do the steps in the README file to build it.
