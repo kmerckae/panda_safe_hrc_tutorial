@@ -19,10 +19,12 @@ Modify the camera transformation parameters
     * The panda robot's axis are:
 
     .. image:: images/panda_axis.png
+        :width: 300
 
     * The map frame's origin is the position of the camera when you launch the zed_wrapper node on the jetson and its axis are:
 
     .. image:: images/zed_map_axis.png
+        :width: 300
 
 * Modify the transformation parameter ``transfo_world2map`` directly in the launch file by changing its default value or when you do the roslaunch for instance you can launch it this way : ``roslaunch zed_franka_planner grab_detected_object_test.launch transfo_world2map:="0 0 0 0 0 0 1"``
     

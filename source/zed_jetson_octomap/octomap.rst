@@ -1,4 +1,4 @@
-OCTOMAP WITH ZED2
+Octomap with ZED2
 =================
 
 This section will help you to visualize 3D map in RViz.
@@ -26,7 +26,7 @@ If everything goes well an octomap will be generated from the point cloud
     :width: 300
 
 
-OCTOMAP LIBRARY
+Octomap package
 ===============
 
 This chapter explains how to save an octomap and load it into RViz with the panda arm. We will later use the camera to detect obstacles and 
