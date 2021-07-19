@@ -59,6 +59,8 @@ We avoided this problem by installing the AI model with the shell mode on Jetson
 
 * Now you can launch rviz with object detection on graphical mode.
 
+.. _obj_detection_on_panda_computer:
+
 Get the detected objects information
 ------------------------------------
 
@@ -125,3 +127,10 @@ Subscribe to detected objects
         return 0;
     }
 
+Add bunding box in rviz
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* Create a new directory in your catkin workspace name it zed-ros-example
+* Drag the ``zed_display_rviz`` and ``rvis-plugin-zed-od`` directories from 
+* Rebuild your workspace with ``catkin_make``
+* :ref:`Enable object detection on the Jetson`

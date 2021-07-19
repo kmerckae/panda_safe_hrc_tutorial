@@ -18,9 +18,9 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'panda robot'
-copyright = '2021, lorel'
-author = 'lorel'
+project = 'zed-panda tutorial'
+copyright = '2021, Kouassi, Binjie, Thomas, Kelly'
+author = 'Kouassi, Binjie, Thomas, Kelly'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
