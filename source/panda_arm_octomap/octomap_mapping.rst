@@ -12,10 +12,26 @@ Point cloud and Panda arm
 Octomap and Panda arm
 *********************
 
-Remove the octomap of the robot from the world
-**********************************************
+Remove the Panda arm from the octomap
+*************************************
 
-To generate the octomap without the robot arm, you will need to modify the grab_detected_object_test.launch file by adding this:
+In order to generate the octomap without the arm we need to filter the point cloud and publish the filtered cloud in a new topic. The filter wich we will use will remove the robot from the point cloud.
+
+* To begin create a file named sensors_kinect_pointcloud.yaml and then copy and save this in your panda_moveit_config/config folder:
+
+.. code:: XML
+
+  sensors:
+  - sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+    point_cloud_topic: /zed2/zed_node/point_cloud/cloud_registered
+    max_range: 3.0
+    point_subsample: 1
+    padding_offset: 0.1
+    padding_scale: 1.0
+    max_update_rate: 1.0
+    filtered_cloud_topic: filtered_cloud
+
+* To generate the octomap , you will need to modify the grab_detected_object_test.launch file by adding this:
 
 .. code:: XML
 
