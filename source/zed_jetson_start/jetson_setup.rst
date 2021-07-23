@@ -6,8 +6,9 @@ Getting started with the NVIDIA Jetson Xavier NX
 .. role:: raw-html(raw)
     :format: html
 
-What do you need?
------------------
+Prerequisites
+-------------
+
 *  A Jetson Xavier NX Developer Kit 
 
     *  Jetson Xavier NX module (P3668-0000) with heatsink

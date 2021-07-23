@@ -1,8 +1,8 @@
-Panda arm and Octomap mapping
-=============================
+Panda arm, Point cloud and Octomap
+==================================
 
 In this section, we will see how to display in real time the octomap and the point cloud into RViz with the panda arm.
-Before starting make sure you have done the :ref:`transformation between the ZED2 and the robot frame <>`.
+Before starting make sure you have done the :ref:`transformation between the camera and the robot frame<transformation>`.
 
 Note: Once the octomap will be generated we will have to remove the panda arm from the octomap otherwise it will be recognized as an obstacle.
 
@@ -17,18 +17,25 @@ Remove the Panda arm from the octomap
 
 In order to generate the octomap without the arm we need to filter the point cloud and publish the filtered cloud in a new topic. The filter wich we will use will remove the robot from the point cloud.
 
-* To begin create a file named sensors_kinect_pointcloud.yaml and then copy and save this in your panda_moveit_config/config folder:
+* To begin go in your config folder and create a new .yaml file
+
+.. code:: bash
+
+  cd "path_to_franka_constrained_control/catkin_ws/src/camera_integration/config/
+  touch point_cloud.yaml
+
+* Then open it with you favorite editor and add this:
 
 .. code:: XML
-
+ 
   sensors:
   - sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
     point_cloud_topic: /zed2/zed_node/point_cloud/cloud_registered
-    max_range: 3.0
+    max_range: 1
     point_subsample: 1
     padding_offset: 0.1
     padding_scale: 1.0
-    max_update_rate: 1.0
+    max_update_rate: 30.0
     filtered_cloud_topic: filtered_cloud
 
 * To generate the octomap , you will need to modify the grab_detected_object_test.launch file by adding this:

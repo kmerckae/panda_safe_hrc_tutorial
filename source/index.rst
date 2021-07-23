@@ -40,14 +40,15 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    :caption: Octomap
 
    zed_jetson_octomap/octomap
-   panda_arm_octomap/octomap_mapping
+
 
 .. toctree::
    :maxdepth: 1
    :caption: Zed camera and Panda Arm programs
 
    zed_panda/zed_panda_setup
-   zed_panda/zed_panda_objects_detection  
+   zed_panda/zed_panda_objects_detection    
+   panda_arm_octomap/octomap_mapping   
 
 .. toctree::
    :maxdepth: 1
@@ -56,6 +57,7 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    zed_jetson_panda_issues/jetson_issues
    zed_jetson_panda_issues/jetson_zed_panda
    zed_jetson_panda_issues/panda_arm_issues
+
 
 Indices and tables
 ==================

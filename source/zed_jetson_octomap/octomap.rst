@@ -6,7 +6,7 @@ I supposed you have already cloned the :ref:`zed-ros-wrapper<ZED_ROS_WRAPPER>` e
 
 To display the octomap run 
 
-.. code::
+.. code:: bash
 
     roslaunch zed_rtabmap_example zed_rtabmap.launch 
 
@@ -39,7 +39,7 @@ OctoMap installation
 
 Install the octomap package.
 
-.. code:: 
+.. code:: bash
 
     sudo apt-get install ros-melodic-octomap ros-melodic-octomap-server ros-melodic-octomap-mapping ros-melodic-octomap-ros ros-melodic-octomap-msgs
 
@@ -51,7 +51,7 @@ Create your package
 
 * To save your octomap you will have to create your own octomap saver package. Here a link if you want more details on the `octomap server <http://wiki.ros.org/octomap_server>`_.
 
-.. code:: 
+.. code:: bash
 
     cd ~/catkin_ws/src/
     catkin_create_pkg octo_save std_msgs rospy roscpp
@@ -60,14 +60,14 @@ Create your package
     
 * Now you will have to create and edit a new .launch file. This .launch file will be used later to generate the octomap and save it.
 
-.. code:: 
+.. code:: bash
 
     cd ~/catkin_ws/src/octo_save/
     mkdir launch
     cd launch
-    gedit octomap_mapping.launch
+    touch octomap_mapping.launch
 
-* Once you are done, copy this in the octomap_mapping.launch file
+* Copy this in the octomap_mapping.launch file
 
 .. code:: XML
 
@@ -105,7 +105,7 @@ Create your package
 
 * Launch it
 
-.. code::
+.. code:: bash
 
     roslaunch octo_save octomap_mapping.launch
 
@@ -124,7 +124,7 @@ Save the octomap
 
 To save the octomap just use this command (RViz should be running at the same time)
 
-.. code::
+.. code:: bash
 
     rosrun octomap_server octomap_saver -f first_octomap.bt
 

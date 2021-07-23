@@ -55,7 +55,7 @@ If you want to use it, go to :ref:`the blue state<Command>` and execute :
 
 .. code-block:: bash
 
-   roslaunch franka_example_controllers model_example_controllers.launch
+   roslaunch franka_example_controllers model_example_controller.launch
 
 After executing this line, RViz will open, but if you look into your terminal, you will see things like this :
 
