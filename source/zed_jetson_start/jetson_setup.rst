@@ -78,6 +78,12 @@ The **username** and **password** we have used to log in are:
 
 Normally you can automatically connect to a Wireless Network. 
 
+.. note:: 
+    When you log in onto the Jetson Xavier NX, be careful that you sign in on the Ubuntu version, 
+    as shown in the picture below. 
+
+    .. image:: ./images/jetson_signin_settings.jpg
+      :width: 600
 
 
 Avoid crashing and latency issues

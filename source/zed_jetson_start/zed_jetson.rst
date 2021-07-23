@@ -1,5 +1,5 @@
-Use the ZED SDK with the Jetson Xavier NX
-=========================================
+Use the ZED SDK on Jetson Xavier NX
+====================================
 
 .. role:: raw-html(raw)
     :format: html
@@ -48,7 +48,7 @@ On top of the things listed in :ref:`getting started with NVIDIA Jetson Xavier N
 
 .. _ZED_SDK:
 
-Download and Install the ZED SDK
+Download and install the ZED SDK
 --------------------------------
 Go to |Download_Install_ZED_SDK| and download the latest |ZED_SDK_Jetpack| (4.5 when writing the tutorial).
 
@@ -150,6 +150,19 @@ For other examples, you have to do this in a similar way.
 *  If the example starts well, it should show the terminal in which camera settings can be modified and should display the resulting image.
 
     .. image:: ./images/zed_cam_control.png
+        :width: 600
+
+For the object detection (birds eye viewer) example, you have to press 'c' to clear filters
+such that the program can detect objects from the available object classes.  
+Otherwise, the program can only detect people and vehicles. 
+
+    .. image:: ./images/zed-objectdetection-person.png
+        :width: 600
+
+    .. image:: ./images/zed-objectdetection-person-animal.png
+        :width: 600
+
+    .. image:: ./images/zed-objectdetection-animal-electronics.png
         :width: 600
 
 Python sample code
