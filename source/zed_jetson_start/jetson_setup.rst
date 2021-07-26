@@ -6,9 +6,10 @@ Getting started with the NVIDIA Jetson Xavier NX
 .. role:: raw-html(raw)
     :format: html
 
-Prerequisites
--------------
+.. _What_do_you_need_Jetson:
 
+What do you need?
+-----------------
 *  A Jetson Xavier NX Developer Kit 
 
     *  Jetson Xavier NX module (P3668-0000) with heatsink
@@ -31,6 +32,8 @@ After you have repartitioned the microSD card, you have to format it before usag
 
    <a href="https://www.instructables.com/Repartition-SD-Card-Windows/" target="_blank">Repartition-SD-Card-in-Windows</a>
 
+
+.. _setup_and_boot_JetsonXavierNX:
 
 Set up and boot the Jetson Xavier NX
 ------------------------------------
@@ -75,6 +78,12 @@ The **username** and **password** we have used to log in are:
 
 Normally you can automatically connect to a Wireless Network. 
 
+.. note:: 
+    When you log in onto the Jetson Xavier NX, be careful that you sign in on the Ubuntu version, 
+    as shown in the picture below. 
+
+    .. image:: ./images/jetson_signin_settings.jpg
+      :width: 600
 
 
 Avoid crashing and latency issues
@@ -108,16 +117,17 @@ In order to reduce lags on the Jetson turn on the fan to 100%, by doing the foll
 .. image:: ./images/jtop.png
     :width: 600
 
-* Navigate with the arrow keys to the tab CTRL, you can set the fan methode to manual and the fan speed to 100% 
-   :raw-html:`<font color="Tomato"> I can go to the tab CTRL, but how can I set the fan speed to manual and back to default?  </font>`
-
-   :raw-html:`<font color="Blue"> You can set the speed to manual just by clicking on "manual" and also for the speed, you can click on p or m </font>`
+* Navigate with the arrow keys to tab 5CTRL. 
+  You can set the fan method to manual by clicking with your mouse on "manual". 
+  In the manual fan mode, you cna increase the fan speed by pressing the "p" key and decrease the fan speed by pressing the "m" key. 
 
 .. image:: ./images/jtop_fan.png
     :width: 600
 
-Note: if you try to install something and the Jetson keeps shutting down, you can :ref:`set the Jetson in shell mode<jetson_shell_mode>`.
-:raw-html:`<font color="teal"> Kelly still needs to check this.   </font>`
+
+.. note:: 
+   Note: if you try to install something and the Jetson keeps shutting down, you can :ref:`set the Jetson in shell mode<jetson_shell_mode>`.
+   :raw-html:`<font color="Blue"> Kelly still needs to check this.   </font>`
 
 
 

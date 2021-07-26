@@ -1,16 +1,124 @@
-Set up the ZED camera with ROS
-==============================
+ZED 2 with ROS on Jetson Xavier NX
+==================================
 
-Installing ROS
---------------
+.. role:: raw-html(raw)
+    :format: html
 
-* Follow `this tutorial to install ROS and set your catkin workspace on the Jetson Xavier <https://www.stereolabs.com/blog/ros-and-nvidia-jetson-xavier-nx/>`_
-* Check that rosdep is installed, you can install it by following `rosdep on wiki ros <http://wiki.ros.org/rosdep>`_
+Install and configure ROS
+--------------------------
 
-Test rviz plotting on the Jetson
---------------------------------
+Follow the part *How to Install ROS on Jetson Xavier NX* of |stereolabs-ros-jetsonxaviernx-tutorial| 
+to install ROS and to configure your catkin workspace on the Jetson Xavier NX.
 
-* If you did not do it while installing ROS, download the example code in your catkin workspace and make the package
+In case you get 'sudo: rosdep: command not found' after 
+
+.. code-block:: bash
+
+    sudo rosdep init
+
+it means that you have not yet installed rosdep. 
+To install rosdep, follow |rosdep-install-tutorial|. 
+
+
+.. note::
+    We installed ROS Melodic. A newer ROS version is available, ROS Noetic Ninjemys, but it targets Ubuntu 20.04 Focal Fossa. 
+    Ubuntu Focal does not yet officially supports CUDA and is not available on Nvidia Jetson boards at this time.
+
+.. |stereolabs-ros-jetsonxaviernx-tutorial| raw:: html
+
+            <a href="https://www.stereolabs.com/blog/ros-and-nvidia-jetson-xavier-nx/" target="_blank">this tutorial</a>
+
+.. |rosdep-install-tutorial| raw:: html
+
+            <a href="http://wiki.ros.org/rosdep" target="_blank">this tutorial</a>
+
+Run RVIZ on Jetson Xavier NX
+----------------------------
+
+Follow the part *Adding a 3D camera for AI on Jetson Xavier NX* of |stereolabs-ros-jetsonxaviernx-tutorial|
+to download the example code in your catkin workspace and to make the package. 
+
+You can have latency problems when launching 
+
+.. code-block:: bash
+
+    roslaunch zed_display_rviz display_zed2.launch
+
+Although the Jetson Xavier NX is a powerful embedded board, it is still an *embedded* board, 
+that's why it cannot handle all the tasks that you normally perform on a desktop or laptop PC.
+
+The main problem with RVIZ for example is that it is a highly demanding application. 
+Therefore it can correctly display the data directly on the Xavier *only* by reducing the publishing rate of the point cloud and its resolution.
+You can find |stereolabs-zed2-display-configuration| that will allow you to display a point cloud on the Jetson Xavier NX... but not at full rate.
+
+:raw-html:`<font color="red">  Is it also possible to instead of adding a link, to directly add a file? 
+I'm not sure if the website you've added here (coming from the email from Walter), is a temporary link or not.  </font>`
+
+.. |stereolabs-zed2-display-configuration| raw:: html
+
+            <a href="https://support.stereolabs.com/attachments/token/JVLTW39XNwuwOxVfghvc53ulq/?name=common.yaml" target="_blank">an example of a configuration</a>
+
+Go to the directory with the original common.yaml file, rename it to common-original.yaml and add the new common.yaml file. 
+
+.. code-block:: bash
+
+    cd "path_to_catkin_ws/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/"   
+    mv ./common.yaml ./common-original.yaml # rename the original commong.yaml file
+    mv ~/Downloads/common.yaml ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/common.yaml # move the newly downloaded common.yaml to the directory
+
+
+When launching again the display rviz program, you should see something like this:
+
+.. image:: ./images/zed_display_rviz.png
+    :width: 600
+
+In the *Displays* panel on the left, you can also select and deselect other display types. 
+For example, in *Depth* you can also select the *Depth map* to see the black and white display of the depth map.  
+
+Run RVIZ on external computer
+-----------------------------
+
+To correctly display the point cloud data without reducing the publishing rate of the point cloud and its resolution, 
+we suggest you to run RVIZ on an external machine connected by an ethernet cable.
+
+Setup your external computer
+****************************
+
+For this step you will need a computer with |install-ubuntu-18| and |install-ros-melodic|.  
+You will also have to download and install the |download-install-ZED-SDK-Ubuntu|. 
+
+.. |install-ubuntu-18| raw:: html
+
+            <a href="https://ubuntu.com/download/alternative-downloads" target="_blank">Ubuntu 18.04</a>
+
+.. |install-ros-melodic| raw:: html
+
+            <a href="http://wiki.ros.org/melodic/Installation/Ubuntu" target="_blank">ROS Melodic</a>
+
+.. |download-install-ZED-SDK-Ubuntu| raw:: html
+
+            <a href="https://www.stereolabs.com/docs/installation/linux/" target="_blank">ZED SDK for Ubuntu</a>
+
+Once the download is completed, do
+
+.. code-block:: bash
+
+    cd /Downloads  # path where the SDK is downloaded
+    chmod +x ZED_SDK_Ubuntu18_cuda11.0_v3.5.0.run  # add execution permission
+    ./ZED_SDK_Ubuntu18_cuda11.0_v3.5.0.run -- silent  # install in silent mode
+
+:raw-html:`<font color="red">  CONFUSED. Why do we have to install the ZED SDK on the external computer? 
+The external computer is only required for the visualization of what the camera sees and for the control of the robot. 
+Also, the external computer in the lab has no NVIDIA graphics card and neither does my laptop has, 
+so during the installation process, also CUDA started to be installed, but stopped because I don't have NVIDIA graphics card.  </font>`
+
+Make a |make-catkin-workspace| or go to your existing project catkin workspace. 
+
+.. |make-catkin-workspace| raw:: html
+
+        <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace" target="_blank">catkin workspace</a>
+
+Go to your catkin workspace to get the ZED camera example if you did not do it in the tutorial above:
 
 .. code-block:: bash
 
@@ -21,94 +129,81 @@ Test rviz plotting on the Jetson
     rosdep install --from-paths src --ignore-src -r -y
     catkin_make -DCMAKE_BUILD_TYPE=Release
 
-.. _modif_common_yaml:
+:raw-html:`<font color="red">  The last line doesn't work.   </font>`
 
-* Clone and replace the common.yaml file with  `this new one <https://support.stereolabs.com/attachments/token/JVLTW39XNwuwOxVfghvc53ulq/?name=common.yaml>`_.
-
-| The file is located in ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/
-| It is an example of a configuration that will allow you to display point cloud on the Xavier NX since the jetson not powerful enough to handle the normal display task.
-
-.. code-block:: bash
-
-    cd ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/
-    mv ./common.yaml ./common.yaml.orig
-    mv ~/Downloads/common.yaml ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/common.yaml # move the newly download common.yaml to the directory
-
-* Launch the display package
-
-.. code-block:: bash
-
-    roslaunch zed_display_rviz display_zed2.launch
-
-* If everything goes well you would see something like this:
-
-.. image:: ./images/zed_display_rviz.png
+.. image:: ./images/screenshot-error-kelly-zedsdk.png
     :width: 600
 
-* You can select some parameters in rviz to visualize for example the depth map
 
-Run rviz on an external computer
---------------------------------
+Running ROS accross multiple machines
+*************************************
 
-| As it is mentioned :ref:`here<modif_common_yaml>` the jetson is not powerful enough, in order to plot point cloud with a good setting, we can do it on another computer.
-| This section will help you to connect your Jetson to an external computer for ROS. We are doing it with an ethernet cable: :ref:`ROS Network with ethernet connection<ethernet_connection>`
-
-ROS Network
-***********
+Here we will explain two ways of running ROS accross multiple machines: via a WiFi connection of via an ethernet connection. 
+We will explain both ways, but remember that it is more efficient to use an ethernet connection for data transmission. 
 
 1. ROS Network with WiFi
 ^^^^^^^^^^^^^^^^^^^^^^^^
+:raw-html:`<font color="red">  Is it possible to make a part as collapsible text? For example that this section is a collapsible text? </font>`
 
-Alessandro suggest `the tutorial wiki ros MultipleMachines <http://wiki.ros.org/ROS/Tutorials/MultipleMachines>`_ but we did not follow this.
-Here we are starting ROS Network with wifi connection but we would not use this methode since the :ref:`ethernet connection method<ethernet_connection>` is more efficient for data transmission.
+You can use |ros-wifi-multiplemachines-tutorial| to make a WiFi connection accross multiple machines. 
 
-* set your computer as listner
+.. |ros-wifi-multiplemachines-tutorial| raw:: html
+
+            <a href="http://wiki.ros.org/ROS/Tutorials/MultipleMachines" target="_blank">this ROS tutorial</a>
+
+but we did not follow this. :raw-html:`<font color="red">  Why not? Advantages/disadvantages? Give some reasons...   </font>`
+
+Another way to make a WiFi connection accross multiple machines is explained below. 
+
+* set up your computer as listener
+
     * find the IP address of the computer:
-
-    .. code-block:: bash
-
-        apt-get install net-tools # if the following command is not installed
+      
+      .. code-block:: bash
+        
+        sudo apt-get install net-tools # if the following command is not installed
         ifconfig
 
-    .. image:: ./images/lolo_ip.png
+      .. image:: ./images/lolo_ip.png
         :width: 600
 
     * set ROS_IP and ROS_MASTER_URI
 
-    .. code-block:: bash
+      .. code-block:: bash
 
         export ROS_IP=192.168.0.130  # your computer IP
         export ROS_MASTER_URI=http://192.168.0.130:11311 # your computer IP
 
-    * run listner script:
+    * to run the listener script, you first have to run 'roscore' in one terminal and open another terminal to run
 
-        start roscore on a terminal then open another terminal
-
-    .. code-block:: bash
+      .. code-block:: bash
 
         cd ~/catkin_ws/src  # go to catkin workspace
         mkdir -p rospy_tutorials/scripts
         cd rospy_tutorials/scripts
         wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
         rosrun rospy_tutorials listener.py  # start listner
+    
+      :raw-html:`<font color="red">  At this moment in the tutorial, you don't have a catkin_ws yet on your computer...   </font>`
 
-* set Jetson as talker
+* set up Jetson Xavier NX as talker
+
     * find the IP address of the computer as it is done above
 
-    .. image:: ./images/jetson_ip.png
+      .. image:: ./images/jetson_ip.png
         :width: 600
 
 
     * set ROS_IP and ROS_MASTER_URI
 
-    .. code-block:: bash
+      .. code-block:: bash
 
         export ROS_IP=192.168.0.235  # jetson computer IP
         export ROS_MASTER_URI=http://192.168.0.130:11311 # other computer IP
 
     * run talker script:
 
-    .. code-block:: bash
+      .. code-block:: bash
 
         cd ~/catkin_ws/src  # go to catkin workspace
         mkdir -p rospy_tutorials/scripts
@@ -120,22 +215,20 @@ Here we are starting ROS Network with wifi connection but we would not use this 
 
     * on Jetson:
 
-    .. image:: ./images/talker.png
+      .. image:: ./images/talker.png
         :width: 600
 
 
     * on your computer:
 
-    .. image:: ./images/listener.png
+      .. image:: ./images/listener.png
         :width: 600
 
-
-.. _ethernet_connection:
 
 2. ROS Network with ethernet connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the ethernet cable to connect the Jetson and the computer. Once it's done:
+Use the ethernet cable to connect the Jetson Xavier NX with the external computer. 
 
 * Go into your Settings on both computers and then Network
 
@@ -206,23 +299,7 @@ On both computers you will have to add lines to your .bashrc
     echo "export ROS_IP=169.254.99.1" >> ~/.bashrc  #IP of the ROS master
     echo "export ROS_MASTER_URI=http://169.254.99.1:11311" >> ~/.bashrc # IP of the ROS master
 
-Setup your external computer
-****************************
 
-For this step you will need a computer with Ubuntu 18. You will also need to download `the ZED SDK for Ubuntu <https://download.stereolabs.com/zedsdk/3.5/cu110/ubuntu18>`_.
-We assume you already have ROS installed on your computer if not just go on this `page  <http://wiki.ros.org/melodic/Installation/Ubuntu>`_ to do it.
-Once it's done:
-
-* Go in your catkin workspace to get the ZED camera example if you did not do it in the tutorial above:
-
-.. code-block:: bash
-
-    cd ~/catkin_ws/src
-    git clone https://github.com/stereolabs/zed-ros-wrapper.git
-    git clone https://github.com/stereolabs/zed-ros-examples.git
-    cd ~/catkin_ws
-    rosdep install --from-paths src --ignore-src -r -y
-    catkin_make -DCMAKE_BUILD_TYPE=Release
 
 Synchronize the clock of the Jetson and your external computer
 **************************************************************
