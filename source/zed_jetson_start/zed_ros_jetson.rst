@@ -52,7 +52,7 @@ Therefore it can correctly display the data directly on the Xavier *only* by red
 You can find |stereolabs-zed2-display-configuration| that will allow you to display a point cloud on the Jetson Xavier NX... but not at full rate.
 
 :raw-html:`<font color="red">  Is it also possible to instead of adding a link, to directly add a file? 
-I'm not sure if the website you've added here (coming from the email from Walter), is a temporary link or not.  </font>`
+I'm not sure if the website you've added here "an example of a configuration" (coming from the email from Walter), is a temporary link or not.  </font>`
 
 .. |stereolabs-zed2-display-configuration| raw:: html
 
@@ -85,7 +85,6 @@ Setup your external computer
 ****************************
 
 For this step you will need a computer with |install-ubuntu-18| and |install-ros-melodic|.  
-You will also have to download and install the |download-install-ZED-SDK-Ubuntu|. 
 
 .. |install-ubuntu-18| raw:: html
 
@@ -95,63 +94,25 @@ You will also have to download and install the |download-install-ZED-SDK-Ubuntu|
 
             <a href="http://wiki.ros.org/melodic/Installation/Ubuntu" target="_blank">ROS Melodic</a>
 
-.. |download-install-ZED-SDK-Ubuntu| raw:: html
-
-            <a href="https://www.stereolabs.com/docs/installation/linux/" target="_blank">ZED SDK for Ubuntu</a>
-
-Once the download is completed, do
-
-.. code-block:: bash
-
-    cd /Downloads  # path where the SDK is downloaded
-    chmod +x ZED_SDK_Ubuntu18_cuda11.0_v3.5.0.run  # add execution permission
-    ./ZED_SDK_Ubuntu18_cuda11.0_v3.5.0.run -- silent  # install in silent mode
-
-:raw-html:`<font color="red">  CONFUSED. Why do we have to install the ZED SDK on the external computer? 
-The external computer is only required for the visualization of what the camera sees and for the control of the robot. 
-Also, the external computer in the lab has no NVIDIA graphics card and neither does my laptop has, 
-so during the installation process, also CUDA started to be installed, but stopped because I don't have NVIDIA graphics card.  </font>`
-
-Make a |make-catkin-workspace| or go to your existing project catkin workspace. 
-
-.. |make-catkin-workspace| raw:: html
-
-        <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace" target="_blank">catkin workspace</a>
-
-Go to your catkin workspace to get the ZED camera example if you did not do it in the tutorial above:
-
-.. code-block:: bash
-
-    cd ~/catkin_ws/src
-    git clone https://github.com/stereolabs/zed-ros-wrapper.git
-    git clone https://github.com/stereolabs/zed-ros-examples.git
-    cd ~/catkin_ws
-    rosdep install --from-paths src --ignore-src -r -y
-    catkin_make -DCMAKE_BUILD_TYPE=Release
-
-:raw-html:`<font color="red">  The last line doesn't work.   </font>`
-
-.. image:: ./images/screenshot-error-kelly-zedsdk.png
-    :width: 600
-
 
 Running ROS accross multiple machines
 *************************************
 
-Here we will explain two ways of running ROS accross multiple machines: via a WiFi connection of via an ethernet connection. 
+Here we will explain two ways of running ROS accross multiple machines: via a WiFi connection or via an ethernet connection. 
 We will explain both ways, but remember that it is more efficient to use an ethernet connection for data transmission. 
+
+:raw-html:`<font color="red">  Is it possible to make collapsible headings? 
+It would improve the readability if you could open and close (collapse) the ROS Network with WiFi and with ethernet subsections.  </font>`
 
 1. ROS Network with WiFi
 ^^^^^^^^^^^^^^^^^^^^^^^^
-:raw-html:`<font color="red">  Is it possible to make a part as collapsible text? For example that this section is a collapsible text? </font>`
 
-You can use |ros-wifi-multiplemachines-tutorial| to make a WiFi connection accross multiple machines. 
+| You can use |ros-wifi-multiplemachines-tutorial| to make a WiFi connection accross multiple machines. 
+| but we did not follow this. :raw-html:`<font color="red">  Why not? Advantages/disadvantages? Give some reasons...   </font>`
 
 .. |ros-wifi-multiplemachines-tutorial| raw:: html
 
             <a href="http://wiki.ros.org/ROS/Tutorials/MultipleMachines" target="_blank">this ROS tutorial</a>
-
-but we did not follow this. :raw-html:`<font color="red">  Why not? Advantages/disadvantages? Give some reasons...   </font>`
 
 Another way to make a WiFi connection accross multiple machines is explained below. 
 
@@ -230,125 +191,113 @@ Another way to make a WiFi connection accross multiple machines is explained bel
 
 Use the ethernet cable to connect the Jetson Xavier NX with the external computer. 
 
-* Go into your Settings on both computers and then Network
+Go to the network settings on both computers and make sure the wired connection is turned on.
 
 .. image:: ./images/Settings.png
     :width: 600
 
-Make sur to turn on the Wired connection.
-
-* Add an new connection profile
+Add a new connection profile. 
 
 .. image:: ./images/add_connection_profile.png
     :width: 600
 
-* Go to the IPV4 section and put the IPv4 Method to Manual on both computers.
+Go to the IPv4 section and put the IPv4 Method to Manual on both computers. 
+You can choose the IP address you want, but if you set your netmask to 255.255.255.0, 
+then on both computers the three first numbers must be the same. 
+For example, we have set the IP address of the external computer to 169.254.99.1 and the IP address of the Jetson to 169.254.99.2.
+Don't forget to save these settings. 
 
-    * On the Jetson Xavier you will need to fill in all the parameters as follows:
+.. image:: ./images/ipv4_computer.png
+    :width: 600
 
-    .. image:: ./images/ipv4_jetson.png
-        :width: 600
+You can now ping both computers to see if they are correctly connected.
 
-    * And for the other computer this one
+* Open a new terminal on the Jetson Xavier NX (with IP 169.254.99.2) and ping to the external computer (with IP 169.254.99.1)
 
-    .. image:: ./images/ipv4_computer.png
-        :width: 600
-
-| You can set the IP you want but if your mask is 255.255.255.0, on the two computers the three first numbers must be the same.
-| For example here we have 169.254.99.1 and 169.254.99.2
-| Once everything it's done make sure to save.
-| You can now ping both computers to see if they are connected.
-
-* On the Jetson Xavier open a new terminal and type the following command:
-
-.. code-block:: bash
+  .. code-block:: bash
 
     ping 169.254.99.1
 
-If everything work you would see this:
-
-.. image:: ./images/ping_jetson.png
+  .. image:: ./images/ping_jetson.png
     :width: 600
 
-* On the other computer type
+* Open a new terminal on the external computer (with IP 169.254.99.1) and ping to the Jetson Xavier NX (with IP 169.254.99.2)
 
-.. code-block:: bash
+  .. code-block:: bash
 
     ping 169.254.99.2
 
-You would see this:
-
-.. image:: ./images/ping_jetson.png
+  .. image:: ./images/ping_jetson.png
     :width: 600
 
-Now your Jetson and your computer are connected together.
+On both computers you will have to add the following lines to your .bashrc 
 
-On both computers you will have to add lines to your .bashrc
+:raw-html:`<font color="red">  Please add the link where you got this from. </font>`
 
-* On the Jetson Xavier:
+* On the Jetson Xavier NX:
 
-.. code-block:: bash
+  .. code-block:: bash
 
     echo "export ROS_IP=169.254.99.2" >> ~/.bashrc  #IP of the Jetson Xavier
     echo "export ROS_MASTER_URI=http://169.254.99.1:11311" >> ~/.bashrc # IP of the ROS master
 
-* On the master computer:
+* On the external computer:
 
-.. code-block:: bash
+  .. code-block:: bash
 
     echo "export ROS_IP=169.254.99.1" >> ~/.bashrc  #IP of the ROS master
     echo "export ROS_MASTER_URI=http://169.254.99.1:11311" >> ~/.bashrc # IP of the ROS master
 
 
-
-Synchronize the clock of the Jetson and your external computer
-**************************************************************
+Synchronize the clock of the Jetson and the external computer
+*************************************************************
 
 You will need to synchronize the clock of the Jetson and your computer.
 Do this command on both computers:
+:raw-html:`<font color="red">  1) Please add the link where you got this from. 
+2) Which problem occurs when you don't execute this command? 
+3) Do you have to execute this command every time you connect your computer to the Jetson? </font>`
 
 .. code-block:: bash
 
     sudo date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
 
-Display rviz on your external computer
-**************************************
+Display RVIZ on external computer
+*********************************
 
-..
-    * First you will have to go on your Jetson and edit the common.yaml file with this `new one <https://support.stereolabs.com/attachments/token/JVLTW39XNwuwOxVfghvc53ulq/?name=common.yaml>`_.
-
-Here is the common.yaml path where you can modify some plotting parameters:
+Go to the display_zed2.launch file on the Jetson, which you can find at the following address
 
 .. code-block:: bash
 
-    cd ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/
+    cd "path_to_catkin_ws/catkin_ws/src/zed_display_rviz/launch/" 
 
-* Then you will have to modify the display_zed2.launch file and comment this line
+and comment the selected line
 
 .. image:: ./images/zed_jetson.png
     :width: 600
 
-* Now go on your computer, you will have to modify the same display_zed2.launch file and comment those lines
-
-.. image:: ./images/zed_computer.png
-    :width: 600
-
-* Once it's done open a terminal on your computer:
+Open a new terminal on the external computer and run
 
 .. code-block:: bash
 
     roscore
 
-* On the Jetson and on your computer:
+Open a new terminal on the Jetson and run 
 
 .. code-block:: bash
 
     roslaunch zed_display_rviz display_zed2.launch
 
-If everything goes well rviz will be display on your computer
+Open another terminal on the external computer and run
 
-.. image:: ./images/jetson_computer_ethernet.jpg
-    :width: 600
+.. code-block:: bash
+
+    rosrun rviz rviz
+
+To display the depth map and the point cloud in RVIZ, you have to add *Camera* to the Displays tab.
+When added, click on Image Topic and select the topic with *depth* in the name. 
+Afterwards, you can add *PointCloud2*, click on Topic and select the topic with *point_cloud* in the name. 
+Finally, you should get something similar as in the figure below. 
 
 .. image:: ./images/rviz_computer.png
     :width: 600
