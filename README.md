@@ -47,3 +47,9 @@
   Navigate to the /build/html directory (not via the terminal), right-click on index.html, and open the index.html with your browser.
 
   You should now be able to see the tutorial in your web browser. 
+* Everytime you change someting to the .rst files in the source folder and you want to see the changes on the web page, 
+  you have to go to the panda_constrained_control_tutorial directory and build html: 
+  ``` bash
+  make html
+  ```
+

@@ -8,7 +8,7 @@ Use the ZED SDK on Jetson Xavier NX
 
 What do you need?
 -----------------
-On top of the things listed in :ref:`getting started with NVIDIA Jetson Xavier NX<_setup_and_boot_JetsonXavierNX>`: 
+On top of the things listed in :ref:`getting started with NVIDIA Jetson Xavier NX<setup_and_boot_JetsonXavierNX>`: 
 
 *  ZED 2 camera box 
 
@@ -155,9 +155,6 @@ For other examples, you have to do this in a similar way.
 For the object detection (birds eye viewer) example, you have to press 'c' to clear filters
 such that the program can detect objects from the available object classes.  
 Otherwise, the program can only detect people and vehicles. 
-
-    .. image:: ./images/zed-objectdetection-person.png
-        :width: 600
 
     .. image:: ./images/zed-objectdetection-person-animal.png
         :width: 600
