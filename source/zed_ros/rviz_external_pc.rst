@@ -1,90 +1,23 @@
-ZED 2 with ROS on Jetson Xavier NX
+.. _Rviz_External_PC:
+
+
+Run Rviz on External Computer
 ==================================
 
 .. role:: raw-html(raw)
     :format: html
 
-Install and configure ROS
---------------------------
-
-Follow the part *How to Install ROS on Jetson Xavier NX* of |stereolabs-ros-jetsonxaviernx-tutorial| 
-to install ROS and to configure your catkin workspace on the Jetson Xavier NX.
-
-In case you get 'sudo: rosdep: command not found' after 
-
-.. code-block:: bash
-
-    sudo rosdep init
-
-it means that you have not yet installed rosdep. 
-To install rosdep, follow |rosdep-install-tutorial|. 
-
-
-.. note::
-    We installed ROS Melodic. A newer ROS version is available, ROS Noetic Ninjemys, but it targets Ubuntu 20.04 Focal Fossa. 
-    Ubuntu Focal does not yet officially supports CUDA and is not available on Nvidia Jetson boards at this time.
-
-.. |stereolabs-ros-jetsonxaviernx-tutorial| raw:: html
-
-            <a href="https://www.stereolabs.com/blog/ros-and-nvidia-jetson-xavier-nx/" target="_blank">this tutorial</a>
-
-.. |rosdep-install-tutorial| raw:: html
-
-            <a href="http://wiki.ros.org/rosdep" target="_blank">this tutorial</a>
-
-Run RVIZ on Jetson Xavier NX
-----------------------------
-
-Follow the part *Adding a 3D camera for AI on Jetson Xavier NX* of |stereolabs-ros-jetsonxaviernx-tutorial|
-to download the example code in your catkin workspace and to make the package. 
-
-You can have latency problems when launching 
-
-.. code-block:: bash
-
-    roslaunch zed_display_rviz display_zed2.launch
-
-Although the Jetson Xavier NX is a powerful embedded board, it is still an *embedded* board, 
-that's why it cannot handle all the tasks that you normally perform on a desktop or laptop PC.
-
-The main problem with RVIZ for example is that it is a highly demanding application. 
-Therefore it can correctly display the data directly on the Xavier *only* by reducing the publishing rate of the point cloud and its resolution.
-You can find |stereolabs-zed2-display-configuration| that will allow you to display a point cloud on the Jetson Xavier NX... but not at full rate.
-
-:raw-html:`<font color="red">  Is it also possible to instead of adding a link, to directly add a file? 
-I'm not sure if the website you've added here "an example of a configuration" (coming from the email from Walter), is a temporary link or not.  </font>`
-
-.. |stereolabs-zed2-display-configuration| raw:: html
-
-            <a href="https://support.stereolabs.com/attachments/token/JVLTW39XNwuwOxVfghvc53ulq/?name=common.yaml" target="_blank">an example of a configuration</a>
-
-Go to the directory with the original common.yaml file, rename it to common-original.yaml and add the new common.yaml file. 
-
-.. code-block:: bash
-
-    cd "path_to_catkin_ws/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/"   
-    mv ./common.yaml ./common-original.yaml # rename the original commong.yaml file
-    mv ~/Downloads/common.yaml ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params/common.yaml # move the newly downloaded common.yaml to the directory
-
-
-When launching again the display rviz program, you should see something like this:
-
-.. image:: ./images/zed_display_rviz.png
-    :width: 600
-
-In the *Displays* panel on the left, you can also select and deselect other display types. 
-For example, in *Depth* you can also select the *Depth map* to see the black and white display of the depth map.  
-
-Run RVIZ on external computer
------------------------------
-
 To correctly display the point cloud data without reducing the publishing rate of the point cloud and its resolution, 
 we suggest you to run RVIZ on an external machine connected by an ethernet cable.
 
 Setup your external computer
-****************************
+----------------------------
 
 For this step you will need a computer with |install-ubuntu-18| and |install-ros-melodic|.  
+
+Since we want to use the ZED 2 camera to generate a point cloud and for skeleton tracking 
+to experimentally evaluate some planning and constrained control algorithms on the Panda robot, 
+the **external computer** will be the **desktop with which we send commands to the Panda robot**. 
 
 .. |install-ubuntu-18| raw:: html
 
@@ -95,8 +28,8 @@ For this step you will need a computer with |install-ubuntu-18| and |install-ros
             <a href="http://wiki.ros.org/melodic/Installation/Ubuntu" target="_blank">ROS Melodic</a>
 
 
-Running ROS accross multiple machines
-*************************************
+Make a ROS network
+-------------------------------------
 
 Here we will explain two ways of running ROS accross multiple machines: via a WiFi connection or via an ethernet connection. 
 We will explain both ways, but remember that it is more efficient to use an ethernet connection for data transmission. 
@@ -194,12 +127,14 @@ Use the ethernet cable to connect the Jetson Xavier NX with the external compute
 Go to the network settings on both computers and make sure the wired connection is turned on.
 
 .. image:: ./images/Settings.png
-    :width: 600
+    :align: center
+    :width: 400px
 
 Add a new connection profile. 
 
 .. image:: ./images/add_connection_profile.png
-    :width: 600
+    :align: center
+    :width: 400px
 
 Go to the IPv4 section and put the IPv4 Method to Manual on both computers. 
 You can choose the IP address you want, but if you set your netmask to 255.255.255.0, 
@@ -208,7 +143,8 @@ For example, we have set the IP address of the external computer to 169.254.99.1
 Don't forget to save these settings. 
 
 .. image:: ./images/ipv4_computer.png
-    :width: 600
+    :align: center
+    :width: 400px
 
 You can now ping both computers to see if they are correctly connected.
 
@@ -219,7 +155,7 @@ You can now ping both computers to see if they are correctly connected.
     ping 169.254.99.1
 
   .. image:: ./images/ping_jetson.png
-    :width: 600
+      :width: 400px
 
 * Open a new terminal on the external computer (with IP 169.254.99.1) and ping to the Jetson Xavier NX (with IP 169.254.99.2)
 
@@ -228,7 +164,7 @@ You can now ping both computers to see if they are correctly connected.
     ping 169.254.99.2
 
   .. image:: ./images/ping_jetson.png
-    :width: 600
+      :width: 400px
 
 On both computers you will have to add the following lines to your .bashrc 
 
@@ -250,7 +186,7 @@ On both computers you will have to add the following lines to your .bashrc
 
 
 Synchronize the clock of the Jetson and the external computer
-*************************************************************
+-----------------------------------------------------------------
 
 You will need to synchronize the clock of the Jetson and your computer.
 Do this command on both computers:
@@ -263,18 +199,20 @@ Do this command on both computers:
     sudo date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
 
 Display RVIZ on external computer
-*********************************
+---------------------------------
 
 Go to the display_zed2.launch file on the Jetson, which you can find at the following address
 
 .. code-block:: bash
 
-    cd "path_to_catkin_ws/catkin_ws/src/zed_display_rviz/launch/" 
+    cd path/to/catkin_ws/src/zed_display_rviz/launch/
 
 and comment the selected line
 
 .. image:: ./images/zed_jetson.png
-    :width: 600
+    :align: center
+    :width: 700px
+
 
 Open a new terminal on the external computer and run
 
@@ -300,4 +238,5 @@ Afterwards, you can add *PointCloud2*, click on Topic and select the topic with 
 Finally, you should get something similar as in the figure below. 
 
 .. image:: ./images/rviz_computer.png
-    :width: 600
+    :align: center
+    :width: 700px

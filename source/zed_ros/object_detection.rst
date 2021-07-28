@@ -1,17 +1,31 @@
-Objects detection with ZED2 and ROS
+.. _ZED_ROS_Object_Detection:
+
+Object Detection 
 ===================================
 
-Download example code
----------------------
+.. role:: raw-html(raw)
+    :format: html
 
-| NB: Do this in your catkin workspace
-| If you have not done it yet, the example code for the zed camera running with ROS can be cloned with
+Here we explain how you can visualize the detected objects on your external computer. 
 
-.. _ZED_ROS_WRAPPER:
+Download the example code
+-------------------------
+
+To run the ZED ROS examples, you have to clone the following example code in the **src** folder of your (existing) catkin workspace. 
+:raw-html:`<font color="red"> You have to clone this on your external computer right?  </font>`
+
 .. code-block:: bash
 
+    cd path/to/your_project/catkin_ws/src
     git clone https://github.com/stereolabs/zed-ros-wrapper.git
     git clone https://github.com/stereolabs/zed-ros-examples.git
+
+
+:raw-html:`<font color="red"> THE FOLLOWING SECTIONS ARE NOT CLEARLY EXPLAINED. 
+PLEASE REWRITE! AT THE END OF THIS DOCUMENT I WANT TO BE ABLE TO SEE DETECTED OBJECTS ON THE EXTERNAL COMPUTER.
+NOT CLEAR FROM EXPLANATION I READ HERE.  </font>`
+
+
 
 Add objects detection in rviz
 -----------------------------

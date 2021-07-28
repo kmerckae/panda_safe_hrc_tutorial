@@ -25,15 +25,19 @@ the other part is generally written such that researchers in other research grou
    :maxdepth: 1
    :caption: ZED 2 on NVIDIA Jetson
 
-   zed_jetson_start/jetson_setup
-   zed_jetson_start/zed_jetson
-   zed_jetson_start/zed_examples
+   zed_jetson/jetson_setup
+   zed_jetson/zed_jetson
+   zed_jetson/zed_examples
 
 .. toctree::
    :maxdepth: 1
-   :caption: ZED 2 ROS integration
+   :caption: ZED 2 with ROS Integration
 
-   zed_jetson_start/zed_ros_jetson
+   zed_ros/ros_jetson_setup
+   zed_ros/rviz_jetson
+   zed_ros/rviz_external_pc
+   zed_ros/object_detection
+   zed_ros/octomap
 
 .. toctree::
    :maxdepth: 1
@@ -44,19 +48,6 @@ the other part is generally written such that researchers in other research grou
 .. toctree::
    :maxdepth: 1
    :caption: ZED 2 for Panda robot
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Objects detection
-
-   objects_detection/zed_ros_object_detection
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Octomap
-
-   zed_jetson_octomap/octomap
-
 
 .. toctree::
    :maxdepth: 1

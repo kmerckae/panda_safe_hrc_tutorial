@@ -1,8 +1,18 @@
-Octomap with ZED2
+.. _ZED_ROS_Octomap:
+
+Octomap 
 =================
 
-This section will help you to visualize 3D map in RViz.
-I supposed you have already cloned the :ref:`zed-ros-wrapper<ZED_ROS_WRAPPER>` example.
+.. role:: raw-html(raw)
+    :format: html
+    
+This section will help you to visualize 3D map in RViz on your external computer. 
+
+:raw-html:`<font color="red"> THE FOLLOWING SECTIONS ARE NOT CLEARLY EXPLAINED. 
+PLEASE REWRITE! AT THE END OF THIS DOCUMENT I WANT TO BE ABLE TO SEE DETECTED OBJECTS ON THE EXTERNAL COMPUTER.
+NOT CLEAR FROM EXPLANATION I READ HERE.  </font>`
+
+
 
 To display the octomap run 
 
@@ -27,15 +37,15 @@ If everything goes well an octomap will be generated from the point cloud
 
 
 Octomap package
-===============
+--------------------
 
 This chapter explains how to save an octomap and load it into RViz with the panda arm. We will later use the camera to detect obstacles and 
 
 ROS Melodic OctoMap server
-**************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 OctoMap installation
---------------------
+***********************
 
 Install the octomap package.
 
@@ -44,10 +54,10 @@ Install the octomap package.
     sudo apt-get install ros-melodic-octomap ros-melodic-octomap-server ros-melodic-octomap-mapping ros-melodic-octomap-ros ros-melodic-octomap-msgs
 
 Octomap saver
-*************
+^^^^^^^^^^^^^^^^^
 
 Create your package
--------------------
+**********************
 
 * To save your octomap you will have to create your own octomap saver package. Here a link if you want more details on the `octomap server <http://wiki.ros.org/octomap_server>`_.
 
@@ -120,7 +130,7 @@ Once it is done , you should see this
     :width: 300
 
 Save the octomap
-----------------
+**********************
 
 To save the octomap just use this command (RViz should be running at the same time)
 
