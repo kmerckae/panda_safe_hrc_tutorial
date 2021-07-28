@@ -3,30 +3,46 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Panda robot tutorial
-====================
-We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson Xavier NX and how to use with ROS.
+Constraint-Based Planning with a Stereo Camera
+==============================================
+This tutorial explains how to use the Stereolabs ZED 2 camera for the constraint-based planning 
+of a Franka Emika Panda robot in Human-Robot Coexistence scenarios. 
+Part of the documentation is specifically for the use of the robot in the R&MM lab at Vrije Universiteit Brussel, 
+the other part is generally written such that researchers in other research groups can also follow this tutorial. 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Panda robot arm startup
+   :caption: Franka Emika Panda Robot Arm   
 
-   robot_arm_start/opening_session
-   robot_arm_start/connect_the_robot
-   robot_arm_start/interface
-   robot_arm_start/move_robot
-   robot_arm_start/create_project
-   robot_arm_start/command_control
-   robot_arm_start/arm_blocked
-   robot_arm_start/different_planners
+   panda_arm/start_desktop
+   panda_arm/robot_network
+   panda_arm/franka_desk
+   panda_arm/robot_operating_modes
+   panda_arm/FCI_project
+   panda_arm/robot_control
 
 .. toctree::
    :maxdepth: 1
-   :caption: Jetson with ZED2 setup
+   :caption: Path Planning
+
+   path_planning/example
+
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: ZED 2 on NVIDIA Jetson
 
    zed_jetson_start/jetson_setup
    zed_jetson_start/zed_jetson
    zed_jetson_start/zed_ros_jetson
+
+.. toctree::
+   :maxdepth: 1
+   :caption: ZED 2 ROS integration
+
+.. toctree::
+   :maxdepth: 1
+   :caption: ZED 2 for Panda robot
 
 .. toctree::
    :maxdepth: 1
@@ -57,6 +73,10 @@ We will see in this tutorial how to set up the ZED2 camera on the  NVIDIA Jetson
    zed_jetson_panda_issues/jetson_issues
    zed_jetson_panda_issues/jetson_zed_panda
    zed_jetson_panda_issues/panda_arm_issues
+
+Attribution
+-----------
+Major contributors to the *Constraint-Based Planning with a Stereo Camera* tutorial are listed: Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo. 
 
 
 Indices and tables
