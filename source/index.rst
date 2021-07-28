@@ -23,22 +23,23 @@ the other part is generally written such that researchers in other research grou
 
 .. toctree::
    :maxdepth: 1
-   :caption: Path Planning
-
-   path_planning/example
-
-   
-.. toctree::
-   :maxdepth: 1
    :caption: ZED 2 on NVIDIA Jetson
 
    zed_jetson_start/jetson_setup
    zed_jetson_start/zed_jetson
-   zed_jetson_start/zed_ros_jetson
+   zed_jetson_start/zed_examples
 
 .. toctree::
    :maxdepth: 1
    :caption: ZED 2 ROS integration
+
+   zed_jetson_start/zed_ros_jetson
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Path Planning
+
+   path_planning/example
 
 .. toctree::
    :maxdepth: 1
@@ -48,7 +49,6 @@ the other part is generally written such that researchers in other research grou
    :maxdepth: 1
    :caption: Objects detection
 
-   objects_detection/zed_objects_detection
    objects_detection/zed_ros_object_detection
 
 .. toctree::
@@ -70,9 +70,9 @@ the other part is generally written such that researchers in other research grou
    :maxdepth: 1
    :caption: Jetson, ZED2 and PANDA ARM issues
 
-   zed_jetson_panda_issues/jetson_issues
-   zed_jetson_panda_issues/jetson_zed_panda
-   zed_jetson_panda_issues/panda_arm_issues
+   issues/jetson_issues
+   issues/jetson_zed_panda
+   issues/panda_arm_issues
 
 Attribution
 -----------

@@ -1,12 +1,13 @@
-.. _Get_Started:
+.. _Jetson_Setup:
 
 Getting started with the NVIDIA Jetson Xavier NX
 ================================================
 
 .. role:: raw-html(raw)
     :format: html
-
-.. _What_do_you_need_Jetson:
+    
+.. note:: | This page is generally written.
+          | Only the username and password need to be changed for your own case. 
 
 What do you need?
 -----------------
@@ -32,8 +33,6 @@ After you have repartitioned the microSD card, you have to format it before usag
 
    <a href="https://www.instructables.com/Repartition-SD-Card-Windows/" target="_blank">Repartition-SD-Card-in-Windows</a>
 
-
-.. _setup_and_boot_JetsonXavierNX:
 
 Set up and boot the Jetson Xavier NX
 ------------------------------------
@@ -83,109 +82,49 @@ Normally you can automatically connect to a Wireless Network.
     as shown in the picture below. 
 
     .. image:: ./images/jetson_signin_settings.jpg
-      :width: 600
-
+        :align: center
+        :width: 700px
 
 Avoid crashing and latency issues
 ---------------------------------
+
 You can avoid crashing and latency issues with the NVIDIA Jetson Xavier by switching 
 the power mode supply of the NVIDIA Jetson to "MODE 15W 6CORE", as depicted in the figure below.
 
 .. image:: ./images/power_mode.png
-    :width: 300
+    :align: center
+    :width: 300px
 
 In order to reduce lags on the Jetson turn on the fan to 100%, by doing the following steps. 
 
 * Install jetson-stats:
 
-.. code:: bash
+  .. code:: bash
 
-    git clone https://github.com/rbonghi/jetson_stats
-    sudo apt-get update
-    sudo apt-get install python3-pip  # install pip3
-    cd jetson_stats
-    sudo -H pip3 install -U jetson-stats
+      git clone https://github.com/rbonghi/jetson_stats
+      sudo apt-get update
+      sudo apt-get install python3-pip  # install pip3
+      cd jetson_stats
+      sudo -H pip3 install -U jetson-stats
 
 * Restart your Jetson and run :
 
-.. code:: bash
+  .. code:: bash
 
     jtop  # start jtop
 
 * The following window will open with all the information of the Jetson
 
-.. image:: ./images/jtop.png
-    :width: 600
+  .. image:: ./images/jtop.png
+    :width: 500px
 
 * Navigate with the arrow keys to tab 5CTRL. 
   You can set the fan method to manual by clicking with your mouse on "manual". 
   In the manual fan mode, you cna increase the fan speed by pressing the "p" key and decrease the fan speed by pressing the "m" key. 
 
-.. image:: ./images/jtop_fan.png
-    :width: 600
-
+  .. image:: ./images/jtop_fan.png
+    :width: 500px
 
 .. note:: 
    Note: if you try to install something and the Jetson keeps shutting down, you can :ref:`set the Jetson in shell mode<jetson_shell_mode>`.
    :raw-html:`<font color="Blue"> Kelly still needs to check this.   </font>`
-
-
-
-Network Connection problems
----------------------------
-Although we didn't have this problem with the NVIDIA Jetson Xavier NX, 
-we couldn't connect automatically to WiFi with the NVIDIA Jetson Nano. 
-As an inspiration to solve connection problems with a Jetson, we added the explanation for the |NVIDIA_Jetson_Nano_tutorial|. 
-
-.. |NVIDIA_Jetson_Nano_tutorial| raw:: html
-
-   <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit" target="_blank">NVIDIA Jetson Nano</a>
-
-WiFi Connection
-^^^^^^^^^^^^^^^
-Use a |WiFi_USB_adapter| to connect to WiFi. 
-If that doesn't work, check this |WiFi_USB_adapter_problem| and its |WiFi_USB_adapter_solution|. 
-
-.. |WiFi_USB_adapter| raw:: html
-
-   <a href="https://learn.sparkfun.com/tutorials/adding-wifi-to-the-nvidia-jetson/all#hardware-overview-and-assembly" target="_blank">WiFi USB adapter</a>
-
-.. |WiFi_USB_adapter_problem| raw:: html
-
-   <a href="https://forums.developer.nvidia.com/t/jetson-nano-wifi-usb-adapter/73157" target="_blank">problem</a>
-
-.. |WiFi_USB_adapter_solution| raw:: html
-
-   <a href="https://forums.developer.nvidia.com/t/jetson-nano-wifi/72269" target="_blank">solution</a>
-
-
-Ethernet Connection
-^^^^^^^^^^^^^^^^^^^   
-*  Go in the system parameters then in network and find the wired option with a connection.
-*  In the options of the wired connection, go to ipv4, switch the method to manual and enter the IP, submask and DNS servers.  
-*  for internet connection : IP=134.184.20.129, subnet mask=24 DNS= 134.184.250.7, 134.184.15.13, Gateway=134.184.20.100
-*  The jetson will also be connected directly to the main computer( franka computer). For this local connection, no DNS is needed. 
-   The only constrain is that the last digits of the IP adress must be unique on the local netwwork. 
-   For the rest of the tutorial the local IP will be 192.168.4.66, subnet=24. 
-   The master has the IP 192.168.4.65 and will be used as gateway for the direct connection.  
-
-
-SSH Connection
-^^^^^^^^^^^^^^
-*  Install openssh-server on the Jetson Nano. (This one is the server and doesn't need the client package). 
-*  Install openssh-client and openssh-server on the Franka desktop. This computer will connect to the jetson so we need to authorize the ssh access. 
-*  The parameters to modify on the Jetson are in the file:
-
-    .. code:: bash
-
-        sudo gedit /etc/ssh/sshd_config 
-
-*  Find the parameter *PermitRootLogin*, uncomment the line and change the value to : yes. 
-*  add the line : *AllowUsers root jetson-nano ( root + username)*. These changes allows to run administrator commands.
-*  Change *PasswordAuthentication* to yes. This allows to use a password to connect. 
-   For devices on internet and not on a local connection only, a key is reccomened. 
-*  Restart ssh: 
-
-    .. code:: bash
-
-        sudo service ssh restart
