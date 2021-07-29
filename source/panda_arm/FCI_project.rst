@@ -5,12 +5,12 @@ Start Franka Control Interface Project
 
 .. role:: raw-html(raw)
     :format: html
-    
+
 .. note:: This page is generally written. For the robot we use in the R&MM lab at Vrije Universiteit Brussel, we replace <fci-ip> with ``192.168.2.106``
 
-The Franka Control Interface (FCI) allows a fast and direct low-level bidirectional connection to the Arm and Hand. 
-It provides the current status of the robot and enables its direct real-time control ath 1 kHz with an external workstation PC (our desktop) connected via Ethernet.
-We refer to the |frankaemika-fci-overview| for more information about its specifications. 
+The Franka Control Interface (FCI) allows a fast and direct low-level bidirectional connection to the Arm and Hand.
+It provides the current status of the robot and enables its direct real-time control at 1 kHz with an external workstation PC (our desktop) connected via Ethernet.
+We refer to the |frankaemika-fci-overview| for more information about its specifications.
 
 .. |frankaemika-fci-overview| raw:: html
 
@@ -47,7 +47,7 @@ Clone the project and build ``libfranka`` and ``franka_ros``:
    :raw-html:`<font color="red">  Also okay if we say " Every path/to/ MUST be an absolute path" ?   </font>`
 
 
-Now that the project is built, you can use catkin_make without specifying the build type or the build directory, i.e.  
+Now that the project is built, you can use catkin_make without specifying the build type or the build directory, i.e.
 
 .. code-block:: bash
 
@@ -57,12 +57,12 @@ Now that the project is built, you can use catkin_make without specifying the bu
 Create your own project
 ------------------------
 
-.. note :: If you want to make an extension or improvement to the franka_constrained_control project, 
-           it is better to clone the existing project as is explained in the previous section. 
-           However, if you like to make a new project with the same libfranka and ros version as we used, 
-           then you have to follow this section. 
+.. note :: If you want to make an extension or improvement to the franka_constrained_control project,
+           it is better to clone the existing project as is explained in the previous section.
+           However, if you like to make a new project with the same libfranka and ros version as we used,
+           then you have to follow this section.
 
-This tutorial is an adapted version of the official |frankaemika-linux-installation|. 
+This tutorial is an adapted version of the official |frankaemika-linux-installation|.
 
 .. |frankaemika-linux-installation| raw:: html
 
@@ -74,8 +74,9 @@ First of all make sure that ROS is installed :
 
    sudo apt install ros-melodic-libfranka ros-melodic-franka-ros
 
-Before building from source, please uninstall existing installations of ``libfranka`` and ``franka_ros`` to avoid conflicts:    
+Before building from source, please uninstall existing installations of ``libfranka`` and ``franka_ros`` to avoid conflicts:
 :raw-html:`<font color="red">  In the bash code-block you only say how to uninstall existing installations of libfranka, not of franka_ros?  </font>`
+:raw-html:`<font color="green"> I just followed this tutorial : https://frankaemika.github.io/docs/installation_linux.html#building-from-source </font>`
 
 .. code-block:: bash
 
@@ -103,7 +104,7 @@ Then, download the source code by cloning |frankaemika-libfranka-github| in your
    git clone --recursive https://github.com/frankaemika/libfranka
    cd libfranka
 
-By default, this will check out the newest release of ``libfranka``. 
+By default, this will check out the newest release of ``libfranka``.
 However, we want to use the version *0.7.1*, so we have to change the branch:
 
 .. code-block:: bash
@@ -111,7 +112,7 @@ However, we want to use the version *0.7.1*, so we have to change the branch:
    git checkout 0.7.1
    git submodule update
 
-In the source directory :raw-html:`<font color="red">  You mean the libfranka directory? </font>`, create a build directory and run CMake:
+In the libfranka directory, create a build directory and run CMake:
 
 .. code-block:: bash
 
@@ -120,13 +121,13 @@ In the source directory :raw-html:`<font color="red">  You mean the libfranka di
    cmake -DCMAKE_BUILD_TYPE=Release ..
    cmake --build .
 
-Try to launch files in the ``build/examples`` directory to see if the installation is completed. 
+Try to launch files in the ``build/examples`` directory to see if the installation is completed.
 
 .. code-block:: bash
 
    cd build/examples
    ./echo_robot_state <fci-ip>
-   ./print_joint_poses <fci-ip> 
+   ./print_joint_poses <fci-ip>
 
 When you can run the examples, ``libfranka`` is installed properly, so you are ready to install ``franka_ros``.
 
@@ -142,7 +143,7 @@ Go to your directory (or git repository) and create a catkin workspace :
    source /opt/ros/melodic/setup.sh
    catkin_init_workspace src
 
-Then clone the |frankaemika-franka_ros-github| repository in the src directory:
+Then clone the |frankaemika-franka_ros-github| repository by executing the following command:
 
 .. |frankaemika-franka_ros-github| raw:: html
 
@@ -152,8 +153,8 @@ Then clone the |frankaemika-franka_ros-github| repository in the src directory:
 
    git clone --recursive https://github.com/frankaemika/franka_ros src/franka_ros
 
-By default, this will check out the newest release of ``franka_ros``. 
-However, we want to use the version *0.6.0* since with the latest version there are some problems such that even the franka_example_controllers cannot be launched. 
+By default, this will check out the newest release of ``franka_ros``.
+However, we want to use the version *0.6.0* since with the latest version there are some problems such that even the franka_example_controllers cannot be launched.
 So we have to change the branch:
 
 .. code-block:: bash
@@ -175,11 +176,20 @@ Install any missing dependencies and build the packages:
 
 .. note ::
 
-   Once the problems with the latest franka_ros version are solved, we can try this latest franka_ros and accompanying libfranka version. 
+   Once the problems with the latest franka_ros version are solved, we can try this latest franka_ros and accompanying libfranka version.
 
-Since we don't want to work with git submodules, we remove all the submodules. 
-:raw-html:`<font color="red">  How did you do this? You removed all .git in the other repositories and .gitsubmodules? 
+Since we don't want to work with git submodules, we remove all the submodules.
+:raw-html:`<font color="red">  How did you do this? You removed all .git in the other repositories and .gitsubmodules?
 Explain this part better. </font>`
+
+To do so, follow the following steps :
+
+* Delete the relevant line from the .gitmodules file.
+
+* Delete the relevant section from .git/config.
+
+* Run git rm --cached path_to_submodule (no trailing slash).
+
 
 .. _Create_controller :
 
