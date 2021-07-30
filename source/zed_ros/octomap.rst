@@ -1,144 +1,86 @@
 .. _ZED_ROS_Octomap:
 
 Octomap 
-=================
+=======
 
 .. role:: raw-html(raw)
     :format: html
     
-This section will help you to visualize 3D map in RViz on your external computer. 
-
-:raw-html:`<font color="red"> THE FOLLOWING SECTIONS ARE NOT CLEARLY EXPLAINED. 
-PLEASE REWRITE! AT THE END OF THIS DOCUMENT I WANT TO BE ABLE TO SEE DETECTED OBJECTS ON THE EXTERNAL COMPUTER.
-NOT CLEAR FROM EXPLANATION I READ HERE.  </font>`
+This section will help you to make and save an octomap on your external computer. 
 
 
 
-To display the octomap run 
 
-.. code:: bash
+Requirements
+------------
 
-    roslaunch zed_rtabmap_example zed_rtabmap.launch 
+* Install the ros octomap packages on your external computer
 
-* You will have to add the PointCloud2 display in your RViz. 
+.. code-block:: bash
 
-.. image:: ./images/display.png
-    :width: 300
-
-* Change the settings of the PointCloud2 to the following
-
-.. image:: ./images/settings.png
-    :width: 300
-
-If everything goes well an octomap will be generated from the point cloud
-
-.. image:: ./images/octomap.png
-    :width: 300
-
-
-Octomap package
---------------------
-
-This chapter explains how to save an octomap and load it into RViz with the panda arm. We will later use the camera to detect obstacles and 
-
-ROS Melodic OctoMap server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-OctoMap installation
-***********************
-
-Install the octomap package.
-
-.. code:: bash
-
+    sudo apt-get update
     sudo apt-get install ros-melodic-octomap ros-melodic-octomap-server ros-melodic-octomap-mapping ros-melodic-octomap-ros ros-melodic-octomap-msgs
 
-Octomap saver
-^^^^^^^^^^^^^^^^^
+* Create a package for the octomap on the external computer
 
-Create your package
-**********************
+  * Download the folowing zip file:
 
-* To save your octomap you will have to create your own octomap saver package. Here a link if you want more details on the `octomap server <http://wiki.ros.org/octomap_server>`_.
+        :download:`octomap_tools package <doc/octomap_tools.zip>` 
 
-.. code:: bash
+  * Unzip and drag the files in your ``catkin_ws/src`` directory
+  * build your catkin workspace
 
-    cd ~/catkin_ws/src/
-    catkin_create_pkg octo_save std_msgs rospy roscpp
-    cd ../
-    catkin_make
-    
-* Now you will have to create and edit a new .launch file. This .launch file will be used later to generate the octomap and save it.
+    .. code-block:: bash
 
-.. code:: bash
-
-    cd ~/catkin_ws/src/octo_save/
-    mkdir launch
-    cd launch
-    touch octomap_mapping.launch
-
-* Copy this in the octomap_mapping.launch file
-
-.. code:: XML
-
-    <launch>
-    <arg name="svo_file"             default="" /> <!-- <arg name="svo_file" default="path/to/svo/file.svo"> -->
-    <arg name="stream"               default="" /> <!-- <arg name="stream" default="<ip_address>:<port>"> -->
-
-    <arg name="camera_model"         default="zed2" />
-
-    <!-- Launch ZED camera wrapper -->
-    <include file="$(find zed_wrapper)/launch/$(arg camera_model).launch">
-        <arg name="camera_model"        value="$(arg camera_model)" />
-        <arg name="svo_file"            value="$(arg svo_file)" />
-        <arg name="stream"              value="$(arg stream)" />
-    </include>
+            cd ~/catkin_ws
+            catkin_make
 
 
-    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
-        <param name="resolution" value="0.05" />
-        
-        <!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
-        <param name="frame_id" type="string" value="odom" />
-        
-        <!-- maximum range to integrate (speedup!) -->
-        <param name="sensor_model/max_range" value="5.0" />
-        
-        <!-- data source to integrate (PointCloud2) -->
-        <remap from="cloud_in" to="/zed2/zed_node/point_cloud/cloud_registered" />
+Modify the octomap parameters
+-----------------------------
 
-    </node>
+* Go to the octomap_tools package that we just build
+* Go to the launch directory
+* Open the file ``save_octomap_from_pointcloud.launch`` with your favorite editor
+* From here you can modify the parameter
+* The parameters are listed and explained `here in the section 2.2.4 <http://wiki.ros.org/octomap_server>`_
+ 
+Create and vizualize the Octomap
+--------------------------------
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find zed_display_rviz)/rviz/$(arg camera_model).rviz" output="screen" />
+* Make a ros network between the Jetson and the external computer
+* Do a ``roscore`` on the external computer
+* On the Jetson run ``roslaunch zed_wrapper zed2.launch``
+* Open another terminal on the external computer and source your workspace then launch the octomap node:
 
-    </launch>
+.. code-block:: bash
+  cd ~/catkin_ws
+  source devel/setup.sh
+  roslaunch octomap_tools save_octomap_from_pointcloud.launch
 
-* Launch it
+* So you can visualize the created octomap in rviz
 
-.. code:: bash
+.. image:: images/save_octomap.png
 
-    roslaunch octo_save octomap_mapping.launch
-
-* Add a MarkerArray display and then modify the MarkerArray topic
-
-.. image:: ./images/settings_octo.png
-    :width: 300
-
-Once it is done , you should see this
-
-.. image:: ./images/octomap_.png
-    :width: 300
 
 Save the octomap
-**********************
+----------------
+You can save the octomap vizualized in rviz while rviz is still running
 
-To save the octomap just use this command (RViz should be running at the same time)
+* Go to the directory where you want to save the octomap on the external computer
+* Open a terminal there
+* Run this to save the octomap (change "first_octomap" to another name if you want it to be saved under another name)
 
 .. code:: bash
 
     rosrun octomap_server octomap_saver -f first_octomap.bt
 
-Now we are done. We will use this later to detect obstacles and visualize them in RViz with the robot arm.
 
+Vizualize an existing Octomap
+-----------------------------
 
+To vizualize an already saved octomap run on your external computer
 
+.. code-block:: bash
+
+    roslaunch octomap_tools load_octomap.launch path:=path-to-your-octomap-directory/your-octomap.bt rviz_octomap:=true

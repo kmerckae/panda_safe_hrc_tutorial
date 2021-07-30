@@ -8,153 +8,73 @@ Object Detection
 
 Here we explain how you can visualize the detected objects on your external computer. 
 
-Download the example code
--------------------------
+Requirements
+------------
 
-To run the ZED ROS examples, you have to clone the following example code in the **src** folder of your (existing) catkin workspace. 
-:raw-html:`<font color="red"> You have to clone this on your external computer right?  </font>`
+* Make sure you followed `this tutorial to install ros and zed packages on the Jetson <https://www.stereolabs.com/blog/ros-and-nvidia-jetson-xavier-nx/>`_
 
-.. code-block:: bash
+* If you do not have ROS and a catkin workspace on your external computer:
 
-    cd path/to/your_project/catkin_ws/src
-    git clone https://github.com/stereolabs/zed-ros-wrapper.git
-    git clone https://github.com/stereolabs/zed-ros-examples.git
+  * follow `this tutorial if you need to install ros <http://wiki.ros.org/melodic/Installation/Ubuntu>`_
+  * make `your catkin workspace by following this tutorial <http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment>`_
 
+* Download required files on your external computer
+  
+  * Download the following zip file on your external computer
 
-:raw-html:`<font color="red"> THE FOLLOWING SECTIONS ARE NOT CLEARLY EXPLAINED. 
-PLEASE REWRITE! AT THE END OF THIS DOCUMENT I WANT TO BE ABLE TO SEE DETECTED OBJECTS ON THE EXTERNAL COMPUTER.
-NOT CLEAR FROM EXPLANATION I READ HERE.  </font>`
+        :download:`zed_packages_for_external_computer <doc/zed_packages_for_external_computer.zip>` 
 
+  * Unzip the files and drag them in your ``catlin_ws/src`` directory
+  * Go to your catkin_ws file and build it, this will build the plugin for display bunding box around detected objects and the zed libraries
 
+    .. code-block:: bash
+        
+        cd ~/catkin_ws
+        catkin_make
+  
 
 Add objects detection in rviz
 -----------------------------
 
-| You can find `how to add object detection in rviz in this tutorial <https://www.stereolabs.com/docs/ros/object-detection/>`_
-| NB : If you launch the zed2 camera with rviz  with a new model of the object detection, it will download the AI model.
-| In our case, the Jetson shutdown every time we try to download an AI model
+* Enable object detection:
 
-We avoided this problem by installing the AI model with the shell mode on Jetson:
-
-.. _jetson_shell_mode:
-
-* Set shell mode on jetson:
-
-.. code-block:: bash
-
-   # To disable GUI on boot, run:
-   sudo systemctl set-default multi-user.target
-
-* While in shell mode:
-
-    * Enter the username and password, here it is:
-
-        * username: xavier
-        * password: JetsonXavier
-
-    * Enable wifi and ethernet connection in the text mode Network Manager:
+    * Go to the zed wrapper configuration directory on the Jetson and open the zed2.yaml file:
 
     .. code-block:: bash
+        cd ~/catkin_ws/src/zed-ros-wrapper/zed_wrapper/params
+        gedit zed2.yaml
 
-        nmtui  # open network manager
+    * At line 20 set ``od_enable`` to true 
+    * At line 21 set ``model`` to 1 (to detect all kind of objects)
+    * You can also change other parameters if you want
+    * The parameters are listed and explained `here <https://www.stereolabs.com/docs/ros/zed-node/#object-detection-parameters-only-zed-2-and-zed-2i>`_
+    * If you launch the zed2 camera with rviz  with a new model of the object detection, it will download the AI model.
+    In our case, the Jetson shutdown every time we try to download an AI model.
+    We avoided this problem by installing the AI model with the shell mode on Jetson see :ref:`Set the Jetson in shell mode and download the IA model <jetson_shell_mode>` 
+    This problem did not occure with the new SD card.
 
-    * Run rviz:
+* Make a ros network between the Jetson and the external computer
+* Once the ros network established, vizualize the detected objects on rviz:
 
-    .. code-block:: bash
+  * Do a ``roscore`` on the external computer
+  * On the Jetson run ``roslaunch zed_wrapper zed2.launch``
+  * Open another terminal on the external computer and source your workspace then run rviz:
 
-        roslaunch zed_display_rviz display_zed2.launch
+  .. code-block:: bash
+    cd ~/catkin_ws
+    source devel/setup.sh
+    rosrun rviz rviz
 
-    * Once the AI model downloaded, come back to graphical mode:
+  * Add the display ``ZedOdDisplay`` to display bunding boxes around detected objects
 
-    .. code-block:: bash
+  * Choose the ``/zed2/zed_node/obj_det/objects`` topic for the bunding box
 
-        # To enable GUI again issue the command:
-        sudo systemctl set-default graphical.target
+  * You can also add a display for the point cloud so you can have a better idea of the detected object
 
-* Now you can launch rviz with object detection on graphical mode.
+    * Add a PointCloud2 display
+    * Choose the topic ``/zed2/zed_node/point_cloud/cloud_registered``
 
-.. _obj_detection_on_panda_computer:
+* At the end of these steps you would see something like this:
 
-Get the detected objects information
-------------------------------------
-
-Build Stereolabs libraries
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-| In order to get all the information from the detected objects in a c++ program, we need to build the object library.
-| This step is done when you build the `zed-ros-wrapper package <https://github.com/stereolabs/zed-ros-wrapper>`_ but on some computers this would not work since it uses CUDA and it can only be installed on a computer with nvidia.
-| However you can download the zed-ros-wrapper package, move the zed_interfaces directory to your catkin_ws/src directory so you can build the needed libraries with ``catkin_make``
-
-.. image:: ./images/zed_interfaces_dir.png
+.. image:: images/object_detection_rviz.png
     :width: 600
-
-| You have to add the following lines into your package.xml file for using the zed library in your package:
-
-.. code-block:: xml
-
-    <build_depend>zed_interfaces</build_depend>
-    <exec_depend>zed_interfaces</exec_depend>
-
-Subscribe to detected objects
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-| You can now subscribe to the detected object topic which is ``/zed2/zed_node/obj_det/objects``
-| The following code print the detected objects and some useful information:
-
-.. code-block:: c++
-
-    #include <ros/ros.h>
-    #include <zed_interfaces/object_stamped.h>
-    #include <zed_interfaces/objects.h>
-
-    /**
-     * Subscriber callback
-     */
-    void objectListCallback(const zed_interfaces::ObjectsStamped::ConstPtr& msg)
-    {
-      ROS_INFO("***** New object list *****");
-      for (int i = 0; i < msg->objects.size(); i++)
-      {
-        if (msg->objects[i].label_id == -1)
-          continue;
-
-        ROS_INFO_STREAM(msg->objects[i].label << " [" << msg->objects[i].label_id << "] - Pos. ["
-                                              << msg->objects[i].position[0] << "," << msg->objects[i].position[1] << ","
-                                              << msg->objects[i].position[2] << "] [m]"
-                                              << "- Conf. " << msg->objects[i].confidence
-                                              << " - Tracking state: " << static_cast<int>(msg->objects[i].tracking_state));
-      }
-    }
-
-    /**
-     * Node main function
-     */
-    int main(int argc, char** argv) {
-        ros::init(argc, argv, "zed_obj_det_sub_tutorial");
-
-        ros::NodeHandle n;
-
-        // Subscriber
-        ros::Subscriber subObjList= n.subscribe("/zed2/zed_node/obj_det/objects", 1, objectListCallback);
-
-        ros::spin();
-
-        return 0;
-    }
-
-Add bunding box in rviz
-^^^^^^^^^^^^^^^^^^^^^^^
-
-* Create a new directory in your catkin workspace name it zed-ros-example
-* Drag the ``zed_display_rviz`` and ``rvis-plugin-zed-od`` directories from `zed-ros-example package <https://github.com/stereolabs/zed-ros-example>`_
-* Rebuild your workspace with ``catkin_make``
-* Enable object detection on the Jetson:
-    * Go to ~/catkin_ws/zed-ros-wrapper/zed_wrapper/params
-    * Open the zed2.yaml
-    * set the parameter ``od_enable`` to true
-
-Do these steps to only visualise objects detection:
-
-* On the computer: ``roscore``
-* Launch zed-wrapper on the Jetson: ``roslaunch zed_wrapper zed2.launch``
-* Launch rviz on the computer: ``rosrun rviz rviz``
-* Now you can add the ``ZedOdDisplay`` plugin and select the ``/zed2/zed_node/obj_det/objects`` topic
