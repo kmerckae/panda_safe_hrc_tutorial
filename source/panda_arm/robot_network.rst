@@ -16,10 +16,13 @@ Set Up the Robot Network
 Hardware connections
 --------------------
 
-In the figure below you can see the official hardware connection documentation from Franka Emika.
-:raw-html:`<font color="red">  Is it possible to add a link to the pdf file FrankaPandaManual.pdf that is included in the source folder?  </font>`
+In the figure below you can see the official hardware connection documentation from Franka Emika
+which you can find in the Franka Emika Panda manual. 
 
 You can find the :download:`FrankaPandaManual pdf here <doc/FrankaPandaManual.pdf>`
+
+:raw-html:`<font color="red">  Also possible to open this pdf file in a new tab when you click on it? 
+As is also done in "setting up the network" in the note on this page. </font>`
 
 .. image:: ./images/panda-set-up.png
     :align: center

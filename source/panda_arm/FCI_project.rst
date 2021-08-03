@@ -75,8 +75,6 @@ First of all make sure that ROS is installed :
    sudo apt install ros-melodic-libfranka ros-melodic-franka-ros
 
 Before building from source, please uninstall existing installations of ``libfranka`` and ``franka_ros`` to avoid conflicts:
-:raw-html:`<font color="red">  In the bash code-block you only say how to uninstall existing installations of libfranka, not of franka_ros?  </font>`
-:raw-html:`<font color="green"> I just followed this tutorial : https://frankaemika.github.io/docs/installation_linux.html#building-from-source </font>`
 
 .. code-block:: bash
 
@@ -178,26 +176,10 @@ Install any missing dependencies and build the packages:
 
    Once the problems with the latest franka_ros version are solved, we can try this latest franka_ros and accompanying libfranka version.
 
-Since we don't want to work with git submodules, we remove all the submodules.
-:raw-html:`<font color="red">  How did you do this? You removed all .git in the other repositories and .gitsubmodules?
-Explain this part better. </font>`
-
-To do so, follow the following steps :
+Since we don't want to work with git submodules, we remove all the submodules by following these steps: 
 
 * Delete the relevant line from the .gitmodules file.
 
 * Delete the relevant section from .git/config.
 
 * Run git rm --cached path_to_submodule (no trailing slash).
-
-
-.. _Create_controller :
-
-Create our own controller
-*************************
-
-Now that you :ref:`tested example controllers<Command_control>`, it is time to create your own controller in order to control the arm !
-
-To do so, follow this `link <https://www.franka-community.de/t/starting-to-write-a-new-controller/1537>`_.
-
-After this tutorial, you should be able to create your own controller.

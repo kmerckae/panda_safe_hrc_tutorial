@@ -78,5 +78,8 @@ We have listed the possible solutions in chronological order, so if the first so
 *  Put the activation device in the closed state (pressed down), try to move a little bit the arm of it's position and then execute a move to start command.
    :raw-html:`<font color="red">  THIS IS NOT POSSIBLE IN THE RED STATE!!!!!! WHY DID YOU ADD THIS TO LIST OF SOLUTIONS????  </font>`
    :raw-html:`<font color="green">  Because the robot can be in red state because it is too close from a joint limit, so moving it a little bit can solve the problem (Thomas) </font>`
+   :raw-html:`<font color="red">  THIS IS NOT A SOLUTION!!! You cannot do this while begin in the red state and here you want to get out of the red state... 
+   What you mean is that when you are out of the red state, you have to move the robot such that it is not close to one of its limits anymore, 
+   but this is the cause of the problem. When you get too many times in the red state, it means that you are doing the things wrong that are explained in the first paragraph of the Error section. </font>`
 
 *  Shut down Franka Control with the On-Off switch at the back of the Panda Control, wait for a minute, and restart it.

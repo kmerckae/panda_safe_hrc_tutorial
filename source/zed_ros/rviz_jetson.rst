@@ -26,9 +26,6 @@ The main problem with RVIZ for example is that it is a highly demanding applicat
 Therefore it can correctly display the data directly on the Xavier *only* by reducing the publishing rate of the point cloud and its resolution.
 You can find :download:`an example of a configuration <doc/common.yaml>` that will allow you to display a point cloud on the Jetson Xavier NX... but not at full rate.
 
-:raw-html:`<font color="red">  Is it also possible to instead of adding a link, to directly add a file?
-I'm not sure if the website you've added here "an example of a configuration" (coming from the email of Walter), is a temporary link or not.  </font>`
-
 Go to the directory with the original common.yaml file, rename it to common-original.yaml and add the new common.yaml file.
 
 .. code-block:: bash

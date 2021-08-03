@@ -42,6 +42,7 @@ It would improve the readability if you could open and close (collapse) the ROS 
 
 | You can use |ros-wifi-multiplemachines-tutorial| to make a WiFi connection accross multiple machines. 
 | but we did not follow this. :raw-html:`<font color="red">  Why not? Advantages/disadvantages? Give some reasons...   </font>`
+| :raw-html:`<font color="red">  ROS Network with WiFi question is not yet answered!!!!    </font>`
 
 .. |ros-wifi-multiplemachines-tutorial| raw:: html
 
@@ -205,7 +206,7 @@ Go to the display_zed2.launch file on the Jetson, which you can find at the foll
 
 .. code-block:: bash
 
-    cd path/to/catkin_ws/src/zed_display_rviz/launch/
+    cd path/to/catkin_ws/src/zed-ros-examples/zed_display_rviz/launch/
 
 and comment the selected line
 
@@ -214,27 +215,27 @@ and comment the selected line
     :width: 700px
 
 
-Open a new terminal on the external computer and run
+* Open a new terminal on the **external computer** and run
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    roscore
+      roscore
 
-Open a new terminal on the Jetson and run 
+* Open a new terminal on the **Jetson** and run 
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    roslaunch zed_display_rviz display_zed2.launch
+      roslaunch zed_display_rviz display_zed2.launch
 
-Open another terminal on the external computer and run
+* Open another terminal on the **external computer** and run
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    rosrun rviz rviz
+      rosrun rviz rviz
 
-To display the depth map and the point cloud in RVIZ, you have to add *Camera* to the Displays tab.
+To display the depth map and the point cloud in rviz, you have to add ``Camera`` to the Displays tab.
 When added, click on Image Topic and select the topic with *depth* in the name. 
-Afterwards, you can add *PointCloud2*, click on Topic and select the topic with *point_cloud* in the name. 
+Afterwards, you can add ``PointCloud2``, click on Topic and select the topic with *point_cloud* in the name. 
 Finally, you should get something similar as in the figure below. 
 
 .. image:: ./images/rviz_computer.png
