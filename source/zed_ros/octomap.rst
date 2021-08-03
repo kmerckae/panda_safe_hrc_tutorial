@@ -9,8 +9,6 @@ Octomap
 This section will help you to make and save an octomap on your external computer. 
 
 
-
-
 Requirements
 ------------
 

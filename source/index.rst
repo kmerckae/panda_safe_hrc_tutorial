@@ -55,7 +55,7 @@ the other part is generally written such that researchers in other research grou
 
    zed_panda/zed_panda_setup
    zed_panda/zed_panda_objects_detection    
-   panda_arm_octomap/octomap_mapping   
+   zed_panda/zed_panda_octomap
 
 .. toctree::
    :maxdepth: 1
