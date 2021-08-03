@@ -62,12 +62,11 @@ Depth sensing
     ls
     ./ZED_Depth_Sensing
 
-In this example, a camera live point cloud is retrieved and siplayed in an OpenGL window in 3D.
-
-:raw-html:`<font color="red"> Add image of what you obtain.   </font>`
+In this example, a camera live point cloud is retrieved and displayed in an OpenGL window in 3D.
 
 .. image:: ./images/depth_sensing.png
     :align: center
+    :width: 500px
 
 Body tracking
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,13 +85,15 @@ In this example, camera images are displayed with human bodies as skeletons.
 The bodies are tracked across time and space.
 To display the bodies' bounding boxed, press ``b``.
 
-:raw-html:`<font color="red"> Add image of what you obtain.   </font>`
+:raw-html:`<font color="blue">  Figure with white background - cropped such that we can see both figures next to each other. </font>`
 
 .. image:: ./images/body_tracking_rgb.png
-    :align: left
+    :align: center
+    :width: 500px
 
 .. image:: ./images/body_tracking_skeleton.png
-    :align: right
+    :align: center
+    :width: 500px
 
 Object detection (birds eye viewer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

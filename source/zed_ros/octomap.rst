@@ -1,84 +1,106 @@
 .. _ZED_ROS_Octomap:
 
-Octomap 
-=======
+Octomap on External Computer
+============================
 
 .. role:: raw-html(raw)
     :format: html
     
-This section will help you to make and save an octomap on your external computer. 
-
+This page will help you to make and save an Octomap on your external computer. 
 
 Requirements
 ------------
 
-* Install the ros octomap packages on your external computer
+* You have to be able to :ref:`run rviz on your external computer<Rviz_External_PC>`.  
 
-.. code-block:: bash
+* :ref:`Clone the franka_constrained_control project <FCI_Project>` or |make_new_catkin-ws-2| on your external computer. 
 
-    sudo apt-get update
-    sudo apt-get install ros-melodic-octomap ros-melodic-octomap-server ros-melodic-octomap-mapping ros-melodic-octomap-ros ros-melodic-octomap-msgs
+* Install the ROS Octomap packages on your external computer
 
-* Create a package for the octomap on the external computer
+  .. code-block:: bash
 
+      sudo apt-get update
+      sudo apt-get install ros-melodic-octomap ros-melodic-octomap-server ros-melodic-octomap-mapping ros-melodic-octomap-ros ros-melodic-octomap-msgs
+
+* Create a package for the Octomap on the external computer
+
+  * :raw-html:`<font color="red">  Why not clone zed-interfaces and zed-ros-examples in catkin_ws/src on external computer??   </font>`
+  
   * Download the folowing zip file:
 
         :download:`octomap_tools package <doc/octomap_tools.zip>` 
 
   * Unzip and drag the files in your ``catkin_ws/src`` directory
+
   * build your catkin workspace
 
     .. code-block:: bash
 
-            cd ~/catkin_ws
-            catkin_make
+      cd ~/catkin_ws
+      catkin_make
 
+.. |make_new_catkin-ws-2| raw:: html
 
-Modify the octomap parameters
------------------------------
+    <a href="http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment" target="_blank">make a new catkin workspace</a>
 
-* Go to the octomap_tools package that we just build
-* Go to the launch directory
-* Open the file ``save_octomap_from_pointcloud.launch`` with your favorite editor
-* From here you can modify the parameter
-* The parameters are listed and explained `here in the section 2.2.4 <http://wiki.ros.org/octomap_server>`_
+Vizualize the Octomap in rviz
+-------------------------------
+
+You can first modify the Octomap parameters to your requirements. 
+
+* Go to the launch directory in the octomap_tools package, which you can find in 
+
+  .. code-block:: bash
+
+      cd path/to/catkin_ws/src/octomap_tools/launch
+
+* In the file ``save_octomap_from_pointcloud.launch`` you can modify the |ros-octomap-parameters| that are explained in Section 2.2.4.
+
+.. |ros-octomap-parameters| raw:: html
+
+    <a href="http://wiki.ros.org/octomap_server" target="_blank">Octomap parameters</a>
  
-Create and vizualize the Octomap
---------------------------------
+Once the ROS network is established, vizualize the Octomap in rviz. 
 
-* Make a ros network between the Jetson and the external computer
-* Do a ``roscore`` on the external computer
-* On the Jetson run ``roslaunch zed_wrapper zed2.launch``
-* Open another terminal on the external computer and source your workspace then launch the octomap node:
+* Open a new terminal on the **external computer** and run
 
-.. code-block:: bash
-  cd ~/catkin_ws
-  source devel/setup.sh
-  roslaunch octomap_tools save_octomap_from_pointcloud.launch
+  .. code-block:: bash
 
-* So you can visualize the created octomap in rviz
+      roscore
+
+* Open a new terminal on the **Jetson** and run 
+
+  .. code-block:: bash
+
+      roslaunch zed_wrapper zed2.launch
+
+* Open another terminal on the **external computer** and run
+
+  .. code-block:: bash
+
+      cd path/to/catkin_ws
+      source devel/setup.sh
+      roslaunch octomap_tools save_octomap_from_pointcloud.launch
+
+Finally you should see something like this:
 
 .. image:: images/save_octomap.png
+    :align: center
+    :width: 700px
 
+Save an Octomap and visualize an existing Octomap
+-------------------------------------------------
 
-Save the octomap
-----------------
-You can save the octomap vizualized in rviz while rviz is still running
-
-* Go to the directory where you want to save the octomap on the external computer
-* Open a terminal there
-* Run this to save the octomap (change "first_octomap" to another name if you want it to be saved under another name)
+You can save the Octomap vizualized in rviz while rviz is still running. 
+Therefore you have to go to the directory where you want to save the Octomap and run the *octomap_saver* server with the name you want to give to the Octomap. 
 
 .. code:: bash
 
-    rosrun octomap_server octomap_saver -f first_octomap.bt
+  cd path/to/octomap-directory/
+  rosrun octomap_server octomap_saver -f <octomap-name>.bt
 
-
-Vizualize an existing Octomap
------------------------------
-
-To vizualize an already saved octomap run on your external computer
+To vizualize a saved Octomap, you have to run on your external computer
 
 .. code-block:: bash
 
-    roslaunch octomap_tools load_octomap.launch path:=path-to-your-octomap-directory/your-octomap.bt rviz_octomap:=true
+    roslaunch octomap_tools load_octomap.launch path:=path/to/octomap-directory/<octomap-name>.bt rviz_octomap:=true
