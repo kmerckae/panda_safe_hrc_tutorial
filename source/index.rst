@@ -3,16 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Constraint-Based Planning with a Stereo Camera
-==============================================
-This tutorial explains how to use the Stereolabs ZED 2 camera for the constraint-based planning 
-of a Franka Emika Panda robot in Human-Robot Coexistence scenarios. 
-Part of the documentation is specifically for the use of the robot in the R&MM lab at Vrije Universiteit Brussel, 
-the other part is generally written such that researchers in other research groups can also follow this tutorial. 
+Safe Human-Robot Collaboration
+===============================
+This tutorial explains different ways of safe Human-Robot Collaboration (HRC), 
+from safe human-robot coexistence to safe physical human-robot interaction. 
+All the experiments are validated on the Franka Emika Panda robot. 
+
+A part of the documentation is specifically written for the use of the Panda robot in the R&MM lab 
+at Vrije Universiteit Brussel, but this is always mentioned on top of the page. 
+The major part is generally written such that researchers in other research groups can also follow this tutorial.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Franka Emika Panda Robot Arm   
+   :caption: Franka Emika Panda Robot Arm  
 
    panda_arm/start_desktop
    panda_arm/robot_network
@@ -20,10 +23,23 @@ the other part is generally written such that researchers in other research grou
    panda_arm/robot_operating_modes
    panda_arm/FCI_project
    panda_arm/robot_control
+   panda_arm/path_planning 
 
 .. toctree::
    :maxdepth: 1
-   :caption: ZED 2 on NVIDIA Jetson
+   :caption: Vicon Motion Capture with ROS Integration   
+
+   vicon_panda/start
+
+.. toctree:: 
+   :maxdepth: 1
+   :caption: Constrained Control in HRC Scenarios
+   
+   erg_panda/start
+
+.. toctree::
+   :maxdepth: 1
+   :caption: ZED 2 Stereo Camera on NVIDIA Jetson
 
    zed_jetson/jetson_setup
    zed_jetson/zed_jetson
@@ -31,7 +47,7 @@ the other part is generally written such that researchers in other research grou
 
 .. toctree::
    :maxdepth: 1
-   :caption: ZED 2 with ROS Integration
+   :caption: ZED 2 Stereo Camera with ROS Integration
 
    zed_ros/ros_jetson_setup
    zed_ros/rviz_jetson
@@ -41,9 +57,15 @@ the other part is generally written such that researchers in other research grou
 
 .. toctree::
    :maxdepth: 1
-   :caption: Path Planning
+   :caption: Constraint-Based Planning in HRC Scenarios
 
-   path_planning/example
+   zed_panda/start
+
+.. toctree:: 
+   :maxdepth: 1
+   :caption: Constraint-Based Planning for physical HRI
+
+   phri_panda/start
 
 .. toctree::
    :maxdepth: 1
@@ -68,11 +90,3 @@ the other part is generally written such that researchers in other research grou
 Attribution
 -----------
 Major contributors to the *Constraint-Based Planning with a Stereo Camera* tutorial are listed: Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo. 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
