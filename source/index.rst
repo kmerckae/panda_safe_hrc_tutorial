@@ -3,6 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. role:: raw-html(raw)
+    :format: html
+
 Safe Human-Robot Collaboration
 ===============================
 This tutorial explains different ways of safe Human-Robot Collaboration (HRC), 
@@ -15,7 +18,7 @@ The major part is generally written such that researchers in other research grou
 
 .. toctree::
    :maxdepth: 1
-   :caption: Franka Emika Panda Robot Arm  
+   :caption: Franka Emika Panda Robot Arm 
 
    panda_arm/start_desktop
    panda_arm/robot_network
@@ -25,17 +28,33 @@ The major part is generally written such that researchers in other research grou
    panda_arm/robot_control
    panda_arm/path_planning 
 
+In this chapter you will get acquainted with the Panda robot. 
+At the end, you will be able to control the robot via the Franka Control Interface (FCI)
+and you will be able to plan a trajectory with MoveIt and follow it. 
+
+
 .. toctree::
    :maxdepth: 1
-   :caption: Vicon Motion Capture with ROS Integration   
+   :caption: Vicon Motion Capture with ROS Integration 
 
    vicon_panda/start
+
+In this chapter you will learn how to use the Vicon motion capture data
+online for the control of the Panda robot. 
+
 
 .. toctree:: 
    :maxdepth: 1
    :caption: Constrained Control in HRC Scenarios
    
    erg_panda/start
+
+In this chapter you will see how you can use the trajectory-based Explicit Reference Governor
+for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
+with the Vicon motion capture system. 
+We will explain how to set up the scenarios and which programs to run. 
+We refer to [1] for more detailed information about the constrained control law that is used.  
+
 
 .. toctree::
    :maxdepth: 1
@@ -44,6 +63,12 @@ The major part is generally written such that researchers in other research grou
    zed_jetson/jetson_setup
    zed_jetson/zed_jetson
    zed_jetson/zed_examples
+
+In this chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
+It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
+Note that a real-time kernel is required for the real-time control of the Panda robot 
+and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
+
 
 .. toctree::
    :maxdepth: 1
@@ -55,21 +80,32 @@ The major part is generally written such that researchers in other research grou
    zed_ros/object_detection
    zed_ros/octomap
 
+In this chapter you will learn how to receive the ZED 2 camera data via ROS.
+
+
+
 .. toctree::
    :maxdepth: 1
    :caption: Constraint-Based Planning in HRC Scenarios
 
    zed_panda/start
 
+In this chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two 
+for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios with the ZED 2 camera.  
+We will explain how to set up the scenarios and which programs to run. 
+We refer to [2] for more detailed information about the constrained control law that is used. 
+
+
+
 .. toctree:: 
    :maxdepth: 1
-   :caption: Constraint-Based Planning for physical HRI
+   :caption: Constraint-Based Planning for Physical HRI
 
    phri_panda/start
 
-.. toctree::
-   :maxdepth: 1
-   :caption: ZED 2 for Panda robot
+Here you can add some specific information about this chapter.
+
+
 
 .. toctree::
    :maxdepth: 1
@@ -86,6 +122,18 @@ The major part is generally written such that researchers in other research grou
    issues/jetson_issues
    issues/jetson_zed_panda
    issues/panda_arm_issues
+
+References
+-----------
+[1] K. Merckaert, B. Convens, C. Wu, A. Roncone, M. M. Nicotra, and B. Vanderborght, 
+**Real-time motion control of robotic manipulators for safe human-robot coexistence**,
+*Robotics and Computer-Integrated Manufacturing*, vol.73, 2022, |10.1016/j.rcim.2021.102223|. 
+
+
+
+.. |10.1016/j.rcim.2021.102223| raw:: html
+
+    <a href="https://doi.org/10.1016/j.rcim.2021.102223" target="_blank">10.1016/j.rcim.2021.102223</a>
 
 Attribution
 -----------
