@@ -117,6 +117,13 @@ Here you can add some specific information about this chapter.
 
 .. toctree::
    :maxdepth: 1
+   :caption: Object detection
+
+   AI/purpose   
+   AI/data
+
+.. toctree::
+   :maxdepth: 1
    :caption: Jetson, ZED2 and PANDA ARM issues
 
    issues/jetson_issues
