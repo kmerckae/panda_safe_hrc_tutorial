@@ -14,14 +14,31 @@ Hardware and software needed
 .. _label:
 
 *   For saving the data, you will need :
+
     *  A computer with an Nvidia GPU (the Jetson must be ok only for grabbing data!)
     *  A ZED 2 camera (need to be plug-in a computer with Nvidia)
     *  The  `labelCloud <https://github.com/ch-sa/labelCloud.git>`_ tool 
+
+    .. code-block:: bash
+
+        git clone https://github.com/ch-sa/labelCloud.git
+        cd labelCloud
+        pip install -r requirements.txt 
+
     *  The  `Frustum PointNets <https://github.com/ch-sa/labelCloud.git>`_ software 
 
 
 Time from A to Z
 ----------------
+
+* Saving data (rgb images, pointclouds and transformation files)
+
+    The time need for this step depend on your setup (camera and object placement) / how fast you are to move the camera between two photo shoots and how many shoots you want to take.
+    It took  us approximately 15 minutes
+
+* Labeling part:
+    
+    Labeling is the part 
 
 The labeling part takes 2h20 for 50 images per person (it is the time we spent on labeling our first 100 images). 
 The training part takes 4 hours for 8000 images
@@ -38,12 +55,12 @@ Between two picture move the camera slightly (by 5cm or 10cm).
 During the process DO NOT MOVE YOUR OBJECTS OR IT WILL BE HARDER FOR LABELING. 
 Follow this step will reduce significantly the time spent on labeling.
 
-To save the data with the ZED 2 camera, you have to clone the perception_pcl from this ` repository <https://github.com/A-Kouassi/perception_pcl.git>`_ which contain the rgb_pointcloud_saver code you will use yo save your data.
+To save the data with the ZED 2 camera, you have to clone the perception_pcl from this `repository <https://github.com/panda-brubotics/rgb_pointcloud_saver.git>`_ which contains the rgb_pointcloud_saver code you will use yo save your data.
 
 .. code-block:: bash
 
     cd path/to/catkin_ws/src
-    git clone https://github.com/A-Kouassi/perception_pcl.git
+    git clone https://github.com/panda-brubotics/rgb_pointcloud_saver.git
     cd ..
     catkin_make
 
@@ -74,7 +91,6 @@ Every time you press enter, the program will take a new picture and display how 
 
 .. image:: ./images/rgb_pointcloud_0.png
     :width: 600
-
 
 Do not forget to move the camera between two pictures, but when taking a picture do not move the camera or the picture will be blurry.
 
@@ -147,9 +163,9 @@ Now that you have clone this repository, go in the convert directory execute the
     bash convert.sh path/to/labelCloud ../dataset/KITTI 
 
 * This script will generate:
-    *   the calibration files
-    *   convert pcd to bin
-    *   convert label
+    *   the calibration files 
+    *   convert .pcd to .bin file
+    *   convert label 
     *   copy the rgb images
     *   image_sets files
     *   create rgb_detection files
@@ -172,7 +188,7 @@ As it is explained in the Readme of frustum-pointnets, execute the following com
     sh scripts/command_prep_data.sh
     CUDA_VISIBLE_DEVICES=0 sh scripts/command_train_v1.sh
 
-You will see a window ike this one appear :
+You will see a window like this one appear :
 
 (photo)
 
