@@ -25,28 +25,45 @@ Hardware and software needed
         cd labelCloud
         pip install -r requirements.txt 
 
-    *  The  `Frustum PointNets <https://github.com/ch-sa/labelCloud.git>`_ software 
+    *  The  `Frustum PointNets <https://github.com/ch-sa/labelCloud.git>`_ software.
+
+    We are currently using a modified version of this repository four our purpose
+
+    .. code-block:: bash
+
+        git clone https://github.com/panda-brubotics/object_detection.git
 
 
-Time from A to Z
+
+ime from A to Z
 ----------------
 
 * Saving data (rgb images, pointclouds and transformation files)
 
     The time need for this step depend on your setup (camera and object placement) / how fast you are to move the camera between two photo shoots and how many shoots you want to take.
-    It took  us approximately 15 minutes
+    It took us approximately 15 minutes to grab 100 pictures.
 
 * Labeling part:
     
-    Labeling is the part 
+    This part is the longest and the hardest one. The time required to label depends on the quality of the pointcloud since we have to identify the object we want to label in it.
+    If we can not clearly see the object in the pointcloud then we will have to use the 2D image that corresponds to it to estimate his position in the pointcloud.
 
-The labeling part takes 2h20 for 50 images per person (it is the time we spent on labeling our first 100 images). 
-The training part takes 4 hours for 8000 images
+    .. image:: ./images/pcd_rgb.png
+        :width: 600
+
+    For our first 100 images, it took us 2h20 to label 50 images person. We managed to reduce the time to label 100 images per person to approximately 1h. If you do not want to waste a lot of times with labeling here some :ref:`tips<advice>` to have a good start.
+
+* Training part:
+
+    The training part takes 4 hours for 8000 images
 
 How to save images with the camera
 ----------------------------------
 
+.. _advice:
+
 Advice: 
+*******
 
 Before starting to save your data with the ZED2, use a tripod to position the camera.
 Put the camera at least 50cm from where you are going to take the picture. 
@@ -55,7 +72,10 @@ Between two picture move the camera slightly (by 5cm or 10cm).
 During the process DO NOT MOVE YOUR OBJECTS OR IT WILL BE HARDER FOR LABELING. 
 Follow this step will reduce significantly the time spent on labeling.
 
-To save the data with the ZED 2 camera, you have to clone the perception_pcl from this `repository <https://github.com/panda-brubotics/rgb_pointcloud_saver.git>`_ which contains the rgb_pointcloud_saver code you will use yo save your data.
+Saving data:
+************
+
+To save the data with the ZED 2 camera, you have to clone the perception_pcl from this `repository <https://github.com/panda-brubotics/rgb_pointcloud_saver.git>`_ which contains the rgb_pointcloud_saver code you will use to save your data.
 
 .. code-block:: bash
 
@@ -99,22 +119,27 @@ Different files saved
 
 The program will save different files :
 
-*   The left and right RGB images are saved in rgb/left/ and rgb/right/ as .png files
-*   The pointcloud are saved pointclouds/ as .pcd file
-*   The transformation between two consecutive images. For the first image there is no transformation. The transformation represents the movement of the camera between 2 images. The transformation 000000.json is the transormation between image 000000 and image 000001, and so on.
+*   The left and right RGB images are saved in rgb/left/ and rgb/right/ as .png 
+*   The pointcloud are saved pointclouds/ as .pcd 
+*   The transformation between two consecutive images as .json. For the first image there is no transformation. The transformation represents the movement of the camera between 2 images. The transformation 000000.json is the transormation between image 000000 and image 000001, and so on.
 
 Label the data
 --------------
 
-You can configure your keyboard and mouse setting by editing the config.ini. This will help you to be more efficient while labeling your pointcloud.
+We created a program named deduce_labels.py that helps us to label the pointclouds. :download:`Download it<doc/deduce_labels.py>` and put it in the labelCloud directory.
+
+.. code-block:: bash
+
+    cp /path/to/Downloads/deduce_labels.py /path/to/labelCloud/
+
+Before starting to label your data you can take a look at the config.ini file. In this file you can configure your keyboard and mouse setting. This will help you to be more efficient while labeling your pointcloud.
 
 .. code-block:: bash
 
     cd path/to/labelCloud
     gedit config.ini
 
-Here a :download:`configuration file<doc/config.ini>` we used.
-    
+Here a :download:`configuration file<doc/config.ini>` we used.   
 Now you can label your data. For this go in your labelCloud directory and run the labelCloud.py code. 
 
 .. code-block:: bash
@@ -127,6 +152,7 @@ Do not forget to change the name of the object you label on the right of the sof
 
 .. image:: ./images/first_label_pointcloud.png
     :width: 600
+
  
 Now in an other terminal go in your labelCloud directory and run the deduce_label.py code.
 This code will deduce the position of the future bounding box based on the labels from the previous pointcloud and the transformation file (this transformation file contains the translation and the rotation made by the camera between two pictures). 
@@ -142,6 +168,8 @@ This code will deduce the position of the future bounding box based on the label
 Now click next on the upper left corner, and you will see the next pointcloud with the predicted bounding box using the camera movement. So now you can adjust the bounding box.
 Repeat this process for every pointcloud.
 
+.. note:: deduce_label.py does not predict at 100% the bounding box should be. 70% of the time the predicted bounding box does not fit the object so you will have to adjust it manually.
+
 .. raw:: html
 
     <video width="720" height="480" controls>
@@ -153,7 +181,7 @@ Convert data for training
 -------------------------
 
 Now that you have all the data needed for training, we need to convert them and put them into the frustum pointnets directory . So we created a little script for you to use to convert your data. You can get everything from this `github repository <https://github.com/A-Kouassi/3d-object-detection.git>`_. This repository also include the frustum pointnets software.
-Here the link to the `frustum pointnets  <https://github.com/charlesq34/frustum-pointnets.git>`_ github repository if you want to take a look at it.
+Here the `link  <https://github.com/charlesq34/frustum-pointnets.git>`_  to the frustum pointnets github repository if you want to take a look at it.
 
 Now that you have clone this repository, go in the convert directory execute the convert.sh script. This script will convert in the right format every files needed for the AI trining.
 
@@ -176,22 +204,3 @@ Changing files in frustum-pointnets
 
 If you want to train a custom model, you have to change some files from the frustum directories
 (mettre tous les fichiers qui sont à changer et les lignes. Pour savoir lesquels faire il faut remettre la database kitti avec moi de files 200 pour voir si c'est comme nous à peu prè, et surtout il faut copier le code comme il est là pour les cubes)
-
-Train the neural network
-------------------------
-
-Now that everything is set up, we will train our AI.
-As it is explained in the Readme of frustum-pointnets, execute the following commands :
-
-.. code-block:: bash
-
-    sh scripts/command_prep_data.sh
-    CUDA_VISIBLE_DEVICES=0 sh scripts/command_train_v1.sh
-
-You will see a window like this one appear :
-
-(photo)
-
-You want to maximise the IoU (which represents the the intersection divided by the union of the label and the predicted bounding box from the AI). It varies from 0 to 1. If it is 0, the two boxes do not overlap. If it is 1, the two boxes exactly match.
-
-
