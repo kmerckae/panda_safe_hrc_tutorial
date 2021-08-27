@@ -204,7 +204,7 @@ Changing files in frustum-pointnets
 
 As explained before, we changed files in `the frustum pointnets github  <https://github.com/charlesq34/frustum-pointnets.git>`_ in order to make it work.
 
-* Here are the files were we changed things :
+* Here are the files which were changed :
     * kitti/kitti_object.py
     * kitti/kitti_util.py
     * kitti/prepare_data.py
