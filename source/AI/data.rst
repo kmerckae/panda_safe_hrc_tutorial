@@ -112,19 +112,6 @@ Every time you press enter, the program will take a new picture and display how 
 .. image:: ./images/rgb_pointcloud_0.png
     :width: 600
 
-* Here are the outputs of rgb_pointcloud_saver:
-
-    * 2 .jpg files:
-    
-        left and right images from the ZED2 camera
-
-    * 1 .pcd file:
-
-        colored 3D binary point cloud
-
-    * 1 .json file: 
-    
-
 Do not forget to move the camera between two pictures, but when taking a picture do not move the camera or the picture will be blurry.
 
 Different files saved
@@ -204,12 +191,12 @@ Now that you have clone this repository, go in the convert directory execute the
     bash convert.sh path/to/labelCloud ../dataset/KITTI
 
 * This script will generate:
-    *   the calibration files
-    *   convert .pcd to .bin file
-    *   convert label
-    *   copy the rgb images
-    *   image_sets files
-    *   create rgb_detection files
+    * the calibration files
+    * convert .pcd to .bin file
+    * convert label
+    * copy the rgb images
+    * image_sets files
+    * create rgb_detection files
 
 
 Changing files in frustum-pointnets
@@ -217,16 +204,18 @@ Changing files in frustum-pointnets
 
 As explained before, we changed files in `the frustum pointnets github  <https://github.com/charlesq34/frustum-pointnets.git>`_ in order to make it work.
 
-* Here are the changes we made :
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
+* Here are the files were we changed things :
+    * kitti/kitti_object.py
+    * kitti/kitti_util.py
+    * kitti/prepare_data.py
+    * mayavi/test_drawline.py
+    * models/frustum_pointnets_v1.py
+    * models/model_util.py
+    * models/tf_util.py
+    * train/box_util.py
+    * train/provider.py
+    * train/test.py
+    * train/train.py
+    * train/train_util.py
 
-If you want to train a custom model, you have to change some files from the frustum directories
-(mettre tous les fichiers qui sont à changer et les lignes. Pour savoir lesquels faire il faut remettre la database kitti avec moi de files 200 pour voir si c'est comme nous à peu prè, et surtout il faut copier le code comme il est là pour les cubes)
+If you want to train a custom model, you have to change some files from the frustum directories. Search for yellow, green and purple to replace them with your object names
