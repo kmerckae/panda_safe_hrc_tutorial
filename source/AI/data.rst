@@ -195,7 +195,7 @@ Now that you have clone this repository, there are still some change to make. Fi
     cd /usr/local/zed/settings
 
 Open the .conf file, and in the LEFT_CAM_HD section, copy the cx, cy, fx and fy (line 46, 47, 48, 49) and replace the cx, cy, fx, fy variable in the calib.py in the convert folder.
-Go in the convert directory execute the convert.sh script. This script will convert in the right format every files needed for the AI trining.
+Then now go in the convert directory execute the convert.sh script. This script will convert in the right format every files needed for the AI training.
 
 .. code-block:: bash
 
