@@ -112,6 +112,19 @@ Every time you press enter, the program will take a new picture and display how 
 .. image:: ./images/rgb_pointcloud_0.png
     :width: 600
 
+* Here are the outputs of rgb_pointcloud_saver:
+
+    * 2 .jpg files:
+    
+        left and right images from the ZED2 camera
+
+    * 1 .pcd file:
+
+        colored 3D binary point cloud
+
+    * 1 .json file: 
+    
+
 Do not forget to move the camera between two pictures, but when taking a picture do not move the camera or the picture will be blurry.
 
 Different files saved
