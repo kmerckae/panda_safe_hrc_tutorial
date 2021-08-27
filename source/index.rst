@@ -8,17 +8,17 @@
 
 Safe Human-Robot Collaboration
 ===============================
-This tutorial explains different ways of safe Human-Robot Collaboration (HRC), 
-from safe human-robot coexistence to safe physical human-robot interaction. 
-All the experiments are validated on the Franka Emika Panda robot. 
+This tutorial explains different ways of safe Human-Robot Collaboration (HRC),
+from safe human-robot coexistence to safe physical human-robot interaction.
+All the experiments are validated on the Franka Emika Panda robot.
 
-A part of the documentation is specifically written for the use of the Panda robot in the R&MM lab 
-at Vrije Universiteit Brussel, but this is always mentioned on top of the page. 
+A part of the documentation is specifically written for the use of the Panda robot in the R&MM lab
+at Vrije Universiteit Brussel, but this is always mentioned on top of the page.
 The major part is generally written such that researchers in other research groups can also follow this tutorial.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Franka Emika Panda Robot Arm 
+   :caption: Franka Emika Panda Robot Arm
 
    panda_arm/start_desktop
    panda_arm/robot_network
@@ -26,34 +26,34 @@ The major part is generally written such that researchers in other research grou
    panda_arm/robot_operating_modes
    panda_arm/FCI_project
    panda_arm/robot_control
-   panda_arm/path_planning 
+   panda_arm/path_planning
 
-In this chapter you will get acquainted with the Panda robot. 
+In this chapter you will get acquainted with the Panda robot.
 At the end, you will be able to control the robot via the Franka Control Interface (FCI)
-and you will be able to plan a trajectory with MoveIt and follow it. 
+and you will be able to plan a trajectory with MoveIt and follow it.
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Vicon Motion Capture with ROS Integration 
+   :caption: Vicon Motion Capture with ROS Integration
 
    vicon_panda/start
 
 In this chapter you will learn how to use the Vicon motion capture data
-online for the control of the Panda robot. 
+online for the control of the Panda robot.
 
 
-.. toctree:: 
+.. toctree::
    :maxdepth: 1
    :caption: Constrained Control in HRC Scenarios
-   
+
    erg_panda/start
 
 In this chapter you will see how you can use the trajectory-based Explicit Reference Governor
 for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
-with the Vicon motion capture system. 
-We will explain how to set up the scenarios and which programs to run. 
-We refer to [1] for more detailed information about the constrained control law that is used.  
+with the Vicon motion capture system.
+We will explain how to set up the scenarios and which programs to run.
+We refer to [1] for more detailed information about the constrained control law that is used.
 
 
 .. toctree::
@@ -64,10 +64,10 @@ We refer to [1] for more detailed information about the constrained control law 
    zed_jetson/zed_jetson
    zed_jetson/zed_examples
 
-In this chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
-It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
-Note that a real-time kernel is required for the real-time control of the Panda robot 
-and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
+In this chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX.
+It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers.
+Note that a real-time kernel is required for the real-time control of the Panda robot
+and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers.
 
 
 .. toctree::
@@ -90,14 +90,14 @@ In this chapter you will learn how to receive the ZED 2 camera data via ROS.
 
    zed_panda/start
 
-In this chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two 
-for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios with the ZED 2 camera.  
-We will explain how to set up the scenarios and which programs to run. 
-We refer to [2] for more detailed information about the constrained control law that is used. 
+In this chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two
+for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios with the ZED 2 camera.
+We will explain how to set up the scenarios and which programs to run.
+We refer to [2] for more detailed information about the constrained control law that is used.
 
 
 
-.. toctree:: 
+.. toctree::
    :maxdepth: 1
    :caption: Constraint-Based Planning for Physical HRI
 
@@ -112,15 +112,16 @@ Here you can add some specific information about this chapter.
    :caption: Zed camera and Panda Arm programs
 
    zed_panda/zed_panda_setup
-   zed_panda/zed_panda_objects_detection    
+   zed_panda/zed_panda_objects_detection
    zed_panda/zed_panda_octomap
 
 .. toctree::
    :maxdepth: 1
    :caption: Object detection
 
-   AI/purpose   
+   AI/purpose
    AI/data
+   AI/train
 
 .. toctree::
    :maxdepth: 1
@@ -132,9 +133,9 @@ Here you can add some specific information about this chapter.
 
 References
 -----------
-[1] K. Merckaert, B. Convens, C. Wu, A. Roncone, M. M. Nicotra, and B. Vanderborght, 
+[1] K. Merckaert, B. Convens, C. Wu, A. Roncone, M. M. Nicotra, and B. Vanderborght,
 **Real-time motion control of robotic manipulators for safe human-robot coexistence**,
-*Robotics and Computer-Integrated Manufacturing*, vol.73, 2022, |10.1016/j.rcim.2021.102223|. 
+*Robotics and Computer-Integrated Manufacturing*, vol.73, 2022, |10.1016/j.rcim.2021.102223|.
 
 
 
@@ -144,4 +145,4 @@ References
 
 Attribution
 -----------
-Major contributors to the *Constraint-Based Planning with a Stereo Camera* tutorial are listed: Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo. 
+Major contributors to the *Constraint-Based Planning with a Stereo Camera* tutorial are listed: Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo.
