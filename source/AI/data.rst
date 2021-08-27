@@ -191,7 +191,7 @@ Here the `link  <https://github.com/charlesq34/frustum-pointnets.git>`_  to the 
 Now that you have clone this repository, there are still some change to make. First of all, you have to get the ZED2 camera calibration file, which is located here :
 
 .. code-block:: bash
-    /usr/local/zed/settings
+	/usr/local/zed/settings
 
 Open the .conf file, and in the LEFT_CAM_HD section, copy the cx, cy, fx and fy (line 46, 47, 48, 49) and replace the cx, cy, fx, fy variable in the calib.py in the convert folder.
 Go in the convert directory execute the convert.sh script. This script will convert in the right format every files needed for the AI trining.
