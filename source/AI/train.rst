@@ -21,13 +21,15 @@ As it is explained in the Readme of frustum-pointnets, execute the following com
 
 You will see a window like this one appear :
 
-(photo)
+.. image:: ./images/train.png
+    :width: 600
 
-The algorithm will try to reduce the mean loss. The loss represents the error between the prediction and the label.
+The algorithm will try to reduce the mean loss. The loss represents the error between the prediction and the label. So the lower it is, the better it is. At a certain moment, you will see that the loss does not move : the algorithm can't learn more, you can stop it.
+Also, take a look at the IoU (which represents the the intersection divided by the union of the label and the predicted bounding box from the AI). It varies from 0 to 1. If it is 0, the two boxes do not overlap. If it is 1, the two boxes exactly match.
 
-You want to maximise the IoU (which represents the the intersection divided by the union of the label and the predicted bounding box from the AI). It varies from 0 to 1. If it is 0, the two boxes do not overlap. If it is 1, the two boxes exactly match.
+.. image:: ./images/iou.png
+    :width: 600
 
-Once the IoU does not change much, you can stop the training.
 Now, you just try to predict the labels :
 
 .. code-block:: bash
