@@ -17,13 +17,13 @@ Hardware and software needed
 
     *  A computer with an Nvidia GPU (the Jetson must be ok only for grabbing data!)
     *  A ZED 2 camera (need to be plug-in a computer with Nvidia)
-    *  The  `labelCloud <https://github.com/ch-sa/labelCloud.git>`_ tool 
+    *  The  `labelCloud <https://github.com/ch-sa/labelCloud.git>`_ tool
 
     .. code-block:: bash
 
         git clone https://github.com/ch-sa/labelCloud.git
         cd labelCloud
-        pip install -r requirements.txt 
+        pip install -r requirements.txt
 
     *  The  `Frustum PointNets <https://github.com/ch-sa/labelCloud.git>`_ software.
 
@@ -44,7 +44,7 @@ ime from A to Z
     It took us approximately 15 minutes to grab 100 pictures.
 
 * Labeling part:
-    
+
     This part is the longest and the hardest one. The time required to label depends on the quality of the pointcloud since we have to identify the object we want to label in it.
     If we can not clearly see the object in the pointcloud then we will have to use the 2D image that corresponds to it to estimate his position in the pointcloud.
 
@@ -62,14 +62,14 @@ How to save images with the camera
 
 .. _advice:
 
-Advice: 
+Advice:
 *******
 
 Before starting to save your data with the ZED2, use a tripod to position the camera.
-Put the camera at least 50cm from where you are going to take the picture. 
+Put the camera at least 50cm from where you are going to take the picture.
 The camera has to be in an horizontal direction during the whole process (try not to lean the camera when you take pictures of the objects for easier labeling).
 Between two picture move the camera slightly (by 5cm or 10cm).
-During the process DO NOT MOVE YOUR OBJECTS OR IT WILL BE HARDER FOR LABELING. 
+During the process DO NOT MOVE YOUR OBJECTS OR IT WILL BE HARDER FOR LABELING.
 Follow this step will reduce significantly the time spent on labeling.
 
 Saving data:
@@ -119,8 +119,8 @@ Different files saved
 
 The program will save different files :
 
-*   The left and right RGB images are saved in rgb/left/ and rgb/right/ as .png 
-*   The pointcloud are saved pointclouds/ as .pcd 
+*   The left and right RGB images are saved in rgb/left/ and rgb/right/ as .png
+*   The pointcloud are saved pointclouds/ as .pcd
 *   The transformation between two consecutive images as .json. For the first image there is no transformation. The transformation represents the movement of the camera between 2 images. The transformation 000000.json is the transormation between image 000000 and image 000001, and so on.
 
 Label the data
@@ -139,23 +139,23 @@ Before starting to label your data you can take a look at the config.ini file. I
     cd path/to/labelCloud
     gedit config.ini
 
-Here a :download:`configuration file<doc/config.ini>` we used.   
-Now you can label your data. For this go in your labelCloud directory and run the labelCloud.py code. 
+Here a :download:`configuration file<doc/config.ini>` we used.
+Now you can label your data. For this go in your labelCloud directory and run the labelCloud.py code.
 
 .. code-block:: bash
 
     cd path/to/labelCloud
     python3 labelCloud.py
-   
+
 Make sure to perfectly label the object you want to detect in the pointcloud (do your best).
 Do not forget to change the name of the object you label on the right of the software. Press "save label" on the bottom left of the software once you finished to label the object.
 
 .. image:: ./images/first_label_pointcloud.png
     :width: 600
 
- 
+
 Now in an other terminal go in your labelCloud directory and run the deduce_label.py code.
-This code will deduce the position of the future bounding box based on the labels from the previous pointcloud and the transformation file (this transformation file contains the translation and the rotation made by the camera between two pictures). 
+This code will deduce the position of the future bounding box based on the labels from the previous pointcloud and the transformation file (this transformation file contains the translation and the rotation made by the camera between two pictures).
 
 .. code-block:: bash
 
@@ -188,12 +188,12 @@ Now that you have clone this repository, go in the convert directory execute the
 .. code-block:: bash
 
     cd path/to/3d-object-detection/frustum-pointnets-master/convert
-    bash convert.sh path/to/labelCloud ../dataset/KITTI 
+    bash convert.sh path/to/labelCloud ../dataset/KITTI
 
 * This script will generate:
-    *   the calibration files 
+    *   the calibration files
     *   convert .pcd to .bin file
-    *   convert label 
+    *   convert label
     *   copy the rgb images
     *   image_sets files
     *   create rgb_detection files
@@ -201,6 +201,19 @@ Now that you have clone this repository, go in the convert directory execute the
 
 Changing files in frustum-pointnets
 ------------------------------------
+
+As explained before, we changed files in `the frustum pointnets github  <https://github.com/charlesq34/frustum-pointnets.git>`_ in order to make it work.
+
+* Here are the changes we made :
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
 
 If you want to train a custom model, you have to change some files from the frustum directories
 (mettre tous les fichiers qui sont à changer et les lignes. Pour savoir lesquels faire il faut remettre la database kitti avec moi de files 200 pour voir si c'est comme nous à peu prè, et surtout il faut copier le code comme il est là pour les cubes)
