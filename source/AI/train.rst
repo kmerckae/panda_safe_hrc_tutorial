@@ -22,13 +22,21 @@ As it is explained in the Readme of frustum-pointnets, execute the following com
 You will see a window like this one appear :
 
 .. image:: ./images/train.png
-    :width: 600
+    :width: 300
+    :align: center
 
-The algorithm will try to reduce the mean loss. The loss represents the error between the prediction and the label. So the lower it is, the better it is. At a certain moment, you will see that the loss does not move : the algorithm can't learn more, you can stop it.
+The training will try to reduce the mean loss. The loss represents the error between the prediction and the label. So the lower it is, the better it is. At a certain moment, you will see that the loss does not move : the algorithm can't learn more, you can stop it.
+
 Also, take a look at the IoU (which represents the the intersection divided by the union of the label and the predicted bounding box from the AI). It varies from 0 to 1. If it is 0, the two boxes do not overlap. If it is 1, the two boxes exactly match.
 
 .. image:: ./images/iou.png
-    :width: 600
+    :width: 300
+    :align: center
+
+Also, if you want to upgrade the number of data, you can update the convert.sh script by taking in account the right images, so you can double the data you have
+
+Test the neural network
+-----------------------
 
 Now, you just try to predict the labels :
 
@@ -45,3 +53,11 @@ Then, execute :
     python3 scripts/kitti_object.py
 
 You can see if the network performs well on the data it trained on
+
+.. image:: ./images/first_result.png
+    :width: 300
+    :align: center
+
+.. image:: ./images/second_result.png
+    :width: 300
+    :align: center

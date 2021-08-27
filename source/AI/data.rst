@@ -112,16 +112,21 @@ Every time you press enter, the program will take a new picture and display how 
 .. image:: ./images/rgb_pointcloud_0.png
     :width: 600
 
-Do not forget to move the camera between two pictures, but when taking a picture do not move the camera or the picture will be blurry.
+* Here are the outputs of rgb_pointcloud_saver:
 
-Different files saved
----------------------
+   * 2 .jpg files:
 
-The program will save different files :
+	   the left and right images from ZED2 camera.
 
-*   The left and right RGB images are saved in rgb/left/ and rgb/right/ as .png
-*   The pointcloud are saved pointclouds/ as .pcd
-*   The transformation between two consecutive images as .json. For the first image there is no transformation. The transformation represents the movement of the camera between 2 images. The transformation 000000.json is the transormation between image 000000 and image 000001, and so on.
+   * 1 .pcd file:
+
+	   a colored 3D binary point cloud from ZED2 camera
+
+   * 1 .json file:
+
+	   a transformation file which contains the transformation made by the camera between two camera shoots.
+
+.. note:: Do not forget to move the camera between two pictures, but when taking a picture do not move the camera or the picture will be blurry.
 
 Label the data
 --------------
@@ -183,7 +188,13 @@ Convert data for training
 Now that you have all the data needed for training, we need to convert them and put them into the frustum pointnets directory . So we created a little script for you to use to convert your data. You can get everything from this `github repository <https://github.com/A-Kouassi/3d-object-detection.git>`_. This repository also include the frustum pointnets software.
 Here the `link  <https://github.com/charlesq34/frustum-pointnets.git>`_  to the frustum pointnets github repository if you want to take a look at it.
 
-Now that you have clone this repository, go in the convert directory execute the convert.sh script. This script will convert in the right format every files needed for the AI trining.
+Now that you have clone this repository, there are still some change to make. First of all, you have to get the ZED2 camera calibration file, which is located here :
+
+.. code-block:: bash
+    /usr/local/zed/settings
+
+Open the .conf file, and in the LEFT_CAM_HD section, copy the cx, cy, fx and fy (line 46, 47, 48, 49) and replace the cx, cy, fx, fy variable in the calib.py in the convert folder.
+Go in the convert directory execute the convert.sh script. This script will convert in the right format every files needed for the AI trining.
 
 .. code-block:: bash
 
