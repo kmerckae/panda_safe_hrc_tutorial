@@ -6,8 +6,8 @@ Start and Shut Down the Robot via Franka Desk
 .. role:: raw-html(raw)
     :format: html
     
-.. note:: This page is generally written.
-          You only have to change the IP address of the robot if you want to follow this page for a different Panda robot. 
+.. note:: To follow this page for another robot that the *Panda 2* in the R&MM lab at Vrije Universiteit Brussel, 
+          you will have to change the IP address of the robot and the username and password you will need to enter Franka Desk. 
 
 
 Start Franka Desk
@@ -15,7 +15,15 @@ Start Franka Desk
 
 Once the Panda has booted up, you can start Franka Desk. 
 Open your web browser and type ``192.168.2.106`` in the search bar. 
-When the robot is well connected, you should obtain the following window:
+You will see a window where you will have to give your username and password to enter Franka Desk. 
+The username is *admin* and the password is *franka123*. 
+
+.. image:: ./images/franka_desk_login.png
+    :align: center
+    :width: 400px
+
+
+When the robot is well connected and you have signed in, you should obtain the following window:
 
 .. image:: ./images/franka_desk.png
     :align: center
@@ -24,9 +32,36 @@ When the robot is well connected, you should obtain the following window:
 Settings
 --------
 
-:raw-html:`<font color="red"> You can attach and detach the end-effector. 
-If you detach the end-effector and want to attach another end-effector, you can add the mass and inertia in the settings window.
-Add screenshot of this settings window.  </font>`
+You can go to the settings window in Franka Desk by clicking on the two lines in the right upper corner. 
+Like that you can go to the settings menu, but you can also download the User Manual and the Cobot Pump Manual. 
+
+   .. image:: ./images/FrankaDesk_Settings.png
+    :align: center
+    :width: 250px
+    
+
+In the settings menu, you can see in the **Dashboard** tab the system, robot, and network settings. 
+In the **Network** tab, you can change the robot and the shop floor network. 
+In the **System** tab, you can install features like the Franka Control Interface, do a system update, download log files, etc. 
+
+
+In the **End-Effector** tab, you can select the standard ``Franka Hand`` or select ``Other``. 
+
+*  If you are using the standard Franka Hand end-effector, then select the ``Franka Hand``. 
+   In case the Franka Hand is *uninitialized* in the Dashboard tab, you can re-initialize the hand by clicking on ``HOMING``. 
+   Afterwards the hand should be *initialized* in the Dashboard tab. 
+
+   .. image:: ./images/FrankaDesk_EndEffector_FrankaHand.png
+    :width: 700px
+
+*  If you detach the Franka Hand end-effector and want to attach another end-effector, then you have to select ``Other``. 
+   Like that, you will be able to give the properties of your new end-effector, as in the example below. 
+
+   .. image:: ./images/FrankaDesk_EndEffector_Other.png
+    :width: 700px
+
+To go back to the **Desk**, click again on the lines in the upper right corner and click on Desk. 
+
 
 Unlock the joints
 -----------------

@@ -6,7 +6,8 @@ Plan and Follow a Trajectory with MoveIt
 .. role:: raw-html(raw)
     :format: html
 
-.. note:: This page is generally written. For the robot we use in the R&MM lab at Vrije Universiteit Brussel, we replace <fci-ip> with ``192.168.2.106``
+.. note:: This page is generally written. 
+          For the *Panda 2* robot in the R&MM lab at Vrije Universiteit Brussel we replace <fci-ip> with ``192.168.2.106``
 
 Here we will explain how to add obstacles in the environment with MoveIt, make a plan with MoveIt, and let the robot follow this plan.  
 

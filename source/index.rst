@@ -16,14 +16,21 @@ A part of the documentation is specifically written for the use of the Panda rob
 at Vrije Universiteit Brussel, but this is always mentioned on top of the page.
 The major part is generally written such that researchers in other research groups can also follow this tutorial.
 
+---
+
+In the *Gazebo Simulation* chapter ...
+
 .. toctree::
    :maxdepth: 1
    :caption: Gazebo Simulation
 
    gazebo_panda/gazebo_start
 
-In the *Gazebo Simulation* chapter ...
 
+
+In the *Franka Emika Panda Robot Arm* chapter you will get acquainted with the Panda robot.
+At the end, you will be able to control the robot via the Franka Control Interface (FCI)
+and you will be able to plan a trajectory with MoveIt and follow it.
 
 .. toctree::
    :maxdepth: 1
@@ -37,10 +44,10 @@ In the *Gazebo Simulation* chapter ...
    panda_arm/robot_control
    panda_arm/path_planning
 
-In the *Franka Emika Panda Robot Arm* chapter you will get acquainted with the Panda robot.
-At the end, you will be able to control the robot via the Franka Control Interface (FCI)
-and you will be able to plan a trajectory with MoveIt and follow it.
 
+In the *Vicon Motion Capture* chapter you will learn how to use the Vicon motion capture data
+online for the control of the Panda robot.
+Add info you've sent to interns and colleagues, later on you can update it with all necessary info for your specific programs. 
 
 .. toctree::
    :maxdepth: 1
@@ -48,16 +55,6 @@ and you will be able to plan a trajectory with MoveIt and follow it.
 
    vicon_panda/start
 
-In the *Vicon Motion Capture* chapter you will learn how to use the Vicon motion capture data
-online for the control of the Panda robot.
-Add info you've sent to interns and colleagues, later on you can update it with all necessary info for your specific programs. 
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Constrained Control for HRC
-   
-   erg_panda/start
 
 In the *Constrained Control for HRC* chapter you will see how you can use the trajectory-based Explicit Reference Governor
 for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
@@ -65,6 +62,18 @@ with the Vicon motion capture system.
 We will explain how to set up the scenarios and which programs to run.
 We refer to [1] for more detailed information about the constrained control law that is used.
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Constrained Control for HRC
+   
+   erg_panda/start
+
+
+In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
+It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
+Note that a real-time kernel is required for the real-time control of the Panda robot 
+and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
+At the end you will learn how to receive the ZED 2 camera data via ROS.
 
 .. toctree::
    :maxdepth: 1
@@ -79,18 +88,6 @@ We refer to [1] for more detailed information about the constrained control law 
    zed_ros/object_detection
    zed_ros/octomap
 
-In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
-It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
-Note that a real-time kernel is required for the real-time control of the Panda robot 
-and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
-At the end you will learn how to receive the ZED 2 camera data via ROS.
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Constraint-Based Planning for HRC
-
-   zed_panda/start
 
 In the *Constraint-Based Planning for HRC* chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two
 for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios with the ZED 2 camera.
@@ -99,12 +96,21 @@ We refer to [2] for more detailed information about the constrained control law 
 
 .. toctree::
    :maxdepth: 1
+   :caption: Constraint-Based Planning for HRC
+
+   zed_panda/start
+
+
+In the *Optimization-Based Control for HRC* chapter ...
+
+.. toctree::
+   :maxdepth: 1
    :caption: Optimization-Based Control for HRC
 
    mpc_panda/start
 
-In the *Optimization-Based Control for HRC* chapter ...
 
+In the *Physical HRI* chapter ...
 
 .. toctree::
    :maxdepth: 1
@@ -112,7 +118,7 @@ In the *Optimization-Based Control for HRC* chapter ...
 
    phri_panda/start
 
-In the *Physical HRI* chapter ...
+
 
 
 .. toctree::

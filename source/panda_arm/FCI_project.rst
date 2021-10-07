@@ -6,7 +6,8 @@ Start Franka Control Interface Project
 .. role:: raw-html(raw)
     :format: html
 
-.. note:: This page is generally written. For the robot we use in the R&MM lab at Vrije Universiteit Brussel, we replace <fci-ip> with ``192.168.2.106``
+.. note:: This page is generally written. 
+          For the *Panda 2* robot in the R&MM lab at Vrije Universiteit Brussel we replace <fci-ip> with ``192.168.2.106``
 
 The Franka Control Interface (FCI) allows a fast and direct low-level bidirectional connection to the Arm and Hand.
 It provides the current status of the robot and enables its direct real-time control at 1 kHz with an external workstation PC (our desktop) connected via Ethernet.
@@ -20,19 +21,31 @@ We refer to the |frankaemika-fci-overview| for more information about its specif
 Clone the franka_constrained_control project
 ------------------------------------------------
 
-:raw-html:`<font color="blue">  KELLY TO DO: </font>`
+.. |GPL-3-license| raw:: html
 
-*  :raw-html:`<font color="blue">  which license to add to GitHub packages?   </font>`
+   <a href=" https://www.gnu.org/licenses/gpl-3.0.nl.html" target="_blank">GPL-3 license</a>
 
-*  :raw-html:`<font color="blue">  make the GitHub repo public  </font>`
 
-*  :raw-html:`<font color="blue">  add the link to the GitHub repo via code block bash  </font>`
+.. note:: The GitHub repository is still private and will be made public in September 2022. 
+          People from VUB and CU Boulder that are invited to the private repo, 
+          may not share the content with others. Also not in publications as long as the repository is private. 
+
+          :raw-html:`<font color="blue">  KELLY TO DO: </font>`
+
+          *  :raw-html:`<font color="blue">  add </font>` 
+             |GPL-3-license| 
+             :raw-html:`<font color="blue">  to ALL files  </font>`
+
+          *  :raw-html:`<font color="blue">  make the GitHub repo public  </font>`
+
+          *  :raw-html:`<font color="blue">  change the link to the GitHub repo via the code block bash  </font>`
+
 
 Clone the project and build ``libfranka`` and ``franka_ros``:
 
 .. code-block:: bash
 
-   clone "still-needs-to-be-filled-in"
+   git clone https://github.com/panda-brubotics/franka_constrained_control.git
    cd path/to/franka_constrained_control/libfranka
    mkdir build
    cd build
@@ -44,7 +57,6 @@ Clone the project and build ``libfranka`` and ``franka_ros``:
 .. warning::
 
    The path of ``-DFranka_DIR:PATH`` MUST be an absolute path to the libfranka's build directory.
-   :raw-html:`<font color="red">  Also okay if we say " Every path/to/ MUST be an absolute path" ?   </font>`
 
 
 Now that the project is built, you can use catkin_make without specifying the build type or the build directory, i.e.

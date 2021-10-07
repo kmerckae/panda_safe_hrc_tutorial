@@ -6,15 +6,12 @@ Robot Operating States
 .. role:: raw-html(raw)
     :format: html
 
-.. note:: This page is generally written, **not** specific for the use of the robot in the R&MM lab at Vrije Universiteit Brussel.
-
 There are status lights on both sides of the base which take on the corresponding color.
 These status lights will only flash during boot up,
 during other processes the lights will glow continuously in the corresponding color of the status Panda is in.
 
 On this page we will explain the states you can get in during this work.
-For the explanation about the other states, we refer to :download:`FrankaPandaManual PDF file <doc/FrankaPandaManual.pdf>`.
-:raw-html:`<font color="red">  Is it possible to add a link to the pdf file FrankaPandaManual.pdf that is included in the source folder?  </font>`
+For the explanation about the other states, we refer to the :download:`Franka Emika Panda manual  <doc/FrankaPandaManual.pdf>`. 
 
 .. image:: ./images/panda_states.png
     :align: center
@@ -74,12 +71,5 @@ We have listed the possible solutions in chronological order, so if the first so
    | Vice versa, if the external activation device is in the closed state (pressed down), put it in the open state (pulled up), and back in the closed state (pressed down).
 
 *  Lock and unlock the joints via Franka Desk.
-
-*  Put the activation device in the closed state (pressed down), try to move a little bit the arm of it's position and then execute a move to start command.
-   :raw-html:`<font color="red">  THIS IS NOT POSSIBLE IN THE RED STATE!!!!!! WHY DID YOU ADD THIS TO LIST OF SOLUTIONS????  </font>`
-   :raw-html:`<font color="green">  Because the robot can be in red state because it is too close from a joint limit, so moving it a little bit can solve the problem (Thomas) </font>`
-   :raw-html:`<font color="red">  THIS IS NOT A SOLUTION!!! You cannot do this while begin in the red state and here you want to get out of the red state... 
-   What you mean is that when you are out of the red state, you have to move the robot such that it is not close to one of its limits anymore, 
-   but this is the cause of the problem. When you get too many times in the red state, it means that you are doing the things wrong that are explained in the first paragraph of the Error section. </font>`
 
 *  Shut down Franka Control with the On-Off switch at the back of the Panda Control, wait for a minute, and restart it.

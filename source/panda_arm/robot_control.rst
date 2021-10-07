@@ -6,7 +6,8 @@ Control the Robot with ROS
 .. role:: raw-html(raw)
     :format: html
 
-.. note:: This page is generally written. For the robot we use in the R&MM lab at Vrije Universiteit Brussel, we replace <fci-ip> with ``192.168.2.106``
+.. note:: This page is generally written. 
+          For the *Panda 2* robot in the R&MM lab at Vrije Universiteit Brussel we replace <fci-ip> with ``192.168.2.106``
 
 Here we will explain how to test the ``franka_ros`` examples and how to make your own controller.
 
@@ -40,6 +41,8 @@ When you manually guide the robot to another configuration and release the enabl
 you will see that the robot configuration in rviz is updated to the configuration you manually guided the robot to.
 In the meanwhile you can see the updated values of e.g. the fourth joint pose and the joint angles in the terminal.
 
+:raw-html:`<font color="blue">  Replace image! </font>`
+
 .. image:: ./images/joints.png
     :align: center
 
@@ -54,8 +57,8 @@ Then set the robot in the **activated (blue)** state before executing move_to_st
    roslaunch franka_example_controllers move_to_start.launch robot_ip:=<fci-ip> load_gripper:=true
 
 The robot should normally return in the following configuration that is required to start from for most of the franka_example_controllers.
-:raw-html:`<font color="blue">  Kelly TO DO: Replace image with better image when we have white background. </font>`
-:raw-html:`<font color="red">  Is it also possible to add a movie? Of a giff?  </font>`
+
+:raw-html:`<font color="blue">  Replace image/gif! </font>`
 
 .. image:: ./videos/move_to_start.gif
     :align: center
@@ -72,7 +75,7 @@ Then execute the following.
 
    roslaunch franka_example_controllers joint_impedance_example_controller.launch robot_ip:=<fci-ip> load_gripper:=true
 
-:raw-html:`<font color="red"> Show/explain what you see.    </font>`
+:raw-html:`<font color="blue">  Show what you see with an image and/or a gif! </font>`
 
 .. note :: If the robot briskly stopts because of a problem or because you have stopped the robot with the ``CTRL+C`` command,
            you will not be able to run another program although the display lights didn't change color.
@@ -90,7 +93,7 @@ Then execute the following.
 
    roslaunch franka_example_controllers cartesian_impedance_example_controller.launch robot_ip:=<fci-ip> load_gripper:=true
 
-:raw-html:`<font color="red"> Show/explain what you see. I think this is the example where you can move the robot via rviz.  </font>`
+:raw-html:`<font color="blue">  Show what you see with an image and/or a gif + show RVIZ screen! </font>`
 
 Make your own controller
 -------------------------

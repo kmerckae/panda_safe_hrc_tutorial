@@ -6,10 +6,14 @@ Boot Desktop with Correct Kernel
 .. role:: raw-html(raw)
     :format: html
 
-.. note:: This page is specifically written for the use of the robot in the R&MM lab at Vrije Universiteit Brussel. 
-          For the general version of this documentation, we refer to setting up the |frankaemika-real-time-kernel| for the Franka Emika Panda robot. 
+.. note:: This page is specifically written for the use of robot *Panda 2* in the R&MM lab at Vrije Universiteit Brussel 
+          with a desktop that is already set up to work with this robot. 
+          For the general version of this documentation, we refer to |frankaemika-requirements| and |frankaemika-real-time-kernel| for the Franka Emika Panda robot. 
 
-:raw-html:`<font color="red">  How to change the color scheme of notes as is done in </font>` |moveit-tutorial-note-color-scheme| 
+
+.. |frankaemika-requirements| raw:: html
+
+    <a href="https://frankaemika.github.io/docs/requirements.html" target="_blank">the minimum system and network requirements</a>
 
 .. |frankaemika-real-time-kernel| raw:: html
 
