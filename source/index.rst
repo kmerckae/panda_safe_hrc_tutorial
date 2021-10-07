@@ -35,7 +35,7 @@ and you will be able to plan a trajectory with MoveIt and follow it.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Vicon Motion Capture with ROS Integration 
+   :caption: Vicon Motion Capture
 
    vicon_panda/start
 
@@ -45,7 +45,7 @@ online for the control of the Panda robot.
 
 .. toctree:: 
    :maxdepth: 1
-   :caption: Constrained Control in HRC Scenarios
+   :caption: Constrained Control for HRC
    
    erg_panda/start
 
@@ -58,35 +58,26 @@ We refer to [1] for more detailed information about the constrained control law 
 
 .. toctree::
    :maxdepth: 1
-   :caption: ZED 2 Stereo Camera on NVIDIA Jetson
+   :caption: ZED 2 Stereo Camera
 
    zed_jetson/jetson_setup
    zed_jetson/zed_jetson
    zed_jetson/zed_examples
-
-In this chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
-It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
-Note that a real-time kernel is required for the real-time control of the Panda robot 
-and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: ZED 2 Stereo Camera with ROS Integration
-
    zed_ros/ros_jetson_setup
    zed_ros/rviz_jetson
    zed_ros/rviz_external_pc
    zed_ros/object_detection
    zed_ros/octomap
 
-In this chapter you will learn how to receive the ZED 2 camera data via ROS.
-
-
+In this chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
+It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
+Note that a real-time kernel is required for the real-time control of the Panda robot 
+and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
+At the end you will learn how to receive the ZED 2 camera data via ROS.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Constraint-Based Planning in HRC Scenarios
+   :caption: Constraint-Based Planning for HRC
 
    zed_panda/start
 
@@ -99,7 +90,7 @@ We refer to [2] for more detailed information about the constrained control law 
 
 .. toctree:: 
    :maxdepth: 1
-   :caption: Constraint-Based Planning for Physical HRI
+   :caption: Physical HRI
 
    phri_panda/start
 
