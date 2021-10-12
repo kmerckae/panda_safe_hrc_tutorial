@@ -56,19 +56,6 @@ Add info you've sent to interns and colleagues, later on you can update it with 
    vicon_panda/start
 
 
-In the *Constrained Control for HRC* chapter you will see how you can use the trajectory-based Explicit Reference Governor
-for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
-with the Vicon motion capture system.
-We will explain how to set up the scenarios and which programs to run.
-We refer to [1] for more detailed information about the constrained control law that is used.
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Constrained Control for HRC
-   
-   erg_panda/start
-
-
 In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
 It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
 Note that a real-time kernel is required for the real-time control of the Panda robot 
@@ -87,6 +74,28 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
    zed_ros/rviz_external_pc
    zed_ros/object_detection
    zed_ros/octomap
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Zed camera and Panda Arm programs
+
+   zed_panda/zed_panda_setup
+   zed_panda/zed_panda_objects_detection
+   zed_panda/zed_panda_octomap
+
+
+In the *Constrained Control for HRC* chapter you will see how you can use the trajectory-based Explicit Reference Governor
+for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
+with the Vicon motion capture system.
+We will explain how to set up the scenarios and which programs to run.
+We refer to [1] for more detailed information about the constrained control law that is used.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Constrained Control for HRC
+   
+   erg_panda/start
 
 
 In the *Constraint-Based Planning for HRC* chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two
@@ -119,19 +128,9 @@ In the *Physical HRI* chapter ...
    phri_panda/start
 
 
-
-
 .. toctree::
    :maxdepth: 1
-   :caption: Zed camera and Panda Arm programs
-
-   zed_panda/zed_panda_setup
-   zed_panda/zed_panda_objects_detection
-   zed_panda/zed_panda_octomap
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Object detection
+   :caption: Object Detection with ZED2
 
    AI/purpose
    AI/data

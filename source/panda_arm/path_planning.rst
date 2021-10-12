@@ -9,35 +9,40 @@ Plan and Follow a Trajectory with MoveIt
 .. note:: This page is generally written. 
           For the *Panda 2* robot in the R&MM lab at Vrije Universiteit Brussel we replace <fci-ip> with ``192.168.2.106``
 
-Here we will explain how to add obstacles in the environment with MoveIt, make a plan with MoveIt, and let the robot follow this plan.  
+Here we will explain how to add obstacles in the MoveIt planning environment, how to make a plan and (asynchronously) execute this plan with MoveIt. 
 
 
 Getting started with MoveIt
 ----------------------------
 
-First of all, we advice you to follow the tutorials on the |moveit-melodic-tutorials|. 
-In these tutorials you work with the Panda robot in rviz. 
+First of all, we advice you to follow the tutorials on the |moveit-melodic-tutorials| where you will work with the Panda robot in RViz. 
 
 .. |moveit-melodic-tutorials| raw:: html
 
     <a href="http://docs.ros.org/en/melodic/api/moveit_tutorials/html/index.html" target="_blank">MoveIt website</a>
 
+.. admonition:: todo
 
-Test controller-planner 1
+	Add links with explanation of different planner in OMPL in MoveIt. 
+
+
+Make your own planner 
 -------------------------------
 
-:raw-html:`<font color="blue">  Kelly TO DO: Give a name to the planner. 
-Here you want to show the planner based on the Move Group C++ interface whereby the control is done with
-a ROS trajectory controller.  </font>`
+.. admonition:: todo
 
-Test controller-planner 2
--------------------------------
+	Explain how to make your own planner. Which cpp files? What to add to the CMakeList? 
 
-:raw-html:`<font color="blue">  Kelly TO DO: Give a name to the planner. 
-Here you want to show the planner based on the Move Group C++ interface whereby the plan is sent to the control node
-and an impedance controller is used to control the robot. Torques are sent to the ROS effort controller.  </font>`
+The moveit_static_move program explained
+----------------------------------------- 
 
-To test that libfranka and franka_ros are installed properly, you can run the franka_example_controllers.
+.. admonition:: todo
+
+	Explain how to run it and what it does. Show video/gif of what robot does. Make screencapture of RViz. 
+
+.. admonition:: todo
+
+	Explain parts of the code. 
 
 
 The constrained_base_planning_controller

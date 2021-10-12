@@ -41,7 +41,9 @@ When you manually guide the robot to another configuration and release the enabl
 you will see that the robot configuration in rviz is updated to the configuration you manually guided the robot to.
 In the meanwhile you can see the updated values of e.g. the fourth joint pose and the joint angles in the terminal.
 
-:raw-html:`<font color="blue">  Replace image! </font>`
+.. admonition:: todo
+
+	Replace image below with printscreen of default output from the model_example_controller.
 
 .. image:: ./images/joints.png
     :align: center
@@ -58,7 +60,9 @@ Then set the robot in the **activated (blue)** state before executing move_to_st
 
 The robot should normally return in the following configuration that is required to start from for most of the franka_example_controllers.
 
-:raw-html:`<font color="blue">  Replace image/gif! </font>`
+.. admonition:: todo
+
+	Replace gif below. Make video of move_to_start example and add gif of it in the tutorial. 
 
 .. image:: ./videos/move_to_start.gif
     :align: center
@@ -75,7 +79,9 @@ Then execute the following.
 
    roslaunch franka_example_controllers joint_impedance_example_controller.launch robot_ip:=<fci-ip> load_gripper:=true
 
-:raw-html:`<font color="blue">  Show what you see with an image and/or a gif! </font>`
+.. admonition:: todo
+
+	Explain what you should see with a video or gif below. Make video of joint_impedance_example_controller and add gif of it in the tutorial. 
 
 .. note :: If the robot briskly stopts because of a problem or because you have stopped the robot with the ``CTRL+C`` command,
            you will not be able to run another program although the display lights didn't change color.
@@ -93,7 +99,9 @@ Then execute the following.
 
    roslaunch franka_example_controllers cartesian_impedance_example_controller.launch robot_ip:=<fci-ip> load_gripper:=true
 
-:raw-html:`<font color="blue">  Show what you see with an image and/or a gif + show RVIZ screen! </font>`
+.. admonition:: todo
+
+	Explain what you should see with a video or gif below. Make video of cartesian_impedance_example_controller and do screen capture of RViz. Trim both videos and add gif of it in the tutorial. 
 
 Make your own controller
 -------------------------
