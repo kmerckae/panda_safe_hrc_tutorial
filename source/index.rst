@@ -26,7 +26,7 @@ In the *Gazebo Simulation* chapter you can test the planning and control algorit
    :caption: Gazebo Simulation
 
    gazebo_panda/ros_gazebo_beginners
-   gazebo_panda/gazebo_start
+   gazebo_panda/panda_visualization
 
 
 
