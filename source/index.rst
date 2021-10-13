@@ -12,18 +12,20 @@ This tutorial explains different ways of safe Human-Robot Collaboration (HRC),
 from safe human-robot coexistence to safe physical human-robot interaction.
 All the experiments are validated on the Franka Emika Panda robot.
 
-A part of the documentation is specifically written for the use of the Panda robot in the R&MM lab
-at Vrije Universiteit Brussel, but this is always mentioned on top of the page.
-The major part is generally written such that researchers in other research groups can also follow this tutorial.
+Although the major part of the documentation is generally written such that researchers in other research groups can also follow this tutorial, 
+a part of the documentation is specifically written for the use of the Panda robot in the R&MM lab at Vrije Universiteit Brussel.
+However, this is always clearly mentioned.  
 
 ---
 
-In the *Gazebo Simulation* chapter ...
+In the *Gazebo Simulation* chapter you can test the planning and control algorithms on a Panda robot in Gazebo. 
+<More information will follow later on.>
 
 .. toctree::
    :maxdepth: 1
    :caption: Gazebo Simulation
 
+   gazebo_panda/ros_gazebo_beginners
    gazebo_panda/gazebo_start
 
 

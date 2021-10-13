@@ -106,7 +106,7 @@ Then execute the following.
 Make your own controller
 -------------------------
 
-To create your own controller in an existing project, we follow the tutorial *Starting to Writhe a New Controller* that is written on the |frankaemika-community| website.
+To create your own controller in an existing project, we follow the tutorial *Starting to Write a New Controller* that is written on the |frankaemika-community| website.
 You have to make an account if you want to see posts in this community. We encourage you to do this!
 
 .. |frankaemika-community| raw:: html
