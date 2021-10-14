@@ -10,14 +10,24 @@ Safe Human-Robot Collaboration
 ===============================
 This tutorial explains different ways of safe Human-Robot Collaboration (HRC),
 from safe human-robot coexistence to safe physical human-robot interaction.
-All the experiments are validated on the Franka Emika Panda robot.
-
-Although the major part of the documentation is generally written such that researchers in other research groups can also follow this tutorial, 
-a part of the documentation is specifically written for the use of the Panda robot in the R&MM lab at Vrije Universiteit Brussel.
-However, this is always clearly mentioned.  
+We explain how to validate the experiments on a Franka Emika Panda robot arm
+and which sensing systems can be used. For people that don't have the real robot arm, 
+we explain how to validate the algorithms in the Gazebo simulation environment.  
 
 
-Gazebo Simulation
+.. admonition:: todo
+
+	Include wrap up youtube video.
+
+Getting Started with ROS, Gazebo, and Git
+------------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   doc/getting_started/getting_started
+
+Gazebo Simulation 
 -----------------
 
 In the *Gazebo Simulation* chapter you can test the planning and control algorithms on a Panda robot in Gazebo. 
@@ -28,13 +38,15 @@ In the *Gazebo Simulation* chapter you can test the planning and control algorit
 
    gazebo_panda/gazebo_panda
 
+Franka Emika Panda Robot Arm
+-----------------------------
+
 In the *Franka Emika Panda Robot Arm* chapter you will get acquainted with the Panda robot.
 At the end, you will be able to control the robot via the Franka Control Interface (FCI)
 and you will be able to plan a trajectory with MoveIt and follow it.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Franka Emika Panda Robot Arm
 
    panda_arm/start_desktop
    panda_arm/robot_network

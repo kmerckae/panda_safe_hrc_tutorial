@@ -1,15 +1,18 @@
-.. _ROS_Gazebo_Beginner:
-
-ROS and Gazebo First-Time Users
-======================================
+Getting Started
+=================
 
 .. role:: raw-html(raw)
     :format: html
 
-Installation requirements
--------------------------
+.. _ROS_Gazebo_Git_Beginner:
 
-To work with ROS Noetic, you will have to install the operating system Ubuntu 20.04. 
+
+Installation requirements to use ROS and Gazebo
+-------------------------------------------------
+
+.. |ROS_Noetic_lastofficialROS1| raw:: html
+
+    <a href="https://www.openrobotics.org/blog/2020/5/23/noetic-ninjemys-the-last-official-ros-1-release" target="_blank">final release of ROS 1 by Open Robotics</a>
 
 .. |install_ubuntu_20| raw:: html
 
@@ -26,22 +29,21 @@ To work with ROS Noetic, you will have to install the operating system Ubuntu 20
 .. |install_ROS_Control| raw:: html
 
     <a href="http://wiki.ros.org/ros_control" target="_blank">ROS Control</a>
-       
-       
+           
+In all the simulations and experiments described in this tutorial, ROS Noetic is used, which is the |ROS_Noetic_lastofficialROS1|. 
+To work with ROS Noetic, you will have to install the operating system Ubuntu 20.04. 
 
 *  Install |install_ubuntu_20|
-
 *  Install |install_ROS_Noetic|
 
    *  Check after installation if the |InstallingandConfiguringROSEnvironment| are set. 
-
    *  Install |install_ROS_Control|
    
-Reading material and tutorials
--------------------------------
+Reading material and tutorials for ROS and Gazebo
+-------------------------------------------------
 
 If you don't know anything about ROS and Gazebo, I recommend you to first read  
-:download:`Mastering ROS for Robotics Programming  <doc/JCACACE-MASTERING_ROS_FOR_ROBOTICS_PROGRAMMING_SECOND_EDITION.pdf>`.  
+:download:`Mastering ROS for Robotics Programming  <JCACACE-MASTERING_ROS_FOR_ROBOTICS_PROGRAMMING_SECOND_EDITION.pdf>`.  
 The book is explained for ROS Kinetic, but it is still a very good book if you never worked with ROS before or when you want to refresh your ROS knowledge.  
 You can just read the book or maybe better, you can try the tutorials in ROS Noetic. 
 Probably you will have to make some minor changes to let it work in ROS Noetic, but that's directly a good practice. 
@@ -68,6 +70,9 @@ Gazebo provides beginner tutorials for first-time Gazebo users, intermediate tut
     <a href="https://www.coursera.org/learn/version-control-with-git" target="_blank">Version Control with Git</a>
 
 
+Git version control course
+---------------------------
+
 I really recommend Git version control once you are working on software. 
 Follow the Atlassian |atlassian_git_version_control| course and learn to work with it via the command line 
 to improve group work and also keep track of the changes you make on your own projects! 
@@ -78,7 +83,4 @@ Atlassian also provides a very helpful |atlassian_git_cheat_sheet|!
 .. |atlassian_git_cheat_sheet| raw:: html
 
     <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet" target="_blank">Git cheat sheet</a>
-
-
-
 
