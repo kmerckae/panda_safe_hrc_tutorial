@@ -16,20 +16,17 @@ Although the major part of the documentation is generally written such that rese
 a part of the documentation is specifically written for the use of the Panda robot in the R&MM lab at Vrije Universiteit Brussel.
 However, this is always clearly mentioned.  
 
----
+
+Gazebo Simulation
+-----------------
 
 In the *Gazebo Simulation* chapter you can test the planning and control algorithms on a Panda robot in Gazebo. 
 <More information will follow later on.>
 
 .. toctree::
    :maxdepth: 1
-   :caption: Gazebo Simulation
 
-   gazebo_panda/ros_gazebo_beginners
-   gazebo_panda/panda_visualization
-   gazebo_panda/panda_control
-   gazebo_panda/panda_erg
-   gazebo_panda/panda_planning
+   gazebo_panda/gazebo_panda
 
 In the *Franka Emika Panda Robot Arm* chapter you will get acquainted with the Panda robot.
 At the end, you will be able to control the robot via the Franka Control Interface (FCI)
