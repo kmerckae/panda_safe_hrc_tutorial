@@ -1,4 +1,4 @@
-# panda_constrained_control_tutorial
+# Safe Human-Robot Collaboration with Franka Emika Panda 
 
 ## Prerequisites:
 
