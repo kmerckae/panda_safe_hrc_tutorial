@@ -14,9 +14,20 @@ We explain how to validate the experiments on a Franka Emika Panda robot arm
 and which sensing systems can be used. For people that don't have the real robot arm, 
 we explain how to validate the algorithms in the Gazebo simulation environment.  
 
+.. |GPL-3-license| raw:: html
+
+   <a href=" https://www.gnu.org/licenses/gpl-3.0.nl.html" target="_blank">GPL-3 license</a>
+
+.. warning:: The GitHub repository is still private and will be made public in September 2022. 
+          People from VUB and CU Boulder that are invited to the private repo, 
+          may not share the content with others. Also not in publications as long as the repository is private. 
+
 .. admonition:: todo
 
-	Include wrap up youtube video.
+  *  include wrap up youtube video
+  *  add |GPL-3-license| to ALL files
+  *  make the GitHub repo public
+  *  change the link to the GitHub repo via the code block bash 
 
 Getting Started with ROS, Gazebo, and Git
 ------------------------------------------
@@ -45,14 +56,6 @@ Here we explain how you can get acquainted with the *real* Panda robot.
    :maxdepth: 1
 
    doc/panda_arm/panda_arm
-   panda_arm/start_desktop
-   panda_arm/robot_network
-   panda_arm/franka_desk
-   panda_arm/robot_operating_modes
-   panda_arm/FCI_project
-   panda_arm/robot_control
-   panda_arm/path_planning
-
 
 In the *Vicon Motion Capture* chapter you will learn how to use the Vicon motion capture data
 online for the control of the Panda robot.
