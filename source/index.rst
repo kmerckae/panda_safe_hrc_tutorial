@@ -27,8 +27,9 @@ In the *Gazebo Simulation* chapter you can test the planning and control algorit
 
    gazebo_panda/ros_gazebo_beginners
    gazebo_panda/panda_visualization
-
-
+   gazebo_panda/panda_control
+   gazebo_panda/panda_erg
+   gazebo_panda/panda_planning
 
 In the *Franka Emika Panda Robot Arm* chapter you will get acquainted with the Panda robot.
 At the end, you will be able to control the robot via the Franka Control Interface (FCI)
