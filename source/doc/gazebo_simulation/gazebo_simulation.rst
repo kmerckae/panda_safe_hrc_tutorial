@@ -4,94 +4,6 @@ Gazebo Simulation
 .. role:: raw-html(raw)
     :format: html
 
-some explanation
-
-
-.. _ROS_Gazebo_Beginner:
-
-ROS and Gazebo First-Time Users
---------------------------------
-
-Installation requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To work with ROS Noetic, you will have to install the operating system Ubuntu 20.04. 
-
-.. |install_ubuntu_20| raw:: html
-
-    <a href="https://ubuntu.com/download/desktop" target="_blank">Ubuntu 20.04</a>
-
-.. |install_ROS_Noetic| raw:: html
-
-    <a href="http://wiki.ros.org/noetic/Installation/Ubuntu" target="_blank">ROS Noetic</a>
-
-.. |InstallingandConfiguringROSEnvironment| raw:: html
-
-    <a href="http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment" target="_blank">environment variables</a>
-
-.. |install_ROS_Control| raw:: html
-
-    <a href="http://wiki.ros.org/ros_control" target="_blank">ROS Control</a>
-       
-       
-
-*  Install |install_ubuntu_20|
-
-*  Install |install_ROS_Noetic|
-
-   *  Check after installation if the |InstallingandConfiguringROSEnvironment| are set. 
-
-   *  Install |install_ROS_Control|
-   
-Reading material and tutorials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you don't know anything about ROS and Gazebo, I recommend you to first read  
-:download:`Mastering ROS for Robotics Programming  <doc/JCACACE-MASTERING_ROS_FOR_ROBOTICS_PROGRAMMING_SECOND_EDITION.pdf>`.  
-The book is explained for ROS Kinetic, but it is still a very good book if you never worked with ROS before or when you want to refresh your ROS knowledge.  
-You can just read the book or maybe better, you can try the tutorials in ROS Noetic. 
-Probably you will have to make some minor changes to let it work in ROS Noetic, but that's directly a good practice. 
-
-.. |theconstructsim| raw:: html
-
-    <a href="https://www.theconstructsim.com/robotigniteacademy_learnros/ros-courses-library/" target="_blank">The Construct</a>
-
-|theconstructsim| has some very interesting and well-explained ROS courses about the basics of ROS, robot control and navigation, robot manipulation, and so on. 
-They have Python and C++ versions of their courses, but please, program everything in C++, since this is the fastest if you want to control robots in real-time. 
-For learning algorithms, most of the time Python is used, but for low level control, C++ (and sometimes even C) is preferred.  
-Since The Construct uses the Gazebo simulation environment, you will also learn to work with Gazebo by following their tutorials. 
-For The Construct tutorials you have to pay. You can start with one month and see if you need more time or not, which depends on the tutorials you want to follow. 
-
-.. |gazebo_sim_tutorials| raw:: html
-
-    <a href="http://gazebosim.org/tutorials" target="_blank">Gazebo tutorials</a>
-
-To learn specifically how to work with Gazebo, it is best to check out the |gazebo_sim_tutorials|. 
-Gazebo provides beginner tutorials for first-time Gazebo users, intermediate tutorials to customize your simulation, and advanced tutorials to contribute to Gazebo. 
-
-.. |atlassian_git_version_control| raw:: html
-
-    <a href="https://www.coursera.org/learn/version-control-with-git" target="_blank">Version Control with Git</a>
-
-
-I really recommend Git version control once you are working on software. 
-Follow the Atlassian |atlassian_git_version_control| course and learn to work with it via the command line 
-to improve group work and also keep track of the changes you make on your own projects! 
-The course doesn't assume any previous knowledge of Git and builds a strong conceptual understanding of the technology,
-whereafter you will be able to confidently dig deeper on any version control topic that interests you. 
-Atlassian also provides a very helpful |atlassian_git_cheat_sheet|! 
-
-.. |atlassian_git_cheat_sheet| raw:: html
-
-    <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet" target="_blank">Git cheat sheet</a>
-
-
-
-
-.. _Gazebo_Panda_Visualization:
-
-Panda Visualization
-----------------------
 
 .. admonition:: todo
 
@@ -99,13 +11,13 @@ Panda Visualization
 
 
 Create a catkin workspace
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 .. |atlassian_setting_up_a_repository| raw:: html
 
     <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository" target="_blank">set up a repository</a>
 
-If you want to work with Git version control (which I highly recommend), then you first need to |atlassian_setting_up_a_repository|. 
+If you want to work with Git version control, then you first need to |atlassian_setting_up_a_repository|. 
 
 .. |ROS_create_a_workspace| raw:: html
 
@@ -121,6 +33,12 @@ Below you see the example for ros_ws. Go to the terminal and execute the followi
    cd ros_ws
    source /opt/ros/melodic/setup.sh
    catkin_init_workspace src
+
+
+.. _Gazebo_Panda_Visualization:
+
+Visualization
+----------------------
 
 Visualize the Panda robot in RViz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,14 +66,10 @@ In your **panda_description** package:
 *  You can compare with my panda_description package I had at the moment I visualized the robot in Rviz. Therefore, go to my repository (constrained_control_robotarm), 
    click on "98 commits", go to commits on 16 July 2019, click on "view Panda in Rviz", click on "Browse files". 
    Now you can see the folders, packages, files I had at that moment. 
-
 *  Make a folder called **urdf**. Copy the urdf and xacro files that are inside the robots folder in franka_ros to your urdf folder. 
    I also did this, but there was no dual_panda example at that moment. 
-
 *  Make a folder called **meshes**. Copy the folders **collision** and **visual** from my code into your meshes folder. 
-
 *  Make a folder called **launch**. Copy the two files that are in my launch folder into your launch folder. 
-
 *  Check the package.xml and the CMakeLists.txt files. Compare them with the ones I had at that moment and add the lines (e.g. dependencies) you don't have in your files. 
 
 
@@ -171,7 +85,6 @@ You can move the joints of this Panda robot by the joint_state_publisher GUI.
 .. admonition:: todo
 
 	Show video.
-
 
 
 Visualize the Panda robot in Gazebo
@@ -198,23 +111,16 @@ Now you can see the folders, packages, files I had at that moment.
 *  Adapt the **urdf** folder in your **panda_description** package. (take a look at my files from that moment!)
 
     *  panda_arm_hand.urdf: rigidly fix the base to the Gazebo world
-
     *  hand.xacro: add inertial values  
-
     *  panda_arm.xacro: add inertial values + add joint damping 
-
     *  panda.gazebo.xacro: new file with gazebo specifications
-
     *  panda_arm_hand.urdf.xacro: include panda.gazebo.xacro  
 
 *  Make a catkin package called panda_gazebo in the src folder of your ros_ws. 
-
 *  In your **panda_gazebo** package:
 
     *  Make a folder called **worlds**. Create a world file including a ground plane, a light source (sun), and a camera at a certain position and orientation
-    
     *  Make a folder called **launch**. Create a launch file. 
-    
     *  Check the package.xml and the CMakeLists.txt files. Compare them with the ones I had at that moment and add the lines you don't have. 
 
 *  Launch the launch file by entering the terminal 
@@ -229,20 +135,16 @@ Now you can see the folders, packages, files I had at that moment.
 
 	Show video.
 
-.. note:: In :download:`Dynamic Identification of the Franka Emika Panda Robot with Retrieval of Feasible Parameters Using Penalty-Based Optimization <doc/PandaDynamicIdentification.pdf>`
-          and :download:`its supplementary material <doc/PandaDynamicIdentification_SupplementaryMaterial.pdf>`, 
+.. note:: In :download:`Dynamic Identification of the Franka Emika Panda Robot with Retrieval of Feasible Parameters Using Penalty-Based Optimization <PandaDynamicIdentification.pdf>`
+          and :download:`its supplementary material <PandaDynamicIdentification_SupplementaryMaterial.pdf>`, 
           the authors identified the dynamic parameters of the Panda robot. 
           I implemented them in my code some months ago, check the last version of panda_arm.xacro in panda_description.
 
 
 .. _Gazebo_Panda_Control:
 
-Panda Control
+ROS Control
 -----------------
-
-.. admonition:: todo
-
-	Make updated GitHub repository with ROS Noetic on Ubuntu 20.04 and rewrite this part of the tutorial.
 
 .. |Gazebo_sim_ROS_control| raw:: html
 
@@ -253,21 +155,18 @@ To start with the control of the Panda robot in Gazebo, I would also recommend t
 Position control 
 ^^^^^^^^^^^^^^^^^^
 
-1)  Adapt the **urdf** folder in your **panda_description** package:
+*  Adapt the **urdf** folder in your **panda_description** package:
 
     *  panda_arm.xacro: add the transmission elements
-
     *  hand.xacro: add the transmission elements
-
     *  panda.gazebo.xacro: add the gazebo_ros_control plugin
 
-2) Adapt two run_depend in the **package.xml** file of your **panda_gazebo** package:
+*  Adapt two run_depend in the **package.xml** file of your **panda_gazebo** package:
 
     *  gazebo_plugins
-    
     *  gazebo_ros_control
 
-3) Make a catkin package called **panda_control** in the src folder of you ros_ws. Once in your panda_control package,
+*  Make a catkin package called **panda_control** in the src folder of you ros_ws. Once in your panda_control package,
 
     *  make a **config** folder:
 
@@ -286,15 +185,10 @@ Position control
     *  your **package.xml** file should contain
 
         *  <buildtool_depend>catkin</buildtool_depend>
-
         *  <run_depend>controller_manager</run_depend>
-
         *  <run_depend>joint_state_controller</run_depend>
-
         *  <run_depend>robot_state_publisher</run_depend>
-
         *  <run_depend>effort_controllers</run_depend>
-
         *  <run_depend>roscpp</run_depend>
 
     *  your CMakeLists.txt should contain
@@ -307,22 +201,20 @@ Position control
            in this stage you will *not need*: find_package(...), include in include_directories(...), add_library(...), 
            add_dependencies(...), target_link_libraries(...),  the other add_executable(...) and target_link_libraries(...)
 
-4) In your **panda_gazebo** package
+*  In your **panda_gazebo** package
 
     *  Add another run_depend in the **package.xml** file
 
         *  panda_control (the catkin package you just made)
 
-5) in the terminal: 
+*  in the terminal: 
    
    .. code-block:: bash
 
       roslaunch panda_gazebo panda_positioncontrol_jointspace.launch
 
    *  you will be asked to enter a reference in joint space for the Panda arm and a finger displacement for the Panda hand
-
    *  enter these 7 joint angles and the two values for the finger displacement
-
    *  the robot will go to this reference configuration (maybe with some oscillations)
 
 
@@ -343,11 +235,8 @@ Joint space reference
 In the previous step you based yourself on panda_positioncontrol in joint space:
 
 *  panda_positioncontrol.yaml where the **effort_controllers/JointPositionController** is used (file in panda_control package)
-
 *  panda_positioncontrol_jointspace.cpp  (file in panda_control package)
-
 *  panda_positioncontrol.launch (file in panda_control package)
-
 *  you launched it with: 
 
    .. code-block:: bash
@@ -357,11 +246,8 @@ In the previous step you based yourself on panda_positioncontrol in joint space:
 You can also try panda_effortcontrol in joint space, check the following files:
 
 *  panda_effortcontrol.yaml where the **effort_controllers/JointEffortController** is used (file in panda_control package)
-
 *  panda_effortcontrol_jointspace.cpp  (file in panda_control package)
-
 *  panda_effortcontrol.launch (file in panda_control package)
-
 *  you launch it with: 
 
    .. code-block:: bash
@@ -378,11 +264,8 @@ Task space reference
 You can also try panda_positioncontrol in task space (therefore you need inverse kinematics function, I used the |orocos_KDL_library| to do this)
 
 *  panda_positioncontrol.yaml where the **effort_controllers/JointPositionController** is used (file in panda_control package)
-
 *  panda_positioncontrol_taskspace.cpp (file in panda_control package)
-
 *  panda_positioncontrol.launch (file in panda_control package)
-
 *  you launch it with: 
 
    .. code-block:: bash
@@ -392,11 +275,8 @@ You can also try panda_positioncontrol in task space (therefore you need inverse
 You can also try panda_effortcontrol in task space, check the following files:
 
 *  panda_effortcontrol.yaml where the **effort_controllers/JointEffortController** is used (file in panda_control package)
-
 *  panda_effortcontrol_taskspace.cpp (file in panda_control package)
-
 *  panda_effortcontrol.launch (file in panda_control package)
-
 *  you launch it with: 
 
    .. code-block:: bash
@@ -415,22 +295,31 @@ For the programs in task space, I used the |orocos_KDL_library| (since they have
 
 
 
-.. _Gazebo_Panda_ERG:
-
-Panda Constrained Control
---------------------------
-
-.. admonition:: todo
-
-	Make updated GitHub repository with ROS Noetic on Ubuntu 20.04 and write this part of the tutorial.
-
-
 
 .. _Gazebo_Panda_Planning:
 
-Panda Planning
+Planning with MoveIt
 ----------------------
 
 .. admonition:: todo
 
-	Make updated GitHub repository with ROS Noetic on Ubuntu 20.04 and write this part of the tutorial.
+	To write with updated GitHub repo. 
+
+
+.. _Gazebo_Panda_ERG:
+
+ERG
+--------------------------
+
+.. admonition:: todo
+
+	To write with updated GitHub repo. 
+
+.. _Gazebo_Panda_Planning_ERG:
+
+Planning + ERG
+--------------------------
+
+.. admonition:: todo
+
+	To write with updated GitHub repo. 

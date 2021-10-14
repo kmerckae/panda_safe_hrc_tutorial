@@ -14,7 +14,6 @@ We explain how to validate the experiments on a Franka Emika Panda robot arm
 and which sensing systems can be used. For people that don't have the real robot arm, 
 we explain how to validate the algorithms in the Gazebo simulation environment.  
 
-
 .. admonition:: todo
 
 	Include wrap up youtube video.
@@ -27,27 +26,25 @@ Getting Started with ROS, Gazebo, and Git
 
    doc/getting_started/getting_started
 
-Gazebo Simulation 
------------------
+Franka Emika Panda Gazebo Simulation 
+-------------------------------------
 
-In the *Gazebo Simulation* chapter you can test the planning and control algorithms on a Panda robot in Gazebo. 
-<More information will follow later on.>
+Read this if you don't have access to a Franka Emika Panda robot or if you first want to test the planning and control algorithms in Gazebo. 
 
 .. toctree::
    :maxdepth: 1
 
-   gazebo_panda/gazebo_panda
+   doc/gazebo_simulation/gazebo_simulation
 
 Franka Emika Panda Robot Arm
 -----------------------------
 
-In the *Franka Emika Panda Robot Arm* chapter you will get acquainted with the Panda robot.
-At the end, you will be able to control the robot via the Franka Control Interface (FCI)
-and you will be able to plan a trajectory with MoveIt and follow it.
+Here we explain how you can get acquainted with the *real* Panda robot.
 
 .. toctree::
    :maxdepth: 1
 
+   doc/panda_arm/panda_arm
    panda_arm/start_desktop
    panda_arm/robot_network
    panda_arm/franka_desk
