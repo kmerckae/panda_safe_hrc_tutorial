@@ -56,6 +56,7 @@ Here we explain how you can get acquainted with the *real* Panda robot.
    :maxdepth: 1
 
    doc/panda_arm/panda_arm
+   doc/franka_control_interface/franka_control_interface
 
 In the *Vicon Motion Capture* chapter you will learn how to use the Vicon motion capture data
 online for the control of the Panda robot.
