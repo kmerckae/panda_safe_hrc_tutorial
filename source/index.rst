@@ -58,15 +58,13 @@ Here we explain how you can get acquainted with the *real* Panda robot.
    doc/panda_arm/panda_arm
    doc/franka_control_interface/franka_control_interface
 
-In the *Vicon Motion Capture* chapter you will learn how to use the Vicon motion capture data
-online for the control of the Panda robot.
-Add info you've sent to interns and colleagues, later on you can update it with all necessary info for your specific programs. 
+Vicon Motion Capture System
+----------------------------
 
 .. toctree::
    :maxdepth: 1
-   :caption: Vicon Motion Capture
 
-   vicon_panda/start
+   doc/vicon/vicon
 
 
 In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
