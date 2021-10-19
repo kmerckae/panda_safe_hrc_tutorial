@@ -27,7 +27,7 @@ we explain how to validate the algorithms in the Gazebo simulation environment.
   *  include wrap up youtube video
   *  add |GPL-3-license| to ALL files
   *  make the GitHub repo public
-  *  change the link to the GitHub repo via the code block bash 
+  *  change the link to the GitHub repo in all the code block bashes 
 
 Getting Started with ROS, Gazebo, and Git
 ------------------------------------------
@@ -65,6 +65,7 @@ Vicon Motion Capture System
    :maxdepth: 1
 
    doc/vicon/vicon
+   doc/vicon_panda/vicon_panda
 
 
 In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 

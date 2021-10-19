@@ -4,6 +4,10 @@ Vicon Motion Capture
 .. role:: raw-html(raw)
     :format: html
 
+.. admonition:: todo
+
+  Rewrite based on reading material. 
+
 Reading material
 ----------------
 
@@ -21,24 +25,83 @@ Possible problems
 -----------------
 
 Last year there were some problems with Vicon Nexus. 
-If the cameras and the Lock Sync Box don't color blue when you start up Nexus, then it's highly probable that there is a firewall problem. 
-How to solve this issue? 
 
-    Go to Windows --> control panel --> all control panel items --> Windows Defender Firewall --> Allowed Apps (see attachment WindowsDefenderFirewall_ControlPanel) and check all Nexus applications (see attachment WindowsDefenderFirewall_AllowedApps)
-    Go to Windows --> Windows Firewall --> Inbound rules --> enable and allow connection for all Nexus applications (see attachment WindowsFirewall_InboundRules)
+Firewall 
+^^^^^^^^ 
+If the cameras and the Lock Sync Box don't light up blue when you start up Nexus, then it's highly probable that there is a firewall problem. 
 
-You can also update the  Vicon Firmware via Vicon Firmware Update Utility (see attachment ViconFirmwareUpdateUtility)
+To solve this issue, you have to enter the Vicon desktop.  
 
-Last year there was also a problem with the Vicon Datastream SDK 
-When the vicon_bridge is giving occlusions when you clearly see the subject in Nexus, do the following checks.
+*  Go to Windows --> control panel --> all control panel items --> Windows Defender Firewall --> Allowed Apps 
+   
+   .. image:: img/WindowsDefenderFirewallControlPanel.png
+        :width: 650px
+        
+   and check all Nexus applications 
 
-    Go to C:\Program Files\Vicon\DataStream SDK\Win64\CPP and double click ViconDataStreamSDK_CPPTest
-    When you get the same values in the Global and Local Translation/Rotation as in the Static Translation/Rotation (the standard non-overwritten values with zeros and ones), then you have to check that the Processing Output Level is "Kinematic Fit".
-    Try the ViconDataStreamSDK_CPPTest again, when you now see the real values in the Global and Local Translation/Rotation, run the vicon_bridge
-    You shouldn't see the "occlusion" warning again, which means you can call the subject position and orientation
+   .. image:: img/WindowsDefenderFirewallAllowedApps.png
+        :width: 650px
+
+*  Go to Windows --> Windows Firewall --> Inbound rules --> enable and allow connection for all Nexus applications 
+
+   .. image:: img/WindowsFirewallInboundRules.PNG
+        :width: 650px
+
+Update the Vicon Firmware
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Problems can occur when the Vicon Firmware is not updated. 
+You can do this via the Vicon Firmware Update Utility. 
+
+.. image:: img/ViconFirmwareUpdateUtility.PNG
+    :width: 750px
+
+Vicon Datastreak SDK
+^^^^^^^^^^^^^^^^^^^^^
+
+Last year there was also a problem with the Vicon Datastream SDK. 
+
+.. |vicon_bridge| raw:: html
+
+    <a href="https://github.com/ethz-asl/vicon_bridge" target="_blank">vicon_bridge</a>
+
+
+When the |vicon_bridge| is giving occlusions when you clearly see the subject in Nexus, do the following checks.
+
+*  Navigate in Windows to 
+
+   .. code-block:: bash
+
+     cd C:\Program Files\Vicon\DataStream SDK\Win64\CPP
+   
+   (you don't have to do this via the terminal) and double click ``ViconDataStreamSDK_CPPTest``
+
+*  When you get the standard non-overwritten values with zeros and ones (zero position, unity matrix for orientation) 
+   in the Global and Local Translation/Rotation as in the Static Translation/Rotation, 
+
+   .. image:: img/vicon_nexus_datastream.PNG
+        :width: 650px
+   
+   then probably the Processing Output Level is not **Kinematic Fit**.
+   Change it to Kinematic Fit as shown in the figure below. 
+
+   .. image:: img/ProcessingOutputLevel.png
+        :width: 300px
+
+*  Try the ``ViconDataStreamSDK_CPPTest`` again, when you now see the correct values of the subject in the Global and Local Translation/Rotation.  
+
+*  Run the vicon_bridge: you shouldn't see the *occlusion* warning again in the terminal, which means you can call the subject position and orientation
 
 Extra things that can be done if it still doesn't work: 
 
-    install the newest version of the Datastream SDK (see attachment DatastreamSDK)
-    install python (see attachment Python)
-    run ViconDatastreanSDK_CPP test and check if the processing output level is kinematic fit (see attachment processing_output_level)
+*  install the newest version of the Datastream SDK 
+
+   .. image:: img/DatastreamSDK.jpg
+        :width: 650px
+    
+*  install python 
+
+   .. image:: img/Python.jpg
+        :width: 650px
+    
+*  run ViconDatastreanSDK_CPP test and check again if the processing output level is kinematic fit 
