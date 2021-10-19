@@ -16,7 +16,7 @@ we explain how to validate the algorithms in the Gazebo simulation environment.
 
 .. |GPL-3-license| raw:: html
 
-   <a href=" https://www.gnu.org/licenses/gpl-3.0.nl.html" target="_blank">GPL-3 license</a>
+   <a href="https://www.gnu.org/licenses/gpl-3.0.nl.html" target="_blank">GPL-3 license</a>
 
 .. warning:: The GitHub repository is still private and will be made public in September 2022. 
           People from VUB and CU Boulder that are invited to the private repo, 
@@ -61,13 +61,18 @@ Here we explain how you can get acquainted with the *real* Panda robot.
 Vicon Motion Capture System
 ----------------------------
 
+Here we explain how to use the Vicon motion capture system in general, 
+how to make subjects with Vicon Nexus, how to make objects with Vicon Tracker, 
+and how to use the Vicon information for reference object and obstacle recognition with the Panda robot. 
+
 .. toctree::
    :maxdepth: 1
 
    doc/vicon/vicon
    doc/vicon_panda/vicon_panda
 
-
+ZED 2 Stereo Camera
+-------------------
 In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
 It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
 Note that a real-time kernel is required for the real-time control of the Panda robot 
@@ -76,9 +81,8 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
 
 .. toctree::
    :maxdepth: 1
-   :caption: ZED 2 Stereo Camera
 
-   zed_jetson/jetson_setup
+   doc/zed/zed
    zed_jetson/zed_jetson
    zed_jetson/zed_examples
    zed_ros/ros_jetson_setup

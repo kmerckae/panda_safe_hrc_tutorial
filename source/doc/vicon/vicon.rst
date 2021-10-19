@@ -1,3 +1,5 @@
+.. _ViconMotionCapture:
+
 Vicon Motion Capture
 =======================
 
