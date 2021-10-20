@@ -42,6 +42,10 @@ Getting started
 
    <a href="https://developer.nvidia.com/cuda-zone" target="_blank">CUDA</a>
 
+.. |NVIDIA_Jetson_Xavier_NX| raw:: html
+
+   <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/" target="_blank">Nvidia Jetson Xavier NX</a>
+   
 .. |Stereolabs_RecommendedSpecificationsZedSdk| raw:: html
 
    <a href="https://www.stereolabs.com/docs/installation/specifications/" target="_blank">recommended specifications for ZED SDK</a>
@@ -51,16 +55,12 @@ Getting started
    <a href="https://developer.nvidia.com/embedded/jetson-modules" target="_blank">Jetson Modules</a>
    
 
-First go through the |Stereolabs_ZED2_SDK_GettingStarted|. 
 
-We advise you to put back the ZED 2 camera back in the box when you are not using it. 
-To do this, be careful to put first the built-in USB 3.0 cable in it before putting in the ZED 2 camera. 
-Then you don't have to pull the USB 3.0 cable to get the camera out of the box. 
+First go through the |Stereolabs_ZED2_SDK_GettingStarted|. 
 
 As you can read, the ZED SDK is available for Windows, Linux, and Nvidia Jetson platforms.
 However, you need an NVIDIA graphics card to run |NVIDIA_CUDA|. 
-
-In what follows, we will use the Nvidia Jetson Xavier NX platform to run the ZED SDK. 
+In what follows, we will use the |NVIDIA_Jetson_Xavier_NX| platform to run the ZED SDK. 
 We explain below why we have chosen this platform.  
 
 *  We don't have any laptop or desktop with an NVIDIA graphics card, so an embedded platform as the Jetson is the cheapest solution. 
@@ -74,6 +74,10 @@ We explain below why we have chosen this platform.
    According to Stereolabs, the Jetson Nano can run the ZED SDK in real-time, but with big compromises in terms of performance.
    If good performances are a requirement for the project, Stereolabs suggests to switch to a Jetson Xavier NX that is on another level.
 *  Check also the |Stereolabs_RecommendedSpecificationsZedSdk| and the differences between the |Nvidia_JetsonModules|. 
+
+*Side note.* We advise you to put back the ZED 2 camera back in the box when you are not using it. 
+To do this, be careful to put first the built-in USB 3.0 cable in it before putting in the ZED 2 camera. 
+Then you don't have to pull the USB 3.0 cable to get the camera out of the box. 
 
 .. _ZED2_InstallNvidiaJetsonXavierNX:
 
@@ -104,18 +108,18 @@ Install the ZED SDK on Nvidia Jetson Xavier NX
 Follow the Stereolabs guide to |Stereolabs_ZED2_SDK_NvidiaJetson|
 and also read the Stereolabs blog post about |Stereolabs_ZED2_SDK_GettingStartedWithJetsonXavierNX|. 
 
-Download an install JetPack
+Download and install JetPack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To download and install JetPack, you are redirected to |Nvidia_JetPack|. 
-There the SD Card Image method is explained to install the JetPack on a Jetson Xavier NX Developer Kit. 
-Follow the |Nvidia_JetsonXavierNX_GettingStarted| tutorial, which explains the required hardware, 
-the steps to write an image to the microSD card, and how to setup and boot the Jetson.  
-Below you can find some extra info on top of the NVIDIA tutorial. 
-
 .. note:: 
      VUB researchs who want to use this for their own research, should have their own microSD card, 
      such that they don't mess us my installations and 
      such that they are forced to test the install procedure and give comments on it to improve this tutorial. 
+     
+To download and install JetPack, you are redirected to |Nvidia_JetPack|. 
+There the SD Card Image method is explained to install the JetPack on a Jetson Xavier NX Developer Kit. 
+Follow the |Nvidia_JetsonXavierNX_GettingStarted| tutorial, which explains the required hardware, 
+the steps to write an image to the microSD card (use the instructions for Linux), and how to setup and boot the Jetson.  
+Below you can find some extra info on top of the NVIDIA tutorial. 
 
 .. |repartition_sdcard_link| raw:: html
 
@@ -188,6 +192,12 @@ Below you can find some extra info on top of the NVIDIA tutorial.
    .. image:: img/jetson_signin_settings.jpg
        :width: 650px
 
+.. |NVIDIA_forum| raw:: html
+
+   <a href="https://developer.nvidia.com/login" target="_blank">NVIDIA forum</a>
+
+.. note:: 
+     Register to the |NVIDIA_forum| to ask questions in case you have problems with the NVIDIA Jetson Xavier NX. 
 
 Download and install the ZED SDK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -289,3 +299,13 @@ If you try to install something and the Jetson keeps shutting down, you can set 
         sudo systemctl set-default graphical.target
 
 * Now you can launch rviz with object detection on graphical mode.
+
+
+ZED2: Cuda error
+^^^^^^^^^^^^^^^^^
+
+.. image:: cuda_error.png
+    :width: 600
+
+This problem popped-up when we were trying to run rviz on a external computer (the Jetson and the computer were connected together).
+It was impossible to use the ZED2 camera with zed-ros scripts. So to solve it we had to reinstall the ZED SDK for Jetpack 4.5.

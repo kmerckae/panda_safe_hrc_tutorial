@@ -92,6 +92,9 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
    zed_ros/octomap
 
 
+ZED 2 Stereo Camera for Panda
+------------------------------
+
 .. toctree::
    :maxdepth: 1
    :caption: Zed camera and Panda Arm programs
@@ -100,65 +103,39 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
    zed_panda/zed_panda_objects_detection
    zed_panda/zed_panda_octomap
 
-
+Constrained Control
+---------------------------
 In the *Constrained Control for HRC* chapter you will see how you can use the trajectory-based Explicit Reference Governor
 for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
 with the Vicon motion capture system.
 We will explain how to set up the scenarios and which programs to run.
 We refer to [1] for more detailed information about the constrained control law that is used.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Constrained Control for HRC
-   
-   erg_panda/start
-
+Constraint-Based Planning and Control
+--------------------------------------
 
 In the *Constraint-Based Planning for HRC* chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two
 for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios with the ZED 2 camera.
 We will explain how to set up the scenarios and which programs to run.
 We refer to [2] for more detailed information about the constrained control law that is used.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Constraint-Based Planning for HRC
+Optimization-Based Planning and Control
+----------------------------------------
 
-   zed_panda/start
-
-
-In the *Optimization-Based Control for HRC* chapter ...
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Optimization-Based Control for HRC
-
-   mpc_panda/start
+Physical Human-Robot interaction
+--------------------------------
 
 
-In the *Physical HRI* chapter ...
+
+Training a Neural Network for Object Detection
+----------------------------------------------
 
 .. toctree::
    :maxdepth: 1
-   :caption: Physical HRI
-
-   phri_panda/start
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Object Detection with ZED2
 
    AI/purpose
    AI/data
    AI/train
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Jetson, ZED2 and PANDA ARM issues
-
-   issues/jetson_issues
-   issues/jetson_zed_panda
-   issues/panda_arm_issues
 
 References
 -----------
