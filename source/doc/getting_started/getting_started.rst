@@ -4,9 +4,6 @@ Getting Started
 .. role:: raw-html(raw)
     :format: html
 
-.. _ROS_Gazebo_Git_Beginner:
-
-
 Installation requirements to use ROS and Gazebo
 -------------------------------------------------
 

@@ -34,9 +34,6 @@ Below you see the example for ros_ws. Go to the terminal and execute the followi
    source /opt/ros/melodic/setup.sh
    catkin_init_workspace src
 
-
-.. _Gazebo_Panda_Visualization:
-
 Visualization
 ----------------------
 
@@ -139,9 +136,6 @@ Now you can see the folders, packages, files I had at that moment.
           and :download:`its supplementary material <PandaDynamicIdentification_SupplementaryMaterial.pdf>`, 
           the authors identified the dynamic parameters of the Panda robot. 
           I implemented them in my code some months ago, check the last version of panda_arm.xacro in panda_description.
-
-
-.. _Gazebo_Panda_Control:
 
 ROS Control
 -----------------
@@ -294,10 +288,6 @@ You can also try panda_effortcontrol in task space, check the following files:
 For the programs in task space, I used the |orocos_KDL_library| (since they have an inverse kinematics function). Check my stabilizing_control library for it (in panda_control package in the include folder). 
 
 
-
-
-.. _Gazebo_Panda_Planning:
-
 Planning with MoveIt
 ----------------------
 
@@ -305,17 +295,12 @@ Planning with MoveIt
 
 	To write with updated GitHub repo. 
 
-
-.. _Gazebo_Panda_ERG:
-
 ERG
 --------------------------
 
 .. admonition:: todo
 
 	To write with updated GitHub repo. 
-
-.. _Gazebo_Panda_Planning_ERG:
 
 Planning + ERG
 --------------------------

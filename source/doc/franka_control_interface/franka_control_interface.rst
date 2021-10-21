@@ -4,9 +4,6 @@ Franka Control Interface (FCI)
 .. role:: raw-html(raw)
     :format: html
 
-
-.. _FCI_Project:
-
 .. note:: For the *Panda 2* robot in the R&MM lab at Vrije Universiteit Brussel we replace <fci-ip> with ``192.168.2.106`` at this page. 
 
 The Franka Control Interface (FCI) allows a fast and direct low-level bidirectional connection to the Arm and Hand.
@@ -175,9 +172,6 @@ Since we don't want to work with git submodules, we remove all the submodules by
 * Run git rm --cached path_to_submodule (no trailing slash).
 
 
-
-.. _Robot_Control:
-
 Control the robot with ROS
 -----------------------------
 
@@ -340,10 +334,6 @@ What follows is copied from the Franka Community website and can help you whenev
    *  In the add_library part, delete the other controllers (we only need ours).
 
 
-
-
-
-.. _Path_Planning:
 
 Plan and Follow a Trajectory with MoveIt
 -----------------------------------------

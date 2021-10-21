@@ -12,21 +12,16 @@ Franka Emika Panda Arm
 
     <a href="https://frankaemika.github.io/docs/installation_linux.html#setting-up-the-real-time-kernel" target="_blank">setting up a real-time kernel</a>
 
-.. _MinimumSystemRequirements:
 
 Minimum system requirements
 ----------------------------------------------------
 
 For this part we refer to |frankaemika-requirements| written by Franka Emika.  
 
-.. _SettingUpDesktop:
-
 Setting up a real-time kernel
 ------------------------------
 
 For this part we refer to |frankaemika-real-time-kernel| written by Franka Emika. 
-
-.. _Start_Desktop:
 
 Boot VUB desktop with correct kernel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
@@ -39,24 +34,17 @@ Navigate with the arrow keys to the **student** boot and press ``F2`` for more b
 
 .. image:: img/start_desktop_1.jpg
     :align: center
-    :width: 700px
+    :width: 350px
 
 In order to control the Panda robot later on using ``libfranka``, the controller program on the desktop must run with *real-time priority* under a ``PREEMPT_RT`` kernel. 
 Since a real-time kernel is already set up on the desktop, 
 we can now navigate with the arrow keys to the rt9 version as shown in the figure below and press ``Enter``. 
 
 .. image:: img/start_desktop_2.jpg
-    :width: 700px
+    :align: center
+    :width: 350px
 
 Afterwards, you can choose the Main User account and enter the password ``MainUser``. 
-
-.. image:: img/start_desktop_3.jpg
-    :align: center
-    :width: 700px
-
-
-
-.. _Robot_Network:
 
 Set up the robot network
 -------------------------
@@ -137,22 +125,9 @@ Depending on which ethernet ports you have connected, you have to select the rig
 In the example below we have connected port enp10s0f0 to ``FrankaControl``,
 port enp10s0f1 to ``FrankaArm``, and port enp12s0 to ``Internet connection``.
 
-   .. image:: img/ethernetport_FrankaControl.png
-    :align: left
-    :width: 180px
-
-   .. image:: img/ethernetport_FrankaArm.png
-    :align: left
-    :width: 180px
-
-   .. image:: img/ethernetport_internet.png
-    :align: left
-    :width: 172px
-
-
-
-
-.. _Franka_Desk:
+.. image:: img/ethernetport_connnections.png
+    :width: 700px
+    
 
 Start and shut down the robot via Franka Desk
 ----------------------------------------------
@@ -244,9 +219,6 @@ and lock the joints before shutting down the Franka Control and the desktop.
 The safety locking system can be closed with the button ``click to lock joints`` in the sidebar of Franka Desk. 
 You will here one click which means that all the seven robot joints are locked and afterwards the display lights should be lit **yellow continuously**. 
 
-
-
-.. _Robot_operating_states:
 
 Robot Operating States
 ----------------------

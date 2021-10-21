@@ -1,5 +1,3 @@
-.. _ZED2_general:
-
 ZED 2 Stereo Camera
 =======================
 
@@ -19,17 +17,15 @@ ZED 2 Stereo Camera
    <a href="https://www.stereolabs.com/docs/ " target="_blank">introduction</a>
 
    
-First, read the general information about the |Stereolabs_ZED2_general| from Stereolabs.
-It shows with some pictures and videos what it can do and what its technical specification are. 
+Read the general information about the |Stereolabs_ZED2_general| from Stereolabs
+to know for which problems this camera can be a solution and what its technical specification are. 
 
 The ZED 2 camera comes with a Software Development Kit (SDK). 
 Read the |Stereolabs_ZED2_SDK| documentation to know with which third-party libraries and environments it can be interfaced
 and on which platforms you can run it.  
 
-Afterwards, we recommend to read the |Stereolabs_ZED2_SDK_intro| before continuing. 
+After reading the general information about the camera and the ZED SDK, we recommend to read the |Stereolabs_ZED2_SDK_intro| before continuing. 
 
-
-.. _ZED2_GettingStarted:
 
 Getting started
 ----------------
@@ -61,25 +57,24 @@ First go through the |Stereolabs_ZED2_SDK_GettingStarted|.
 As you can read, the ZED SDK is available for Windows, Linux, and Nvidia Jetson platforms.
 However, you need an NVIDIA graphics card to run |NVIDIA_CUDA|. 
 In what follows, we will use the |NVIDIA_Jetson_Xavier_NX| platform to run the ZED SDK. 
-We explain below why we have chosen this platform.  
+We explain below why we have chosen this embedded platform.  
 
 *  We don't have any laptop or desktop with an NVIDIA graphics card, so an embedded platform as the Jetson is the cheapest solution. 
 *  The controller programs on the desktop that send commands to the Panda robot must run with *real-time priority* under a PREEMPT_RT kernel. 
    Since NVIDIA binary drivers are not supported on PREEMPT_RT kernels, buying an NVIDIA graphics card is not a solution. 
-*  We tried first with an NVIDIA Jetson Nano, but it was not powerful enough. 
-   For example in the body tracking example of the SDK tutorials, 
-   we saw that the skeleton display sometimes lagged with respect to the real human body display. 
-   To have a more detailed point cloud and depth map, the camera resolution can be raised and the depth mode can be changed to ULTRA,
-   but the frame rate will consequently lower down a lot with the Jetson Nano. 
+*  We tried first with an NVIDIA Jetson Nano, but this platform was not powerful enough. 
+   The obtained point cloud and depth map were not as detailed as shown in the examples on the Stereolabs website
+   and the skeleton display was lagging a lot with respect to the real human body dysplay in the body tracking example of the SDK tutorials. 
+   Stereolabs told us that the camera resolution could be raised and the depth mode could be changed to ULTRA to improve the point cloud and depth map quality,
+   but at the cost of a consequently lower frame rate when using the Jetson Nano. 
    According to Stereolabs, the Jetson Nano can run the ZED SDK in real-time, but with big compromises in terms of performance.
-   If good performances are a requirement for the project, Stereolabs suggests to switch to a Jetson Xavier NX that is on another level.
+   If good performances are a requirement for the project, Stereolabs suggested to switch to a Jetson Xavier NX that is on another level.
 *  Check also the |Stereolabs_RecommendedSpecificationsZedSdk| and the differences between the |Nvidia_JetsonModules|. 
 
 *Side note.* We advise you to put back the ZED 2 camera back in the box when you are not using it. 
 To do this, be careful to put first the built-in USB 3.0 cable in it before putting in the ZED 2 camera. 
 Then you don't have to pull the USB 3.0 cable to get the camera out of the box. 
 
-.. _ZED2_InstallNvidiaJetsonXavierNX:
 
 Install the ZED SDK on Nvidia Jetson Xavier NX
 ------------------------------------------------------------
@@ -111,15 +106,15 @@ and also read the Stereolabs blog post about |Stereolabs_ZED2_SDK_GettingStarted
 Download and install JetPack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. note:: 
-     VUB researchs who want to use this for their own research, should have their own microSD card, 
+     VUB researchers who want to use this for their own research, should have their own microSD card, 
      such that they don't mess us my installations and 
      such that they are forced to test the install procedure and give comments on it to improve this tutorial. 
      
 To download and install JetPack, you are redirected to |Nvidia_JetPack|. 
 There the SD Card Image method is explained to install the JetPack on a Jetson Xavier NX Developer Kit. 
 Follow the |Nvidia_JetsonXavierNX_GettingStarted| tutorial, which explains the required hardware, 
-the steps to write an image to the microSD card (use the instructions for Linux), and how to setup and boot the Jetson.  
-Below you can find some extra info on top of the NVIDIA tutorial. 
+the steps to write an image to the microSD card (I have followed the instruction for Windows), 
+and how to setup and boot the Jetson.  
 
 .. |repartition_sdcard_link| raw:: html
 
@@ -149,6 +144,8 @@ Below you can find some extra info on top of the NVIDIA tutorial.
 
    <a href="https://forums.developer.nvidia.com/t/jetson-nano-wifi/72269" target="_blank">solution</a>
 
+Below you can find some extra info on top of the NVIDIA tutorial *Write Image to the microSD Card*. 
+
 *  NVIDIA proposes to use a microSD card with minmimum 16GB UHS-1. 
    We are using a |RS_components_SanDisk_MicroSD|. 
 
@@ -169,28 +166,28 @@ Below you can find some extra info on top of the NVIDIA tutorial.
    After you have repartitioned the microSD card, you have to format it before usage.  
 *  When you select the microSD card drive on which you want to write the image, you can get the message that the *microSD card is locked*. 
    Usually that means that the microSD card is physically locked and that you have to |unlock_sd_card|. 
-*  When you are asked to choose the *APP Partition Size*, it is recommended to choose the maximum accepted size. 
-*  When you select the *Nvpmodel Mode*, keep at the beginning the default settings, which is MODE_10W_DESKTOP - (Default). 
-   Refer to |NVIDIA_Jetson_Linux_Developer_Guide| for further information. 
-*  The username and password we have used to log in at VUB are:
 
-   *  username: xavier1 / xavier2 
-   *  password: JetsonXavier
+Below you can find some extra info on top of the NVIDIA tutorial *Setup and First Boot*. 
 
 *  Since the Jetson Xavier NX reference carrier board includes 802.11 plug-in WLAN & BT module preinstalled with antenna,
    it can automatically connect to a *Wireless Network*, which is not the case for the Jetson Nano. 
    For the **Jetson Nano** a |WiFi_USB_adapter| is required to connect to WiFi. 
    If that doesn't work, check this |WiFi_USB_adapter_problem| and its |WiFi_USB_adapter_solution|. 
-*  You can avoid a *core dumped error* by adding "export OPENBLAS_CORETYPE=ARMV8" in the .bashrc file, 
-   which is one of the hidden files that you can see by ``CTRL+h`` in the GUI of the home directory or ``ls -a`` in the terminal of the home directory. 
+*  The name, computer's name, username, and password we have used to log in at VUB are:
 
-   .. code-block:: bash
+   *  name: JetsonXavier1 / JetsonXavier2 
+   *  computer's name: xavier1-desktop / xavier2-desktop
+   *  username: xavier1 / xavier2 
+   *  password: JetsonXavier
 
-        echo "export OPENBLAS_CORETYPE=ARMV8" >> ~/.bashrc
+*  When you are asked to choose the *APP Partition Size*, it is recommended to choose the maximum accepted size. 
+*  When you select the *Nvpmodel Mode*, keep at the beginning the default settings, which is MODE_10W_DESKTOP - (Default). 
+   We refer to the |NVIDIA_Jetson_Linux_Developer_Guide| for further information.
 *  When you *log in* onto the Jetson Xavier NX, be careful that you sign in on the Ubuntu version.
 
    .. image:: img/jetson_signin_settings.jpg
-       :width: 650px
+       :align: center
+       :width: 450px
 
 .. |NVIDIA_forum| raw:: html
 
@@ -262,6 +259,16 @@ In order to reduce lags on the Jetson turn on the fan to 100%, by doing the foll
     :width: 500px
 
 
+
+
+*  You can avoid a *core dumped error* by adding "export OPENBLAS_CORETYPE=ARMV8" in the .bashrc file, 
+   which is one of the hidden files that you can see by ``CTRL+h`` in the GUI of the home directory or ``ls -a`` in the terminal of the home directory. 
+
+   .. code-block:: bash
+
+        echo "export OPENBLAS_CORETYPE=ARMV8" >> ~/.bashrc
+
+
 .. _jetson_shell_mode:
    
 Set the Jetson in shell mode
@@ -309,3 +316,4 @@ ZED2: Cuda error
 
 This problem popped-up when we were trying to run rviz on a external computer (the Jetson and the computer were connected together).
 It was impossible to use the ZED2 camera with zed-ros scripts. So to solve it we had to reinstall the ZED SDK for Jetpack 4.5.
+

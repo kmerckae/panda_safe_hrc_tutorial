@@ -8,6 +8,7 @@
 
 Safe Human-Robot Collaboration
 ===============================
+
 This tutorial explains different ways of safe Human-Robot Collaboration (HRC),
 from safe human-robot coexistence to safe physical human-robot interaction.
 We explain how to validate the experiments on a Franka Emika Panda robot arm
@@ -71,8 +72,9 @@ and how to use the Vicon information for reference object and obstacle recogniti
    doc/vicon/vicon
    doc/vicon_panda/vicon_panda
 
-ZED 2 Stereo Camera
--------------------
+Stereolabs ZED 2 Stereo Camera
+------------------------------
+
 In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
 It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
 Note that a real-time kernel is required for the real-time control of the Panda robot 
@@ -105,6 +107,7 @@ ZED 2 Stereo Camera for Panda
 
 Constrained Control
 ---------------------------
+
 In the *Constrained Control for HRC* chapter you will see how you can use the trajectory-based Explicit Reference Governor
 for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
 with the Vicon motion capture system.
@@ -125,8 +128,6 @@ Optimization-Based Planning and Control
 Physical Human-Robot interaction
 --------------------------------
 
-
-
 Training a Neural Network for Object Detection
 ----------------------------------------------
 
@@ -139,6 +140,7 @@ Training a Neural Network for Object Detection
 
 References
 -----------
+
 [1] K. Merckaert, B. Convens, C. Wu, A. Roncone, M. M. Nicotra, and B. Vanderborght,
 **Real-time motion control of robotic manipulators for safe human-robot coexistence**,
 *Robotics and Computer-Integrated Manufacturing*, vol.73, 2022, |10.1016/j.rcim.2021.102223|.
@@ -151,4 +153,5 @@ References
 
 Attribution
 -----------
+
 Major contributors to the *Constraint-Based Planning with a Stereo Camera* tutorial are listed: Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo.
