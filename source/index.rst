@@ -85,7 +85,7 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
    :maxdepth: 1
 
    doc/zed/zed
-   zed_jetson/zed_examples
+   doc/zed_ros/zed_ros
    zed_ros/ros_jetson_setup
    zed_ros/rviz_jetson
    zed_ros/rviz_external_pc

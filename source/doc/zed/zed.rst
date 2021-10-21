@@ -75,6 +75,38 @@ We explain below why we have chosen this embedded platform.
 To do this, be careful to put first the built-in USB 3.0 cable in it before putting in the ZED 2 camera. 
 Then you don't have to pull the USB 3.0 cable to get the camera out of the box. 
 
+ZED SDK overview
+-----------------
+
+.. |Stereolabs_ZED2_SDK_overview_camera| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/video/" target="_blank">camera</a>
+
+.. |Stereolabs_ZED2_SDK_overview_sensors| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/sensors/" target="_blank">sensors</a>   
+
+.. |Stereolabs_ZED2_SDK_overview_depth_sensing| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/depth-sensing/" target="_blank">depth sensing</a>  
+   
+.. |Stereolabs_ZED2_SDK_overview_positional_tracking| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/positional-tracking/" target="_blank">positional tracking</a>  
+   
+.. |Stereolabs_ZED2_SDK_overview_spatial_mapping| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/spatial-mapping/" target="_blank">spatial mapping</a> 
+   
+.. |Stereolabs_ZED2_SDK_overview_body_tracking| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/body-tracking/" target="_blank">body tracking</a> 
+   
+It is really important to read through the SDK overview and find specific information about the |Stereolabs_ZED2_SDK_overview_camera|,
+|Stereolabs_ZED2_SDK_overview_sensors|, |Stereolabs_ZED2_SDK_overview_depth_sensing|,
+|Stereolabs_ZED2_SDK_overview_positional_tracking|, |Stereolabs_ZED2_SDK_overview_spatial_mapping|, 
+and |Stereolabs_ZED2_SDK_overview_body_tracking|. 
+
 
 Install the ZED SDK on Nvidia Jetson Xavier NX
 ------------------------------------------------------------
@@ -222,7 +254,8 @@ We have executed the described experiments with python 3.6.9 and pip 9.0.1.
    python3 --version
    pip3 --version 
 
-ZED tools
+
+ZED SDK tools
 --------------------
 
 .. |Stereolabs_ZED2_SDK_RunZedExplorer| raw:: html
@@ -263,68 +296,110 @@ that you can run in a similar way as the ZED Explorer.
       Although it is possible to **recalibrate the camera manually** using the ZED Calibration tool, i.e. ZED_Calibration, 
       it is **totally not recommended** for the ZED 2 cameras as is mentioned |Stereolabs_ZED2_SDK_calibration_tool|! 
 
-SDK overview
-------------
+ZED SDK tutorials and samples
+-------------------------------
 
-.. |Stereolabs_ZED2_SDK_overview_camera| raw:: html
+.. |Stereolabs_ZED2_building_C++application_linuxjetson| raw:: html
 
-   <a href="https://www.stereolabs.com/docs/video/" target="_blank">camera</a>
-
-.. |Stereolabs_ZED2_SDK_overview_sensors| raw:: html
-
-   <a href="https://www.stereolabs.com/docs/sensors/" target="_blank">sensors</a>   
-
-.. |Stereolabs_ZED2_SDK_overview_depth_sensing| raw:: html
-
-   <a href="https://www.stereolabs.com/docs/depth-sensing/" target="_blank">depth sensing</a>  
-   
-.. |Stereolabs_ZED2_SDK_overview_positional_tracking| raw:: html
-
-   <a href="https://www.stereolabs.com/docs/positional-tracking/" target="_blank">positional tracking</a>  
-   
-.. |Stereolabs_ZED2_SDK_overview_spatial_mapping| raw:: html
-
-   <a href="https://www.stereolabs.com/docs/spatial-mapping/" target="_blank">spatial mapping</a> 
-   
-.. |Stereolabs_ZED2_SDK_overview_body_tracking| raw:: html
-
-   <a href="https://www.stereolabs.com/docs/body-tracking/" target="_blank">body tracking</a> 
-   
-It is really important to read through the SDK overview and find specific information about the |Stereolabs_ZED2_SDK_overview_camera|,
-|Stereolabs_ZED2_SDK_overview_sensors|, |Stereolabs_ZED2_SDK_overview_depth_sensing|,
-|Stereolabs_ZED2_SDK_overview_positional_tracking|, |Stereolabs_ZED2_SDK_overview_spatial_mapping|, 
-and |Stereolabs_ZED2_SDK_overview_body_tracking|. 
-
-
-ZED tutorials
------------------
-You can try some |ZED_Tutorials| to familiarise with the ZED SDK.
-The C++ and Python version can be launched in the same way as explained above.
-In these tutorials information will be printed in the terminal.
+   <a href="https://www.stereolabs.com/docs/app-development/cpp/linux/" target="_blank">build a C++ application on Jetson</a> 
 
 .. |ZED_Tutorials| raw:: html
 
     <a href="https://www.stereolabs.com/docs/tutorials/" target="_blank">tutorials</a>
 
+.. |ZED_Samples| raw:: html
+
+    <a href="https://www.stereolabs.com/docs/code-samples/#samples" target="_blank">samples</a>
+
+To play around with the ZED tutorials and samples, you first have to download the example code
+in the directory of your choice. 
+
+.. code-block:: bash
+
+    git clone https://github.com/stereolabs/zed-examples.git
+
+There are C++ and python examples, we will use the C++ examples. 
+Before you can run a C++ example, you will have to read how to |Stereolabs_ZED2_building_C++application_linuxjetson|
+which is explained for the first tutorial that publishes the serial number of the ZED 2 camera. 
+
+Try out all the |ZED_Tutorials| to familiarise with the ZED SDK.
+All the tutorials give a text output printed in the terminal. 
+
+Try also all the |ZED_Samples|. 
+Building the C++ samples is done similarly as for the tutorials. 
+Below you can find some results. 
+
+.. |askubuntu_canberra_gtk_module| raw:: html
+
+    <a href="https://askubuntu.com/questions/342202/failed-to-load-module-canberra-gtk-module-but-already-installed" target="_blank">install this module </a>
+
+.. note:: 
+      If you get the Gtk-Message: *Failed to load module "canberra-gtk-module"*, 
+      then you have to |askubuntu_canberra_gtk_module| by running the following in the terminal. 
+
+      .. code-block:: bash
+
+         sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
+
+Camera control
+^^^^^^^^^^^^^^
+
+To change the camera settings, click on the camera control window such that your cursor is not in the terminal. 
+Push ``s`` and you will see in the terminal which setting you can change. 
+Push ``s`` again if you want to adapt another camera setting. 
+Whereas my numlock was turned off, I couldn't use the ``+`` and ``-`` keys that are on the right side of my keyboard, 
+but I could use the ``+`` and  ``-`` keys of my main keyboard. 
+
+.. image:: img/zed_cam_control.png
+   :width: 500px
+   :align: center
+
+Depth sensing
+^^^^^^^^^^^^^
+
+This sample shows how to retreive the current point cloud. 
+
+.. image:: img/depth_sensing.png
+   :width: 500px
+   :align: center
+
+Body tracking
+^^^^^^^^^^^^^
+
+This sample display a skeleton over the live image and shows hot to detect and track 3D human bodies in space. 
+
+.. image:: img/body_tracking_rgb.png
+   :width: 500px
+   :align: center
+
+.. image:: img/body_tracking_skeleton.png
+   :width: 500px
+   :align: center
 
 
-ROS integration
-----------------
+Object detection (birds eye viewer)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In the object detection (birds eye viewer) sample, detected objects are displayed in a 3D view with the current point cloud.
+You have to press ``c`` to clear filters such that the program can detect objects from all the available |ZED_SDK_object_classes|.
+Without clearing the filters, the program can only detect people and vehicles.
 
-.. |Stereolabs_ZED2_SDK_GettingStartedWithROSonJetsonXavierNX| raw:: html
+.. |ZED_SDK_object_classes| raw:: html
 
-   <a href="https://www.stereolabs.com/blog/ros-and-nvidia-jetson-xavier-nx/" target="_blank">getting started with ROS on Jetson Xavier NX</a>
+   <a href="https://www.stereolabs.com/docs/api/group__Object__group.html#ga13b0c230bc8fee5bbaaaa57a45fa1177" target="_blank">object classes</a>
 
-|Stereolabs_ZED2_SDK_GettingStartedWithROSonJetsonXavierNX|
 
+.. image:: img/zed-objectdetection-person-animal.png
+    :align: center
+    :width: 500px
+
+.. image:: img/zed-objectdetection-animal-electronics.png
+    :align: center
+    :width: 500px
 
 Avoid crashing and latency issues
 ---------------------------------
 
-.. warning:: 
-     Rewrite this part later on. 
-
-You only have to try the following things in case you have crashing and latency issues with the NVIDIA Jetson Xavier NX. 
+You can try the following things in case you have crashing and latency issues with the NVIDIA Jetson Xavier NX. 
 If the following things don't solve your issues, then it is best to contact Stereolabs or Nvidia. 
 
 Change power mode
@@ -367,62 +442,4 @@ In order to reduce lags on the Jetson turn on the fan to 100%, by doing the foll
   .. image:: img/jtop_fan.png
     :width: 500px
 
-
-
-
-*  You can avoid a *core dumped error* by adding "export OPENBLAS_CORETYPE=ARMV8" in the .bashrc file, 
-   which is one of the hidden files that you can see by ``CTRL+h`` in the GUI of the home directory or ``ls -a`` in the terminal of the home directory. 
-
-   .. code-block:: bash
-
-        echo "export OPENBLAS_CORETYPE=ARMV8" >> ~/.bashrc
-
-
-.. _jetson_shell_mode:
-   
-Set the Jetson in shell mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If you try to install something and the Jetson keeps shutting down, you can set the Jetson in shell mode.
-
-
-*  Disable the GUI for booting the Jetson and turn on the shell mode:
-
-   .. code-block:: bash
-
-      sudo systemctl set-default multi-user.target # To disable GUI on boot
-
-*  While in shell mode:
-
-    * Enter the username and password
-
-    * Enable wifi and ethernet connection in the text mode Network Manager:
-
-    .. code-block:: bash
-
-        nmtui  # open network manager
-
-    * Run rviz:
-
-    .. code-block:: bash
-
-        roslaunch zed_display_rviz display_zed2.launch
-
-    * Once the AI model downloaded, come back to graphical mode:
-
-    .. code-block:: bash
-
-        # To enable GUI again issue the command:
-        sudo systemctl set-default graphical.target
-
-* Now you can launch rviz with object detection on graphical mode.
-
-
-ZED2: Cuda error
-^^^^^^^^^^^^^^^^^
-
-.. image:: cuda_error.png
-    :width: 600
-
-This problem popped-up when we were trying to run rviz on a external computer (the Jetson and the computer were connected together).
-It was impossible to use the ZED2 camera with zed-ros scripts. So to solve it we had to reinstall the ZED SDK for Jetpack 4.5.
-
+If you don't have any crashing or latency issues, you can put the fan mode on ``default`` as we did to execute our programs. 
