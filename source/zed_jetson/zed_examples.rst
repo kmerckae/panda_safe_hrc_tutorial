@@ -208,13 +208,3 @@ the code prints every second the id and position of the detected objects.
                 timer = time.time()
             # Update GL view
             viewer.update_view(image, objects)
-
-ZED Tutorials
------------------
-You can try some |ZED_Tutorials| to familiarise with the ZED SDK.
-The C++ and Python version can be launched in the same way as explained above.
-In these tutorials information will be printed in the terminal.
-
-.. |ZED_Tutorials| raw:: html
-
-    <a href="https://www.stereolabs.com/docs/tutorials/" target="_blank">tutorials</a>

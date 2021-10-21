@@ -27,8 +27,8 @@ and on which platforms you can run it.
 After reading the general information about the camera and the ZED SDK, we recommend to read the |Stereolabs_ZED2_SDK_intro| before continuing. 
 
 
-Getting started
-----------------
+Getting started with ZED 2
+---------------------------
 
 .. |Stereolabs_ZED2_SDK_GettingStarted| raw:: html
 
@@ -89,7 +89,7 @@ Install the ZED SDK on Nvidia Jetson Xavier NX
 
 .. |Nvidia_JetPack| raw:: html
 
-   <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank">JetPack</a>
+   <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank">JetPack SDK</a>
 
 .. |Nvidia_JetsonXavierNX_GettingStarted| raw:: html
 
@@ -105,15 +105,20 @@ and also read the Stereolabs blog post about |Stereolabs_ZED2_SDK_GettingStarted
 
 Download and install JetPack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |Stereolabs_ZED2_SDK_DownloadInstallJetpack| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/installation/jetson/#download-and-install-jetpack" target="_blank">download and install JetPack</a>
+
 .. note:: 
      VUB researchers who want to use this for their own research, should have their own microSD card, 
      such that they don't mess us my installations and 
      such that they are forced to test the install procedure and give comments on it to improve this tutorial. 
      
-To download and install JetPack, you are redirected to |Nvidia_JetPack|. 
+To download and install JetPack, you are redirected from the |Stereolabs_ZED2_SDK_DownloadInstallJetpack| section to NVIDIA's |Nvidia_JetPack|. 
 There the SD Card Image method is explained to install the JetPack on a Jetson Xavier NX Developer Kit. 
 Follow the |Nvidia_JetsonXavierNX_GettingStarted| tutorial, which explains the required hardware, 
-the steps to write an image to the microSD card (I have followed the instruction for Windows), 
+the steps to write an image to the microSD card (I have followed the instructions for Windows), 
 and how to setup and boot the Jetson.  
 
 .. |repartition_sdcard_link| raw:: html
@@ -196,8 +201,112 @@ Below you can find some extra info on top of the NVIDIA tutorial *Setup and Firs
 .. note:: 
      Register to the |NVIDIA_forum| to ask questions in case you have problems with the NVIDIA Jetson Xavier NX. 
 
-Download and install the ZED SDK
+Download and install ZED SDK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |Stereolabs_ZED2_SDK_DownloadInstallZedSdk| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/installation/jetson/#download-and-install-the-zed-sdk" target="_blank">download and install the ZED SDK</a>
+
+For this part, we followed the instructions from the |Stereolabs_ZED2_SDK_DownloadInstallZedSdk| section on the Stereolabs website. 
+
+We have downloaded the ZED SDK for Jetpack 4.6 and installed it in silent mode. 
+Silent mode enables you to perform an installation in a non-interactive mode, 
+so in this mode you don't have to answer questions on dependenies, tools, and samples installation in the terminal during the installation procedure. 
+
+Check also which python3 version and pip3 version is installed on the Jetson. 
+We have executed the described experiments with python 3.6.9 and pip 9.0.1. 
+
+.. code-block:: bash
+
+   python3 --version
+   pip3 --version 
+
+ZED tools
+--------------------
+
+.. |Stereolabs_ZED2_SDK_RunZedExplorer| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/installation/#run-zed-explorer" target="_blank">run the ZED Explorer</a>
+
+.. |Stereolabs_ZED2_SDK_RunZedDepthViewer| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/installation/#run-zed-depth-viewer" target="_blank">ZED_Depth_Viewer</a>
+      
+
+After downloading and installing the ZED SDK, the next step in the |Stereolabs_ZED2_SDK_GettingStarted| 
+is to |Stereolabs_ZED2_SDK_RunZedExplorer|, which is a good way to check that the ZED SDK is properly installed. 
+
+*  Connect the ZED 2 camera to a USB port of the Jetson Xavier NX. 
+*  Go to the terminal on the Jetson Xavier and navigate to the ZED tools folder
+   where you can run the ZED Explorer: 
+   
+   .. code-block:: bash
+
+        cd /usr/local/zed/tools/
+        ./ZED_Explorer
+
+*  If the ZED SDK is properly installed and the ZED 2 camera is recognized by the Jetson, you should see a 3D video from the left and right camera.  
+
+   .. image:: img/zed_explo.png
+        :width: 600
+        :alt: ZED_Explorer
+
+In the ZED tools folder you can also find |Stereolabs_ZED2_SDK_RunZedDepthViewer|, ZED_Diagnostic, ZEDfu, ZED_Sensor_viewer, and ZED_SVO_Editor
+that you can run in a similar way as the ZED Explorer. 
+
+.. |Stereolabs_ZED2_SDK_calibration_tool| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/video/camera-calibration/#calibration-tool" target="_blank">here</a>
+
+.. warning:: 
+      Although it is possible to **recalibrate the camera manually** using the ZED Calibration tool, i.e. ZED_Calibration, 
+      it is **totally not recommended** for the ZED 2 cameras as is mentioned |Stereolabs_ZED2_SDK_calibration_tool|! 
+
+SDK overview
+------------
+
+.. |Stereolabs_ZED2_SDK_overview_camera| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/video/" target="_blank">camera</a>
+
+.. |Stereolabs_ZED2_SDK_overview_sensors| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/sensors/" target="_blank">sensors</a>   
+
+.. |Stereolabs_ZED2_SDK_overview_depth_sensing| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/depth-sensing/" target="_blank">depth sensing</a>  
+   
+.. |Stereolabs_ZED2_SDK_overview_positional_tracking| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/positional-tracking/" target="_blank">positional tracking</a>  
+   
+.. |Stereolabs_ZED2_SDK_overview_spatial_mapping| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/spatial-mapping/" target="_blank">spatial mapping</a> 
+   
+.. |Stereolabs_ZED2_SDK_overview_body_tracking| raw:: html
+
+   <a href="https://www.stereolabs.com/docs/body-tracking/" target="_blank">body tracking</a> 
+   
+It is really important to read through the SDK overview and find specific information about the |Stereolabs_ZED2_SDK_overview_camera|,
+|Stereolabs_ZED2_SDK_overview_sensors|, |Stereolabs_ZED2_SDK_overview_depth_sensing|,
+|Stereolabs_ZED2_SDK_overview_positional_tracking|, |Stereolabs_ZED2_SDK_overview_spatial_mapping|, 
+and |Stereolabs_ZED2_SDK_overview_body_tracking|. 
+
+
+ZED tutorials
+-----------------
+You can try some |ZED_Tutorials| to familiarise with the ZED SDK.
+The C++ and Python version can be launched in the same way as explained above.
+In these tutorials information will be printed in the terminal.
+
+.. |ZED_Tutorials| raw:: html
+
+    <a href="https://www.stereolabs.com/docs/tutorials/" target="_blank">tutorials</a>
+
+
 
 ROS integration
 ----------------
