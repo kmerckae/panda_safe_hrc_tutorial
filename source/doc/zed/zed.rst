@@ -51,7 +51,6 @@ Getting started with ZED 2
    <a href="https://developer.nvidia.com/embedded/jetson-modules" target="_blank">Jetson Modules</a>
    
 
-
 First go through the |Stereolabs_ZED2_SDK_GettingStarted|. 
 
 As you can read, the ZED SDK is available for Windows, Linux, and Nvidia Jetson platforms.
@@ -108,16 +107,14 @@ It is really important to read through the SDK overview and find specific inform
 and |Stereolabs_ZED2_SDK_overview_body_tracking|. 
 
 
-Install the ZED SDK on Nvidia Jetson Xavier NX
+.. _Install_ZED_SDK_JetsonXavierNX:
+
+Install the ZED SDK on NVIDIA Jetson Xavier NX
 ------------------------------------------------------------
 
 .. |Stereolabs_ZED2_SDK_NvidiaJetson| raw:: html
 
    <a href="https://www.stereolabs.com/docs/installation/jetson/" target="_blank">install ZED SDK on NVIDIA Jetson</a>
-
-.. |Stereolabs_ZED2_SDK_GettingStartedWithJetsonXavierNX| raw:: html
-
-   <a href="https://www.stereolabs.com/blog/getting-started-with-jetson-xavier-nx/" target="_blank">getting started with Jetson Xavier NX</a>
 
 .. |Nvidia_JetPack| raw:: html
 
@@ -132,8 +129,7 @@ Install the ZED SDK on Nvidia Jetson Xavier NX
    <a href="https://benl.rs-online.com/web/p/micro-sd-cards/1747339/" target="_blank">SanDisk Ultra 64GB microSD card class 10 UHS-1 U1</a>
 
 
-Follow the Stereolabs guide to |Stereolabs_ZED2_SDK_NvidiaJetson|
-and also read the Stereolabs blog post about |Stereolabs_ZED2_SDK_GettingStartedWithJetsonXavierNX|. 
+Follow the Stereolabs guide to |Stereolabs_ZED2_SDK_NvidiaJetson|. 
 
 Download and install JetPack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
