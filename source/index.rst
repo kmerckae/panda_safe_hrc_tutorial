@@ -86,8 +86,7 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
 
    doc/zed/zed
    doc/zed_ros/zed_ros
-   zed_ros/rviz_jetson
-   zed_ros/rviz_external_pc
+   doc/zed_panda/zed_panda
    zed_ros/object_detection
    zed_ros/octomap
 
