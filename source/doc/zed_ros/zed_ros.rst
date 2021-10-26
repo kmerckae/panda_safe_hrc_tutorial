@@ -42,7 +42,7 @@ Getting started with ROS and ZED
 
 Read and follow the |Stereolabs_ZED2_ROS_integration| tutorial.
 
-Below you will find some extra information on top of what the tutorial explains for the **installation** on the NVIDIA Jetson Xavier NX. 
+Below you will find some extra information on top of what the tutorial explains. 
 
 *  We have installed |Nvidia_JetPack_ubuntu| on our NVIDIA Jetson Xavier NX and because this filesystem is based on Ubuntu 18.04, 
    we will follow the ROS installation procedure for Ubuntu 18.04, as such we have to install ROS Melodic. 
@@ -117,6 +117,9 @@ You can also take a look at |ROS_MultipleMachines|, |ROS_NetworkSetup|, and :dow
 
 Use the ethernet cable to connect the Jetson Xavier NX with the external computer. 
 
+Network settings
+^^^^^^^^^^^^^^^^
+
 Go to the network settings on both computers, make sure the wired connection is turned on, 
 and add a new connection profile. 
 
@@ -154,6 +157,9 @@ You can now ping both computers to see if they are correctly connected.
   .. image:: img/ping_external2jetson.png
       :width: 400px
 
+ROS node environment variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Via the terminal, you have to add the ROS_IP and ROS_MASTER_URI to the .bashrc of both computers. 
 
 * On the Jetson Xavier NX:
@@ -170,8 +176,12 @@ Via the terminal, you have to add the ROS_IP and ROS_MASTER_URI to the .bashrc o
     echo "export ROS_IP=169.254.99.1" >> ~/.bashrc  #IP of the ROS master
     echo "export ROS_MASTER_URI=http://169.254.99.1:11311" >> ~/.bashrc # IP of the ROS master
 
+.. note::   Don't forget to remove these ROS_IP and ROS_MASTER_URI specifications in the .bashrc
+            when you are using ROS on your external computer without the ZED SDK running on the Jetson Xavier NX.  
 
 
+Synchonize system clocks
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. |chrony_tuxfamily| raw:: html
 
         <a href="https://chrony.tuxfamily.org/" target="_blank">chrony</a>
@@ -179,8 +189,7 @@ Via the terminal, you have to add the ROS_IP and ROS_MASTER_URI to the .bashrc o
 .. |ROS_answers_chrony| raw:: html
 
         <a href="https://answers.ros.org/question/11180/chrony-configuration-and-limitations/ " target="_blank">this ROS issue</a>
-
-
+        
 Synchronize the clock of the Jetson and the external computer by running the following command on both devices: 
 
 .. code-block:: bash
@@ -189,25 +198,51 @@ Synchronize the clock of the Jetson and the external computer by running the fol
 
 .. note:: Another way to synchronize the time across multiple machines is to use |chrony_tuxfamily|, see also |ROS_answers_chrony|. 
 
+Visualize ROS data in RViz on external computer
+--------------------------------------------------------
 
+.. |create_catkin_ws| raw:: html
 
-Display Rviz depth map and point cloud on an external computer
-------------------------------------------------------------------------
+    <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace" target="_blank">catkin workspace</a>
 
-Now you should be able to display the RViz program on your external computer without having latency issues! 
+.. |Stereolabs_github_object_detection_plugin| raw:: html
 
-Go to the *display_zed2.launch* file on the Jetson Xavier NX, which you can find at the following address
+    <a href="https://github.com/stereolabs/zed-ros-examples/tree/master/rviz-plugin-zed-od" target="_blank">object detection plugin</a>
+
+To visualize ROS data in RViz on your external computer, you first have to create a |create_catkin_ws| on your external computer. 
+Once you've created the catkin workspace, you have to install the |Stereolabs_github_zed_ros_interfaces| and the |Stereolabs_github_zed_ros_examples| in the catkin_ws/src folder
+according to the explanation in the |Stereolabs_ZED_ROS_integration_buildpackages| section.   
+
+*  We installed the |Stereolabs_github_zed_ros_interfaces| package instead of the |Stereolabs_github_zed_ros_wrapper| package, 
+   since the |Stereolabs_github_zed_ros_interfaces| package does not require CUDA hence it can be used to receive the ZED data also on machines not equipped with an NVIDIA GPU, 
+   as is explained in |Stereolabs_ZED_ROS_integration_buildpackages|. 
+*  In the |Stereolabs_github_zed_ros_examples| package, you can find the ZedOdDisplay plugin which is required for processing the object detection, 
+   but if you do not want to install the full |Stereolabs_github_zed_ros_examples| repository on your external computer, 
+   you can also only install the source code of the |Stereolabs_github_object_detection_plugin|.  
+
+To avoid opening RViz on the Jetson Xavier NX and to open the *zed2.rviz* file on the external computer, 
+you have to comment parts of the code of the *display_zed2.launch* file.
+On both computers, you can find this file at the following address:   
 
 .. code-block:: bash
 
     cd path/to/catkin_ws/src/zed-ros-examples/zed_display_rviz/launch/
 
-and comment the selected line such that RViz will not open on the Jetson Xavier NX
+On the **Jetson Xavier NX**, you have to comment the rviz node in the *display_zed2.launch* file on the Jetson Xavier.
+Therefore you have to comment the line that is highlighted with a red rectangle. 
 
 .. image:: img/zed_jetson.png
     :align: center
     :width: 700px
 
+To open a specific rviz file on the **external computer**, you have to comment de zed_wrapper part and respective arguments
+as is highlighted in the figure below with red rectangles. 
+
+.. image:: img/zed_jetson.png
+    :align: center
+    :width: 700px
+
+For all the examples explained in detail below, you will have to do the following. 
 
 * Open a new terminal on the **external computer** and run
 
@@ -215,17 +250,39 @@ and comment the selected line such that RViz will not open on the Jetson Xavier 
 
       roscore
 
-* Open a new terminal on the **Jetson** and run 
+* Open a new terminal on the **Jetson** and run the adapted *display_zed2.launch*
 
   .. code-block:: bash
 
+      cd path/to/catkin_ws/
+      source devel/setup.bash
       roslaunch zed_display_rviz display_zed2.launch
 
-* Open another terminal on the **external computer** and run
+* Open another terminal on the **external computer** and run the adapted *display_zed2.launch*
 
   .. code-block:: bash
 
-      rosrun rviz rviz
+      cd path/to/catkin_ws/
+      source devel/setup.bash
+      roslaunch zed_display_rviz display_zed2.launch
+
+Adding video capture in ROS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |Stereolabs_ROS_Video_Capture| raw:: html
+
+    <a href="https://www.stereolabs.com/docs/ros/video/ " target="_blank">adding video capture in ROS</a>
+
+Read |Stereolabs_ROS_Video_Capture|.  
+
+Adding depth perception in ROS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |Stereolabs_ROS_Depth_Perception| raw:: html
+
+    <a href="https://www.stereolabs.com/docs/ros/depth-sensing/ " target="_blank">adding depth perception in ROS</a>
+    
+Read |Stereolabs_ROS_Depth_Perception|. 
 
 To display the depth map and the point cloud in rviz, you have to add ``Camera`` to the Displays tab.
 When added, click on Image Topic and select the topic with *depth* in the name. 
@@ -233,5 +290,36 @@ Afterwards, you can add ``PointCloud2``, click on Topic and select the topic wit
 Finally, you should get something similar as in the figure below. 
 
 .. image:: img/rviz_computer.png
+    :align: center
+    :width: 700px
+
+Adding positional tracking in ROS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |Stereolabs_ROS_Positional_Tracking| raw:: html
+
+    <a href="https://www.stereolabs.com/docs/ros/positional-tracking/ " target="_blank">adding positional tracking in ROS</a>
+    
+Read |Stereolabs_ROS_Positional_Tracking|. 
+
+
+Adding object detection in ROS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+.. |Stereolabs_ROS_Object_Detection| raw:: html
+
+    <a href="https://www.stereolabs.com/docs/ros/object-detection/ " target="_blank">adding object detection in ROS</a>
+
+Read |Stereolabs_ROS_Object_Detection| and don't forget to enable the object detection parameter on the Jetson Xavier NX. 
+
+To display the bounding boxes around the detected objects, you have to add ``ZedOdDisplay`` which you can find under *rviz_plugin_zed_od*
+and select the */zed2/zed_node/obj_det/objects* topic. 
+
+To have a better idea of the detected objects, you can display the point cloud to the display. Therefore you have to add ``PointCloud2`` 
+and select the */zed2/zed_node/point_cloud/cloud_registered* topic. 
+
+Finally you should see something like this:
+
+.. image:: img/object_detection_rviz.png
     :align: center
     :width: 700px

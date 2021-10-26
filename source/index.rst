@@ -87,43 +87,24 @@ At the end you will learn how to receive the ZED 2 camera data via ROS.
    doc/zed/zed
    doc/zed_ros/zed_ros
    doc/zed_panda/zed_panda
-   zed_ros/object_detection
    zed_ros/octomap
-
-
-ZED 2 Stereo Camera for Panda
-------------------------------
 
 .. toctree::
    :maxdepth: 1
-   :caption: Zed camera and Panda Arm programs
 
    zed_panda/zed_panda_setup
    zed_panda/zed_panda_objects_detection
    zed_panda/zed_panda_octomap
 
-Constrained Control
+Obstacle Avoidance
 ---------------------------
 
-In the *Constrained Control for HRC* chapter you will see how you can use the trajectory-based Explicit Reference Governor
-for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios
-with the Vicon motion capture system.
-We will explain how to set up the scenarios and which programs to run.
-We refer to [1] for more detailed information about the constrained control law that is used.
+Explanation + reference to [1], [2], [3]. 
 
-Constraint-Based Planning and Control
+Physical Human-Robot Interaction
 --------------------------------------
 
-In the *Constraint-Based Planning for HRC* chapter you will see how you can use a MoveIt planner, the trajectory-based Explicit Reference Governor, and the combination of the two
-for the real-time motion control of the Panda robot in safe human-robot coexistence scenarios with the ZED 2 camera.
-We will explain how to set up the scenarios and which programs to run.
-We refer to [2] for more detailed information about the constrained control law that is used.
-
-Optimization-Based Planning and Control
-----------------------------------------
-
-Physical Human-Robot interaction
---------------------------------
+Explanation + reference to [4].
 
 Training a Neural Network for Object Detection
 ----------------------------------------------
@@ -142,6 +123,11 @@ References
 **Real-time motion control of robotic manipulators for safe human-robot coexistence**,
 *Robotics and Computer-Integrated Manufacturing*, vol.73, 2022, |10.1016/j.rcim.2021.102223|.
 
+[2] paper about planning + ERG --> constraint-based planning and control
+
+[3] paper about MPC + ERG  (+ planning) --> optimization-based planning and control
+
+[4] paper about combining the two modes, physical interaction + obstacle avoidance 
 
 
 .. |10.1016/j.rcim.2021.102223| raw:: html
@@ -151,4 +137,4 @@ References
 Attribution
 -----------
 
-Major contributors to the *Constraint-Based Planning with a Stereo Camera* tutorial are listed: Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo.
+Kelly Merckaert, Thomas Lefevre, Binjie Dai, Kouassi Agbetoglo.
