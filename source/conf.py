@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'Safe HRC with Panda robot'
-copyright = '2021, Kelly Merckaert'
+copyright = '2023, Kelly Merckaert'
 author = 'Kelly Merckaert'
 
 # The full version, including alpha/beta/rc tags
