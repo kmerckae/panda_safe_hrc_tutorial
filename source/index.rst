@@ -9,26 +9,46 @@
 Safe Human-Robot Collaboration
 ===============================
 
-This tutorial explains different ways of safe Human-Robot Collaboration (HRC),
-from safe human-robot coexistence to safe physical human-robot interaction.
-We explain how to validate the experiments on a Franka Emika Panda robot arm
-and which sensing systems can be used. For people that don't have the real robot arm, 
-we explain how to validate the algorithms in the Gazebo simulation environment.  
+We want to provide a ROS-based open source code framework that enables users to test our proposed planning and control framework for exemplary numerical and experimental validation cases on the 7DOF Franka Emika Panda robot, and in realistic Human-Robot Collaboration (HRC) scenarios with Vicon motion capture data and Stereolabs ZED2 data.
 
-.. |GPL-3-license| raw:: html
+.. warning:: The explanation on this website is still under construction. 
+            The GitHub repository, https://github.com/panda-brubotics, we are referring to is still private, but will be made public when all relevant articles are published.  
+            People from VUB and CU Boulder that are invited to the private repo may not share the content with others.
+            For questions, you can always contact Kelly Merckaert: kelly.merckaert@vub.be.
 
-   <a href="https://www.gnu.org/licenses/gpl-3.0.nl.html" target="_blank">GPL-3 license</a>
+We show how a robotic manipulator can reactively avoid collisions with a human by employing the trajectory-based Explicit Reference Governor (ERG) and the Vicon motion capture system. 
 
-.. warning:: The GitHub repository is still private and will be made public in September 2022. 
-          People from VUB and CU Boulder that are invited to the private repo, 
-          may not share the content with others. Also not in publications as long as the repository is private. 
+.. image:: safeHRC-ERG-vicon.png
+    :align: center
+    :width: 450px
 
-.. admonition:: todo
+We show how a robotic manipulator can reactively reach its end-effector pose references and avoid collisions with the static cluttered environment and humans by employing a Rapidly-exploring Random Tree (RRT) and trajectory-based ERG algorithm, using the Stereolabs ZED2 camera to detect the obstacles. 
 
-  *  include wrap up youtube video
-  *  add |GPL-3-license| to ALL files
-  *  make the GitHub repo public
-  *  change the link to the GitHub repo in all the code block bashes 
+.. image:: safeHRC-RRT-ERG-ZED2.png
+    :align: center
+    :width: 650px
+
+
+.. This tutorial explains different ways of safe Human-Robot Collaboration (HRC),
+.. from safe human-robot coexistence to safe physical human-robot interaction.
+.. We explain how to validate the experiments on a Franka Emika Panda robot arm
+.. and which sensing systems can be used. For people that don't have the real robot arm, 
+.. we explain how to validate the algorithms in the Gazebo simulation environment.  
+
+.. .. |GPL-3-license| raw:: html
+
+..    <a href="https://www.gnu.org/licenses/gpl-3.0.nl.html" target="_blank">GPL-3 license</a>
+
+
+
+.. .. admonition:: todo
+
+..   *  include wrap up youtube video
+..   *  add |GPL-3-license| to ALL files
+..   *  make the GitHub repo public
+..   *  change the link to the GitHub repo in all the code block bashes 
+
+
 
 Getting Started with ROS, Gazebo, and Git
 ------------------------------------------
