@@ -15,6 +15,8 @@
 * To use ReadTheDocs, install the following sphinx extension:
   ``` bash
   python3 -m pip install sphinx_rtd_theme
+  pip3 install sphinx-rtd-theme sphinx
+
   ```
 
 * Install myst-parser:
