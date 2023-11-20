@@ -9,20 +9,20 @@ Introduction
 
     <a href="https://ctu-mrs.github.io/" target="_blank">CTU MRS open source platform</a>
 
-The developed ROS-based system architecture has taken inspiration from the |CTU_MRS|, i.e., the Multi-robot Systems Group robotics lab at the Czech Technical University in Prague who mostly works with multi-rotor drones, and for them specifically, developed a control, estimation, and simulation platform enabling real-world and replicable simulations and experiments.
+To exploit multicore processor capabilities, we have developed a ROS-based system architecture whereby we have split all separate tasks (e.g., pre-stabilizing control, trajectory-based ERG, reference selector, RRT-Connect planner, visualizations) over different ROS nodes such that they can all run in parallel.
 
-To exploit multicore processor capabilities, we have split all separate tasks (e.g., pre-stabilizing control, trajectory-based ERG, reference selector, RRT Connect planner, visualizations) over different ROS nodes such that they can all run in parallel. Note that exploiting these multicore processor capabilities is extremely important for control algorithms that run at high rates and require data from multiple other running processes while the robot needs to receive control commands at 1kHz and stops when there are too many data losses. We did not do this from the start, but the more high-computational demanding processes we added to our framework (e.g., planning, collision checking), the more communication delays we encountered whereby the robot stopped. The only solution to this problem was to run all the different tasks in parallel, which also made our proposed architecture modular.
+Note that exploiting these multicore processor capabilities is extremely important for control algorithms that run at high rates and require data from multiple other running processes while the robot needs to receive control commands at 1kHz and stops when there are too many data losses. We did not do this from the start, but the more high-computational demanding processes we added to our framework (e.g., planning, collision checking), the more communication delays we encountered whereby the robot stopped. The only solution to this problem was to run all the different tasks in parallel, which also made our proposed architecture modular. 
 
 We have grouped these ROS nodes in different ROS packages. All these ROS packages can be found in https://github.com/panda-brubotics which will be made public in the (near) future. 
 
--------------------------------
-Suggested reading for newcomers
--------------------------------
+To develop this ROS-based system architecture, we have taken inspiration from the |CTU_MRS|, i.e., the Multi-robot Systems Group robotics lab at the Czech Technical University in Prague who mostly works with multi-rotor drones, and for them specifically, developed a control, estimation, and simulation platform enabling real-world and replicable simulations and experiments.
 
+---------------------------
 Mandatory software to learn
-===========================
+---------------------------
+
 Ubuntu
--------
+--------
 .. |install_ubuntu_20| raw:: html
 
     <a href="https://ubuntu.com/download/desktop" target="_blank">Ubuntu 20.04</a>
@@ -62,12 +62,12 @@ packages, it is clear our framework should be ROS-based.
 
 Our software is compatible with the |ROS_Noetic_lastofficialROS1|. We will update it in the future such that it will also be compatible with ROS2. 
 
-Getting into ROS is simple. Install |install_ROS_Noetic| and follow the tutorials on the |ROS_tutorials|. 
+To start with ROS, you have to install |install_ROS_Noetic| and follow the tutorials on the |ROS_tutorials|. 
 
 We also recommend to read  
 :download:`Mastering ROS for Robotics Programming  <JCACACE-MASTERING_ROS_FOR_ROBOTICS_PROGRAMMING_SECOND_EDITION.pdf>`.  
 The book is explained for ROS Kinetic, but it is still a very good book if you never worked with ROS before or when you want to refresh your ROS knowledge.  
-You can just read the book or maybe better, you can try the tutorials in ROS Noetic. Probably you will have to make some minor changes to let it work in ROS Noetic, but that's directly a good practice. 
+You can read the book and try the tutorials in ROS Noetic. You will have to make some minor changes to let it work in ROS Noetic, but that's directly a good practice. 
 
 .. |theconstructsim| raw:: html
 
@@ -103,7 +103,7 @@ TMUX - terminal multiplexer
 
     <a href="https://github.com/tmux/tmux" target="_blank">Tmux</a>
 
-|tmux| is a command-line utility that allows splitting a terminal to multiple panels and creating windows (tabs). It runs entirely in the command line. It is scriptable, which makes it ideal for automating processes, where multiple programs are launches simultaneously.
+|tmux| is a command-line utility that allows splitting a terminal to multiple panels and creating windows (tabs). It runs entirely in the command line. It is scriptable, which makes it ideal for automating processes, where multiple programs are launched simultaneously.
 
 Tmuxinator - automating tmux
 ----------------------------
@@ -112,7 +112,7 @@ Tmuxinator - automating tmux
 
     <a href="https://github.com/tmuxinator/tmuxinator" target="_blank">tmuxinator</a>
 
-Tmux itself is very powerful, |tmuxinator| uses .xml files containing a description of a tmux session. It allows us to define and automate complex multi-terminal setups for, e.g., development (one session per program) and simulations. All our simulation startup script are written for tmuxinator.
+Tmux itself is very powerful, |tmuxinator| uses .xml files containing a description of a tmux session. It allows us to define and automate complex multi-terminal setups for, e.g., development (one session per program) and simulations. All our validation startup scripts are written for tmuxinator.
 
 C++
 ------
@@ -129,9 +129,9 @@ C++
 
 All low-level control software that is intended to run in real-time is preferred to be written in C++. Although ROS/ROS2 natively supports also Python, well-written C++ provides significantly better performance. Therefore we recommend to learn C++ and get used to programming with it.
 
-We advise to follow the |Cpp_beginners| tutorial to start with and to take a look at the |Cpp_indepth| to go much deeper into C++. 
+We advise to follow the |Cpp_beginners| tutorial to start with and to take a look at the |Cpp_indepth| to go much deeper into C++. We also recommend to read  
+:download:`Effective Modern C++  <Effective-Modern-C++.pdf>` to improve your use of C++11 and C++14.  
 
-.. note:: Add book best practices MoveIt. 
 
 .. Gazebo
 .. -----------------------------
@@ -145,9 +145,23 @@ We advise to follow the |Cpp_beginners| tutorial to start with and to take a loo
 
 
 
-
-
-
+-------------------------
 How to install
-===========================
+-------------------------
+.. |safe_panda_system_package| raw:: html
+
+    <a href="https://github.com/panda-brubotics/safe_panda_system" target="_blank">safe_panda_system package</a>
+    
+    
+
+The starting point is the |safe_panda_system_package| which has an
+automated install-script that installs ROS, the git and tmux dependencies, the
+panda_core package, and creates a ROS workspace called panda_workspace.
+Since our framework can be seen as a specific extension of other existing
+frameworks and libraries, the panda_core package installs all required third-party packages such as libfranka and franka_ros to employ the code on the
+Franka Emika Panda robot, moveit for planning and collision checking purposes,
+rviz for visualizations, the zed interfaces to use the Stereolabs ZED2 camera,
+and the vicon bridge to use the Vicon motion capture system. Besides these
+third-party packages, it also installs the packages necessary for the proposed
+planning and control framework.
 
