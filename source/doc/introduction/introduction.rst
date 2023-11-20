@@ -157,6 +157,26 @@ How to install
 The starting point is the |safe_panda_system_package| which has an
 automated install-script that installs ROS, the git and tmux dependencies, the
 panda_core package, and creates a ROS workspace called panda_workspace.
+
+.. code-block:: bash
+
+    bash
+    cd /tmp
+    echo '
+    GIT_PATH=~/git
+    mkdir -p $GIT_PATH
+    cd $GIT_PATH
+    sudo apt-get -y install git
+    git clone https://github.com/panda-brubotics/safe_panda_system.git
+    cd safe_panda_system
+    git checkout master
+    git pull
+    ./install.sh -g $GIT_PATH
+    source ~/.bashrc' > clone.sh && source clone.sh
+   
+
+
+
 Since our framework can be seen as a specific extension of other existing
 frameworks and libraries, the panda_core package installs all required third-party packages such as libfranka and franka_ros to employ the code on the
 Franka Emika Panda robot, moveit for planning and collision checking purposes,
@@ -165,3 +185,195 @@ and the vicon bridge to use the Vicon motion capture system. Besides these
 third-party packages, it also installs the packages necessary for the proposed
 planning and control framework.
 
+
+-------------------------
+How to test 
+-------------------------
+
+.. note:: Kelly tested the code on a desktop with Ubuntu 18.04 and franka_ros version 0.7.0. However, it also works with Ubuntu 20.04 and the newer franka_ros version. The required adaptations to run it on the newest software will be documented in January 2025. 
+
+libfranka examples
+-------------------
+Navigate to the libfranka examples and take a look at the available examples:
+
+.. code-block:: bash
+
+    cd panda_workspace/src/panda_core/libfranka/build/examples
+    ls
+
+For the examples where the robot will move, you should put the robot in the activated state (i.e., when the lights are blue). Try for example: 
+
+.. code-block:: bash
+
+    ./generate_elbow_motion.cpp <robot_ip>
+
+franka_ros examples
+--------------------
+Navigate to the franka_ros examples and take a look at the available examples:
+
+.. code-block:: bash
+
+    cd panda_workspace/src/panda_core/ros_packages/franka_ros/franka_example_controllers/launch
+    ls
+
+For the examples where you only get data from the robot, the robot can be in the interactive state (i.e., when the lights are white). Try for example: 
+
+.. code-block:: bash
+
+    roslaunch franka_example_controllers model_example_controller.launch robot_ip:=<robot_ip>
+
+For almost all examples where you will let the robot move, the robot should initially be in its basic configuration, therefore run the following line in the activated state (i.e., when the lights are blue):
+
+.. code-block:: bash
+
+    roslaunch franka_example_controllers move_to_start.launch robot_ip:=<robot_ip>
+
+From there the other examples can be executed in the activated state: 
+
+.. code-block:: bash
+
+    roslaunch franka_example_controllers elbow_example_controller.launch robot_ip:=<robot_ip>
+
+Kelly examples
+--------------
+
+For these examples you only need the Panda robot (no cameras are required). 
+
+Navigate to Kelly's examples in the panda_testing package.
+
+.. code-block:: bash
+
+    cd panda_workspace/src/panda_core/ros_packages/panda_testing/tmux_scripts/kelly
+    ls
+
+
+All examples work with tmux sessions.
+
+*   To kill a separate window of a tmux session, use ``CTRL+C`` in that specific window
+*   To kill all windows of a tmux session, use ``CTRL+A+K``. (possible that this shortcut doesn't work yet)
+*   Another way to kill all tmux windows is to use ``CTRL+C`` in one window and then write 
+
+    .. code-block:: bash
+
+        tmux kill-server 
+
+.. note:: Note to Kelly: add videos and figures to the examples. 
+
+0) Basic examples
+^^^^^^^^^^^^^^^^
+In 46_prestabilizing_control a pure PD+g controller is employed. To test it, put the robot in the activated mode, navigate to the test folder, and run the start shell. 
+
+.. code-block:: bash
+
+    cd 46_prestabilizing_control
+    ./start-test.sh
+
+You will see that the robot moves with small steps defined in the small_steps.cpp in the panda_tasks repository.
+
+If you don't see this and you get connection errors, then this is probably due to the fact that the robot-ip is hard-coded in many files. Search for Get Franka robot model and robot state and update the robot ip.
+
+
+.. note:: Debugging is made easier with this tmux structure, since you can see directly in a single window what is able to run and what is not. You have to navigate in the tmux session through all the windows via ``CTRL+A+N`` and check what errors/warnings you receive. Instead of launching the separate launch files to debug, it is better to comment the windows that don't work in the session-test.yaml before starting the tmux session such that you can check where it goes wrong. 
+
+.. note:: **unable to connect to service: [Errno 111]**
+    
+    If you get this error, this is probably because of a wrong robot (which is still hard-coded in many programs and should become adaptable in the future). 
+    
+    Check the following: 
+
+    *   In the session-test.yaml file of this *46_prestabilizing_control* test you see in the third window the odometry_manager.cpp is asked to run.
+    
+    *   When you start this test, navigate in the tmux session to this third window. Probably you get a connection error here. If this is true, then go to the odometry_manager.cpp file. You will see under *Get Franka robot model and robot state* that my robot_ip is hard-coded. Adapt this to your robot_ip and start the tmux file again. 
+    *   When you start this test again and navigate to this third (odometry) window, there shouldn't be an error anymore. What do you see when you navigate to the fourth (task) window? Probably a similar connection problem. Go to panda_tasks repository and to the small_steps.cpp, adapt the robot_ip under *Get Franka robot model and robot state*. 
+    *   Run again the tmux session and test similar things as before, now with window 4 (task) and window 5 (planner). 
+
+
+.. |franka_research3_compatibility| raw:: html
+
+    <a href="https://frankaemika.github.io/docs/compatibility.html" target="_blank">compatibility requirements</a>
+
+.. note:: **Issues because of using the newest Franka Research 3 version**
+    
+    It is possible that you get connection issues because of using the Franka Research 3 version for which the franka_ros and moveit versions should be updated to their latest, given the |franka_research3_compatibility|. 
+    
+    This issue can come up when the launch requires something like a controller manager as opposed to the odometry manager.
+
+    With the version changes, the next issue that can come up is a timing issue: *Failed to fetch current robot state.* The hunch is that this has to do with some extra checks on timing in the new moveit version. 
+
+1) Test collision checks by moving Panda robot yourself
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To test MoveIt's collision checking functionality by moving the robot yourself in the interactive state, navigate to the test case folder and run the shell.
+
+.. code-block:: bash
+
+    cd 30_collisioncheck_caseA
+    ./start-test.sh
+
+You will see a tmux session and an RViz screen opening. Once everything is loaded, you can start moving the robot. The shortest distance between the robot and the obstacle scene should be visualized. Once the robot is in collision with the obstacle scene, this should also be visualized in RViz and printed in the terminal of the planningscene_collisioncheck window. (Navigate via ``CTRL+A+N`` to this window.)
+
+*   To run the test in obstacle scene B, you have to navigate to 31_collisioncheck_caseB.
+*   To run the test in obstacle scene C, the Octomap, you have to navigate to 32_collisioncheck_octomap.
+
+
+2) Test generating octopoints by moving Panda robot yourself
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To test the octopoints generation algorithm by moving the robot yourself, put the Panda robot in the interactive mode, navigate to the test case folder, and run the test shell. 
+
+.. code-block:: bash
+
+    cd 33_generate_octopoints
+    ./start-test.sh
+
+You will see a tmux session and an RViz screen opening. Once everything is loaded, you can start moving the robot. You should see pink points, the octopoints, that are generated when moving the robot closer to the octomap, a purple arrow denoting the shortest distance between the robot and the octopoints.
+
+
+
+3) Test MoveIt's RRT Connect planner
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To test MoveIt's RRT Connect planner in obstacle scene A (table, wall, and two cylinders), put the Panda robot in the activated mode, navigate to the test folder, and run the test shell. 
+
+.. code-block:: bash
+
+    cd 20_planner_caseA
+    ./start-test.sh
+
+You will see a tmux session and an RViz screen opening. Once everything is loaded you can start the test by starting the timer. Therefore you have to navigate (via ``CTRL+A+N``) in the tmux session to the time_handler window, which should be the third screen. Then start the timer. The command
+
+.. code-block:: bash
+    
+    rosrun panda_managers time_manager
+
+is saved in the history, so you don't have to type the above yourself in the terminal, but you only have to click the pointing up arrow key on your keyboard and click enter. You should see the real robot moving towards the reference poses. In RViz you should see the same, including the obstacle scene, the references, and the planned paths.
+
+*   To run the test in obstacle scene B, you have to navigate to 21_planner_caseB.
+*   To run the test in obstacle scene C, the Octomap, you have to navigate to 26_planner_octomap.
+
+4) Test the trajectory-based ERG
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To test the trajectory-based ERG in obstacle scene A (table, wall, and two cylinders), put the Panda robot in the activated mode, navigate to the test folder, and run the test shell. 
+
+.. code-block:: bash
+
+    cd 22_erg_caseA
+    ./start-test.sh
+
+You will see a tmux session and an RViz screen opening. Once everything is loaded (this takes longer than in pure planner case) you can start the test by starting the timer. Check first that all commands are started by navigating through all the windows (via ``CTRL+A+N``) in the tmux session. Once this is okay, you can navigate in the tmux session to the time_handler window and start the timer by clicking the pointing up arrow key on your keyboard (you should see the rosrun panda_managers time_manager command) and clicking enter. You should see the real robot moving towards the reference poses. In RViz you should see the same, including the obstacle scene, the references, the planned paths, and the paths made by connecting the applied references coming from the ERG.
+
+*   To run the test in obstacle scene B, you have to navigate to 23_erg_caseB.
+*   To run the test in obstacle scene C, the Octomap, you have to navigate to 27_erg_octomap.
+
+
+
+5) Test the RRT Connect + trajectory-based ERG
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To test the combination of the RRT Connect with the trajectory-based ERG in obstacle scene A (table, wall, and two cylinders), put the Panda robot in the activated mode, navigate to the test folder, and run the test shell. 
+
+.. code-block:: bash
+
+    cd 24_selector_caseA
+    ./start-test.sh
+
+You will see a tmux session and an RViz screen opening. Once everything is loaded (this takes longer than in pure planner case) you can start the test by starting the timer. Check first that all commands are started by navigating through all the windows (via ``CTRL+A+N``) in the tmux session. Once this is okay, you can navigate in the tmux session to the time_handler window and start the timer by clicking the pointing up arrow key on your keyboard (you should see the rosrun panda_managers time_manager command) and clicking enter. You should see the real robot moving towards the reference poses. In RViz you should see the same, including the obstacle scene, the references, the planned paths (green), and the paths made by connecting the selected references from the reference selector (orange) and the applied references coming from the ERG (blue).
+
+*   To run the test in obstacle scene B, you have to navigate to 25_selector_caseB.
+*   To run the test in obstacle scene C, the Octomap, you have to navigate to 28_selector_octomap.
