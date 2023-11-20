@@ -69,6 +69,7 @@ Table of contents
    :maxdepth: 1
 
    doc/introduction/introduction
+   doc/panda_system/panda_system
 
 -----------------
 References
@@ -85,13 +86,6 @@ References
 
 
 
-Getting Started with ROS, Gazebo, and Git
-------------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-
-   doc/getting_started/getting_started
 
 Franka Emika Panda Gazebo Simulation 
 -------------------------------------
