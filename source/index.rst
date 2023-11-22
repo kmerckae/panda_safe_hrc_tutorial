@@ -70,6 +70,10 @@ Table of contents
 
    doc/introduction/introduction
    doc/panda_system/panda_system
+   doc/simulation/simulation
+   doc/software/software
+   doc/hardware/hardware
+   doc/archive/archive
 
 -----------------
 References
@@ -87,15 +91,6 @@ References
 
 
 
-Franka Emika Panda Gazebo Simulation 
--------------------------------------
-
-Read this if you don't have access to a Franka Emika Panda robot or if you first want to test the planning and control algorithms in Gazebo. 
-
-.. toctree::
-   :maxdepth: 1
-
-   doc/gazebo_simulation/gazebo_simulation
 
 Franka Emika Panda Robot Arm
 -----------------------------

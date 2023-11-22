@@ -1,14 +1,18 @@
-Gazebo Simulation
+=================
+Simulation
 =================
 
 .. role:: raw-html(raw)
     :format: html
 
+----------
+Gazebo
+----------
+.. |Gazebo| raw:: html
 
-.. admonition:: todo
+    <a href="https://gazebosim.org/home" target="_blank">Gazebo</a>
 
-	Make updated GitHub repository with ROS Noetic on Ubuntu 20.04 and rewrite this part of the tutorial.
-
+.. note:: We started once with some initial Panda simulations in |Gazebo|. However, these simulations are not up-to-date at the moment. So the following explanation should be updated in the future.  
 
 Create a catkin workspace
 -------------------------
@@ -71,6 +75,7 @@ In your **panda_description** package:
 
 
 Launch the launch file by entering in the terminal 
+
 
 .. code-block:: bash
 
@@ -308,3 +313,25 @@ Planning + ERG
 .. admonition:: todo
 
 	To write with updated GitHub repo. 
+
+-------------
+AGX dynamics
+-------------
+
+.. |AGX_Dynamics| raw:: html
+
+    <a href="https://www.algoryx.se/agx-dynamics/" target="_blank">AGX Dynamics</a>
+
+.. note:: MA2 students have simulated the Panda robot in |AGX_Dynamics| from Algoryx. We will add their tutorial-like explanation in here. 
+
+    
+
+-----------
+Isaac Sim
+-----------
+
+.. |Isaac_Sim| raw:: html
+
+    <a href="https://developer.nvidia.com/isaac-sim" target="_blank">Isaac Sim</a>
+
+.. note:: We are thinking to use |Isaac_Sim| developed by Nvidia for learning-based control simulations. 
