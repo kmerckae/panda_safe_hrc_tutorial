@@ -23,9 +23,9 @@ This page will help you to make and save an Octomap on your external computer.
 Requirements
 ------------
 
-* You have to be able to :ref:`run rviz on your external computer<Rviz_External_PC>`.  
+* You have to be able to run rviz on your external computer. 
 
-* :ref:`Clone the franka_constrained_control project <FCI_Project>` or |make_new_catkin-ws-2| on your external computer. 
+* Clone the franka_constrained_control project or |make_new_catkin-ws-2| on your external computer. 
 
 * Install the ROS Octomap packages on your external computer
 
@@ -410,7 +410,7 @@ To save the data with the ZED 2 camera, you have to clone the perception_pcl fro
     cd ..
     catkin_make
 
-In order to launch the file, execute these two lines in two different terminals. In the first terminal you will have to launch the zed_wrapper. You can get it :ref:`here<wrapper>`.
+In order to launch the file, execute these two lines in two different terminals. In the first terminal you will have to launch the zed_wrapper. You can get it in the wrapper.
 But before that go to the zed wrapper configuration directory and open the common.yaml file
 
 .. code-block:: bash

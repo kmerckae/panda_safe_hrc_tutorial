@@ -260,7 +260,7 @@ All examples work with tmux sessions.
 .. note:: Note to Kelly: add videos and figures to the examples. 
 
 0) Basic examples
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 In 46_prestabilizing_control a pure PD+g controller is employed. To test it, put the robot in the activated mode, navigate to the test folder, and run the start shell. 
 
 .. code-block:: bash
@@ -316,7 +316,7 @@ You will see a tmux session and an RViz screen opening. Once everything is loade
 
 
 2) Test generating octopoints by moving Panda robot yourself
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To test the octopoints generation algorithm by moving the robot yourself, put the Panda robot in the interactive mode, navigate to the test case folder, and run the test shell. 
 
 .. code-block:: bash
