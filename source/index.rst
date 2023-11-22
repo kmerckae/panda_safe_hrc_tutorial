@@ -88,16 +88,3 @@ References
 
     <a href="https://doi.org/10.1016/j.rcim.2021.102223" target="_blank">10.1016/j.rcim.2021.102223</a>
 
-
-
-
-
-
-.. toctree::
-   :maxdepth: 1
-
-   AI/purpose
-   AI/data
-   AI/train
-
-
