@@ -92,66 +92,6 @@ References
 
 
 
-Franka Emika Panda Robot Arm
------------------------------
-
-Here we explain how you can get acquainted with the *real* Panda robot.
-
-.. toctree::
-   :maxdepth: 1
-
-   doc/panda_arm/panda_arm
-   doc/franka_control_interface/franka_control_interface
-
-Vicon Motion Capture System
-----------------------------
-
-Here we explain how to use the Vicon motion capture system in general, 
-how to make subjects with Vicon Nexus, how to make objects with Vicon Tracker, 
-and how to use the Vicon information for reference object and obstacle recognition with the Panda robot. 
-
-.. toctree::
-   :maxdepth: 1
-
-   doc/vicon/vicon
-   doc/vicon_panda/vicon_panda
-
-Stereolabs ZED 2 Stereo Camera
-------------------------------
-
-In the *ZED 2 Stereo Camera* chapter you will learn to run the ZED 2 camera, which is a stereo camera from Stereolabs, on the Nvidia Jetson Xavier NX. 
-It is also possible to use a computer which has an Nvidia graphics card and Nvidia drivers. 
-Note that a real-time kernel is required for the real-time control of the Panda robot 
-and that Nvidia binary drivers are not supported on real-time kernels, which is why we use these small embedded computers. 
-At the end you will learn how to receive the ZED 2 camera data via ROS.
-
-.. toctree::
-   :maxdepth: 1
-
-   doc/zed/zed
-   doc/zed_ros/zed_ros
-   doc/zed_panda/zed_panda
-   zed_ros/octomap
-
-.. toctree::
-   :maxdepth: 1
-
-   zed_panda/zed_panda_setup
-   zed_panda/zed_panda_objects_detection
-   zed_panda/zed_panda_octomap
-
-Obstacle Avoidance
----------------------------
-
-Explanation + reference to [1], [2], [3]. 
-
-Physical Human-Robot Interaction
---------------------------------------
-
-Explanation + reference to [4].
-
-Training a Neural Network for Object Detection
-----------------------------------------------
 
 .. toctree::
    :maxdepth: 1
